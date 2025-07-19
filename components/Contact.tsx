@@ -1,5 +1,4 @@
-import ContactForm from './ContactForm';
-import Footer from './Footer';
+// import ContactForm from './ContactForm';
 
 export default function Contact() {
   console.log('Kontaktní komponenta vykreslena');
@@ -102,9 +101,6 @@ export default function Contact() {
           {/* Contact Form */}
           {/* <ContactForm /> */}
         </div>
-        
-        {/* Footer */}
-        <Footer />
       </div>
     </section>
   );
