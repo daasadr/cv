@@ -85,3 +85,39 @@
 body > nextjs-portal {
   display: none;
 }
+
+/* Enhanced text wrapping utilities */
+@layer utilities {
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+  
+  .text-wrap-pretty {
+    text-wrap: pretty;
+  }
+  
+  .hyphens-auto {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+  
+  .hyphens-manual {
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+  }
+  
+  /* Prevent orphaned words */
+  .no-orphans {
+    orphans: 2;
+    widows: 2;
+  }
+  
+  /* Better word breaking for long text */
+  .break-word-smart {
+    word-break: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
