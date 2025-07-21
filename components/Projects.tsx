@@ -5,26 +5,37 @@ import { useState } from 'react';
 interface Project {
   title: string;
   description: string;
-  longDescription: string;
+  longDescription?: string;
   technologies: string[];
   image: string;
   liveUrl?: string;
   githubUrl?: string;
-  featured: boolean;
+  featured?: boolean;
   year: number;
 }
 
 const projects: Project[] = [
   {
-    title: '3D Portfolio Showcase',
-    description: 'Interaktivní portfolio s Three.js animacemi a WebGL efekty',
-    longDescription: 'Moderní portfolio web s poutavou 3D grafikou, systémem částic a interaktivními animacemi. Vytvořeno pomocí React, Three.js a pokročilých WebGL shaderů pro vytvoření jedinečného uživatelského zážitku, který vyniká mezi tradičními portfolii.',
-    technologies: ['React', 'Three.js', 'TypeScript', 'WebGL', 'GLSL'],
+    title: 'Interaktivní komponenta pro výrobce laboratorního vybavení',
+    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    technologies: ['Accessibility', 'CSS only interactivity', 'Performance', 'Figma'],
+    githubUrl: 'https://github.com/daasadr/interaktivni_linka',
+    liveUrl: '/interaktivni_linka.html',
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: true,
-    year: 2024
+    year: 2025
+  },
+  {
+    title: 'Aplikace pro lektora střeleckého výcviku',
+    description: '',
+    technologies: ['React', 'TypeScript', 'Node.js'],
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    year: 2025
+  },{
+    title: 'Dropshipping e-commerce řešení',
+    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    technologies: ['Next.js', 'Directus' ],
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    year: 2025
   },
   {
     title: 'Dashboard pro analýzu v reálném čase',
@@ -152,7 +163,27 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
+
+                    <div className="flex space-x-4">
+                {project.liveUrl && (
+                  <a 
+                    href={project.liveUrl}
+                    className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
+                  >
+                    Live Demo
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a 
+                    href={project.githubUrl}
+                    className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
+                  >
+                    View Code
+                  </a>
+                )}
+              </div>
                     
+                    {project.longDescription && (
                     <div className="flex space-x-4">
                       <button 
                         onClick={() => setSelectedProject(project)}
@@ -169,6 +200,7 @@ export default function Projects() {
                         </a>
                       )}
                     </div>
+                    )}
                   </div>
                 </div>
               ))}
