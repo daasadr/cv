@@ -93,6 +93,10 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Samostatnost a proaktivita</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                   <span>Spolupracující přístup a jasná komunikace</span>
                 </li>
                 {/* <li className="flex items-start space-x-3">
