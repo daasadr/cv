@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { currentFaviconMetadata, generateEmojiSVG, currentEmoji } from "@/lib/favicon-emojis";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code', // Add your actual verification code
   },
+  icons: currentFaviconMetadata,
 };
 
 export default function RootLayout({
@@ -92,6 +94,16 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable}`}
     >
       <head>
+        {/* Emoji Favicon */}
+        <link 
+          rel="icon" 
+          href={generateEmojiSVG(currentEmoji)} 
+        />
+        <link 
+          rel="apple-touch-icon" 
+          href={generateEmojiSVG(currentEmoji)} 
+        />
+        
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
