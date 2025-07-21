@@ -30,53 +30,36 @@ const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025
-  },{
-    title: 'Dropshipping e-commerce řešení',
-    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
-    technologies: ['Next.js', 'Directus' ],
-    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    year: 2025
   },
   {
-    title: 'Dashboard pro analýzu v reálném čase',
-    description: 'Podnikový dashboard s vizualizací živých dat a reportingem',
-    longDescription: 'Komplexní analytická platforma, která zpracovává a vizualizuje data v reálném čase z více zdrojů. Obsahuje vlastní komponenty pro grafy, aktualizace v reálném čase přes WebSockety a pokročilé možnosti filtrování pro firemní klienty.',
-    technologies: ['Next.js', 'PostgreSQL', 'WebSockets', 'Chart.js', 'Redis'],
-    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: true,
+    title: 'No-code generování PWA',
+    description: 'Drag & drop sestavení a generování PWA.',
+    technologies: ['React Brics', 'Next.js', 'Directus'],
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    year: 2025
+  }, {
+    title: 'Dropshipping e-commerce řešení',
+    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    technologies: ['Next.js', 'Directus'],
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2024
   },
   {
-    title: 'E-commerce platforma',
-    description: 'Full-stack marketplace s integrací plateb a administračním rozhraním',
-    longDescription: 'Kompletní e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a komplexními administračními nástroji. Zahrnuje správu skladu, sledování objednávek a analýzu zákazníků.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
-    image: 'https://images.pexels.com/photos/34577/pexels-photo.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-    year: 2023
+    title: 'Práce s mapami',
+    description: 'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá Google Maps API a OpenLayers.',
+    technologies: ['React', 'Google Maps API', 'Github Actions', 'OpenLayers', 'MUI'],
+    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+    liveUrl: 'https://daasadr.github.io/vrg-demo3/',
+    githubUrl: 'https://github.com/daasadr/vrg-demo3',
+    year: 2024
   },
-  {
-    title: 'AI asistent pro psaní kódu',
-    description: 'VS Code rozšíření pro inteligentní doplňování a refaktoring kódu',
-    longDescription: 'Inovativní VS Code rozšíření využívající strojové učení pro poskytování inteligentních návrhů kódu, automatický refaktoring a vylepšení kvality kódu. Podporuje více programovacích jazyků a bezproblémově se integruje se stávajícími pracovními postupy.',
-    technologies: ['TypeScript', 'VS Code API', 'Python', 'TensorFlow', 'Node.js'],
-    image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg',
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: false,
-    year: 2023
-  }
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   console.log('Projects component rendered with', projects.length, 'projects');
-  
+
   // Group projects by year in descending order
   const projectsByYear = projects.reduce((acc, project) => {
     if (!acc[project.year]) {
@@ -85,7 +68,7 @@ export default function Projects() {
     acc[project.year].push(project);
     return acc;
   }, {} as Record<number, Project[]>);
-  
+
   const years = Object.keys(projectsByYear)
     .map(Number)
     .sort((a, b) => b - a); // Descending order
@@ -94,13 +77,13 @@ export default function Projects() {
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-5xl font-bold text-gray-900 mb-6"
             data-macaly="projects-title"
           >
             Zkušenosti a tvorba
           </h2>
-          <p 
+          <p
             className="text-xl text-gray-600 max-w-3xl mx-auto"
             data-macaly="projects-description"
           >
@@ -114,15 +97,15 @@ export default function Projects() {
             <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
               {year}
             </h3>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {projectsByYear[year].map((project, index) => (
-                <div 
+                <div
                   key={`${year}-${index}`}
                   className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <div className="relative overflow-hidden">
-                    <img 
+                    <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
@@ -130,10 +113,10 @@ export default function Projects() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  
+
                   <div className="p-8">
                     <div className="flex justify-between items-start mb-3">
-                      <h4 
+                      <h4
                         className="text-2xl font-bold text-gray-900"
                         data-macaly={`project-${year}-${index}-title`}
                       >
@@ -145,14 +128,14 @@ export default function Projects() {
                         </span>
                       )}
                     </div>
-                    
-                    <p 
+
+                    <p
                       className="text-gray-600 mb-6 leading-relaxed"
                       data-macaly={`project-${year}-${index}-description`}
                     >
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech) => (
                         <span
@@ -165,41 +148,41 @@ export default function Projects() {
                     </div>
 
                     <div className="flex space-x-4">
-                {project.liveUrl && (
-                  <a 
-                    href={project.liveUrl}
-                    className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
-                  >
-                    Live Demo
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a 
-                    href={project.githubUrl}
-                    className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
-                  >
-                    View Code
-                  </a>
-                )}
-              </div>
-                    
-                    {project.longDescription && (
-                    <div className="flex space-x-4">
-                      <button 
-                        onClick={() => setSelectedProject(project)}
-                        className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
-                      >
-                        View Details
-                      </button>
                       {project.liveUrl && (
-                        <a 
+                        <a
                           href={project.liveUrl}
-                          className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
+                          className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
                         >
                           Live Demo
                         </a>
                       )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
+                        >
+                          View Code
+                        </a>
+                      )}
                     </div>
+
+                    {project.longDescription && (
+                      <div className="flex space-x-4">
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
+                        >
+                          View Details
+                        </button>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
+                          >
+                            Live Demo
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -218,24 +201,24 @@ export default function Projects() {
                 <h3 className="text-3xl font-bold text-gray-900">
                   {selectedProject.title}
                 </h3>
-                <button 
+                <button
                   onClick={() => setSelectedProject(null)}
                   className="text-gray-500 hover:text-gray-700 text-2xl"
                 >
                   ×
                 </button>
               </div>
-              
-              <img 
+
+              <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className="w-full h-64 object-cover rounded-xl mb-6"
               />
-              
+
               <p className="text-gray-700 mb-6 leading-relaxed">
                 {selectedProject.longDescription}
               </p>
-              
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {selectedProject.technologies.map((tech) => (
                   <span
@@ -246,10 +229,10 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              
+
               <div className="flex space-x-4">
                 {selectedProject.liveUrl && (
-                  <a 
+                  <a
                     href={selectedProject.liveUrl}
                     className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200 font-medium"
                   >
@@ -257,7 +240,7 @@ export default function Projects() {
                   </a>
                 )}
                 {selectedProject.githubUrl && (
-                  <a 
+                  <a
                     href={selectedProject.githubUrl}
                     className="border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 transition-colors duration-200 font-medium"
                   >
