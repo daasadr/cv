@@ -173,13 +173,13 @@ export default function Hero() {
           className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed text-wrap-pretty hyphens-auto break-word-smart no-orphans"
           data-macaly="hero-description"
         >
-          Fascinuje mě schopnost kódu vytvořit velkou přidanou hodnotu prakticky z&nbsp;ničeho. Zaměřuju se na Typescript, Node, React stack. Na frontendu Next.js, Tailwind, Shadcn. Na backendu PostgreSQL, Prisma nebo Directus.
+          Fascinuje mě schopnost kódu vytvořit velkou přidanou hodnotu prakticky z&nbsp;ničeho. Zaměřuju se na Typescript, Node a React stack. Na frontendu Next.js, Tailwind, Shadcn. Na backendu PostgreSQL, Prisma nebo Directus.
         </p>
         <p 
           className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed text-wrap-pretty hyphens-auto break-word-smart no-orphans"
           data-macaly="hero-description"
         >
-          Jsem orientovaná na profesní růst - ráda a hodně se vzdělávám. Kromě běžících projektů teď jedu kurz garantovaný IBM na Coursera a mám (možná až moc) rozečtených knížek&nbsp;z&nbsp;O'Railly.
+          Jsem orientovaná na profesní růst - ráda a hodně se vzdělávám. Kromě běžících projektů teď jedu kurz na Coursera s IBM coby jeho garantem a mám (možná až moc) rozečtených knížek&nbsp;z&nbsp;O'Railly.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
