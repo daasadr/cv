@@ -168,7 +168,7 @@ export default function Hero() {
           className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed text-wrap-pretty hyphens-auto break-word-smart no-orphans"
           data-macaly="hero-description"
         >
-          Jsem orientovaná na odborný růst - ráda a hodně se vzdělávám. Kromě běžících projektů teď jedu kurz na Coursera a mám (možná až moc) rozečtených knížek&nbsp;z&nbsp;O'Railly.
+          Jsem orientovaná na profesní růst - ráda a hodně se vzdělávám. Kromě běžících projektů teď jedu kurz garantovaný IBM na Coursera a mám (možná až moc) rozečtených knížek&nbsp;z&nbsp;O'Railly.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
