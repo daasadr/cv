@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 export default function Hero() {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
     console.log('Hero component mounted, initializing 3D scene');
@@ -78,6 +79,7 @@ export default function Hero() {
     camera.position.z = 10;
 
     // Animation loop
+    let isFirstRender = true;
     const animate = () => {
       requestAnimationFrame(animate);
       
@@ -108,6 +110,12 @@ export default function Hero() {
       });
       
       renderer.render(scene, camera);
+      
+      // Set scene as ready after first render
+      if (isFirstRender) {
+        setTimeout(() => setSceneReady(true), 100);
+        isFirstRender = false;
+      }
     };
 
     animate();
@@ -126,6 +134,7 @@ export default function Hero() {
     return () => {
       console.log('Cleaning up 3D scene');
       window.removeEventListener('resize', handleResize);
+      setSceneReady(false);
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
       }
@@ -141,7 +150,9 @@ export default function Hero() {
       {/* 3D Background */}
       <div 
         ref={mountRef} 
-        className="absolute inset-0 pointer-events-none opacity-30"
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out ${
+          sceneReady ? 'opacity-30' : 'opacity-0'
+        }`}
       />
       
       {/* Content */}
