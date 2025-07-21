@@ -94,23 +94,24 @@ export default function Navigation() {
               <ul className="flex space-x-8" role="list">
                 {navigationItems.filter((item) => !isMobile || item.mobile).map((item) => (
                   <li key={item.id}>
-                    <button
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-gray-700 hover:text-indigo-600 focus:text-indigo-600 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 rounded-md px-2 py-1"
-                      aria-current={currentSection === item.id ? 'page' : undefined}
-                      aria-describedby={`nav-${item.id}-desc`}
-                    >
-                      {item.label}
-                      <span id={`nav-${item.id}-desc`} className="sr-only">
-                        - přejít na sekci {item.label}
-                      </span>
-                    </button>
+                    <a href={`#${item.id}`}>
+                      <button
+                        className="text-gray-700 hover:text-indigo-600 focus:text-indigo-600 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 rounded-md px-2 py-1"
+                        aria-current={currentSection === item.id ? 'page' : undefined}
+                        aria-describedby={`nav-${item.id}-desc`}
+                      >
+                        {item.label}
+                        <span id={`nav-${item.id}-desc`} className="sr-only">
+                          - přejít na sekci {item.label}
+                        </span>
+                      </button>
+                    </a>
                   </li>
                 ))}
               </ul>
 
+              <a href={`#contact`}>
               <button 
-                onClick={() => scrollToSection('contact')}
                 className="hidden md:block bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
                 aria-describedby="cta-button-desc"
               >
@@ -119,6 +120,7 @@ export default function Navigation() {
                   - otevře kontaktní formulář
                 </span>
               </button>
+              </a>
             </div>
           </div>
         </nav>
