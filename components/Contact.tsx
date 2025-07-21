@@ -77,7 +77,7 @@ export default function Contact() {
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <span>2+ let zkušeností s full-stack vývojem</span>
+                  <span>2 roky zkušeností s full-stack vývojem</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
