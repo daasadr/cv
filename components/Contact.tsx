@@ -6,21 +6,21 @@ export default function Contact() {
   const contactMethods = [
     {
       label: 'Email',
-      value: '<EMAIL>',
+      value: 'Daasa.D@seznam.cz',
       icon: '📧',
-      href: 'mailto:<EMAIL>'
+      href: 'mailto:Daasa.D@seznam.cz'
     },
     {
       label: 'Telefon',
-      value: '<PHONE>',
+      value: '+420 773 245 222',
       icon: '📱',
-      href: 'tel:<PHONE>'
+      href: 'tel:+420 773 245 222'
     },
     {
       label: 'GitHub',
-      value: 'github.com/<GITHUB>',
+      value: 'github.com/daasadr',
       icon: '💻',
-      href: 'https://github.com/<GITHUB>'
+      href: 'https://github.com/daasadr'
     }
   ];
 
