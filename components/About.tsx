@@ -20,11 +20,11 @@ export default function About() {
             
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
               <p data-macaly="about-paragraph-1">
-                Jsem Frontend-heavy Full Stack Developerka zaměřující se na technologický stack založený na TypeScriptu, Node.js a Reactu (<a href="#skills" className="text-indigo-600 hover:text-indigo-700">podrobněji níže</a>).
+                Jsem Frontend-heavy Full Stack Developerka zaměřující se na technologický stack založený na TypeScriptu, Node.js a&nbsp;Reactu (<a href="#skills" className="text-indigo-600 hover:text-indigo-700">podrobněji níže</a>).
               </p>
               
               <p data-macaly="about-paragraph-2">
-                K IT mě přivedli bratři, oba odjakživa programátoři, a já se k nim přidala. Začala jsem intenzivním IT kurzem z programu IT Network s.r.o. a pokračovala samostudiem za pomocí knih z O'Reilly a Coursera, ale hlavně přes řadu větších i menších projektů.
+                K IT mě přivedli bratři, oba odjakživa programátoři, a&nbsp;já se k&nbsp;nim přidala. Začala jsem intenzivním IT kurzem z&nbsp;programu IT Network s.r.o. a pokračovala samostudiem za pomocí knih z&nbsp;O'Reilly a Coursera, ale hlavně přes řadu větších i menších projektů.
               </p>              
             </div>
 
