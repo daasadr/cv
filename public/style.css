@@ -1,0 +1,506 @@
+:root {
+  /* Colors */
+  --primary-color: #1976d2;
+  --primary-dark: #1251a3;
+  --secondary-color: #1a4b91;
+  --secondary-dark: #1a4b91;
+  --text-color: #222;
+  --text-muted: #444;
+  --text-light: #888;
+  --bg-color: #fafbfc;
+  --bg-white: #fff;
+  --highlight-bg: #fffbe6;
+  --highlight-border: #ffe066;
+  --highlight-accent: #b8860b;
+  --modal-backdrop: rgba(0,0,0,0.18);
+  --shadow-light: rgba(0,0,0,0.07);
+  --shadow-medium: rgba(0,0,0,0.27);
+  --shadow-dark: rgba(0,0,0,0.8);
+  --transparent: rgba(0,0,0,0);
+  
+  /* Typography */
+  --font-family-primary: 'Segoe UI', Arial, sans-serif;
+  --font-family-secondary: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-size-modal-link: 1rem;
+  --font-size-modal-title: 1.5rem;
+  --font-size-popup-title: 1rem;
+  --font-size-popup-link: 0.85rem;
+  --font-size-popup-text: 0.8rem;
+  --font-size-popup-container: 1rem;
+  --font-size-popup-close: 1.5rem;
+  --font-size-modal-close: 1.5rem;
+  --font-weight-normal: 500;
+  --font-weight-bold: 700;
+  
+  /* Spacing */
+  --spacing-container-top: 32px;
+  --spacing-modal-horizontal: 32px;
+  --spacing-modal-top: 24px;
+  --spacing-modal-bottom: 16px;
+  --spacing-modal-title-bottom: 10px;
+  --spacing-modal-description-bottom: 16px;
+  --spacing-modal-link-vertical: 10px;
+  --spacing-modal-close-right: 16px;
+  --spacing-popup-vertical: 10px;
+  --spacing-popup-horizontal: 10px;
+  --spacing-popup-gap: 10px;
+  --spacing-popup-link-horizontal: 10px;
+  
+  /* Border radius */
+  --border-radius-sm: 5px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 9px;
+  --border-radius-xl: 12px;
+  
+  /* Transitions */
+  --transition-fast: 0.18s;
+  --transition-medium: 0.22s;
+  --transition-slow: 0.28s;
+  --transition-cubic: cubic-bezier(.4,2,.6,1);
+  
+  /* Sizes */
+  --modal-max-width: 90vw;
+  --popup-max-width: 250px;
+  --container-max-width: 1200px;
+  
+  /* Z-index */
+  --z-hotspot: 2;
+  --z-modal-root: 100;
+  --z-modal: 101;
+  --z-popup: 200;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.interactive-image-container {
+  position: relative;
+  max-width: var(--container-max-width);
+  margin: var(--spacing-container-top) auto 0 auto;
+  background: var(--bg-white);
+  border-radius: var(--border-radius-xl);
+  box-shadow: 0 4px 24px var(--shadow-light);
+  overflow: visible;
+  container-type: inline-size;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
+  border-radius: var(--border-radius-xl);
+}
+
+#hotspot-layer {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+
+/* Odstraněny zbytečné styly pro .hotspot, .tooltip, .modal, .popup-tooltip, .modal-backdrop, #modal-root, .interactive-image-container::after a související media query bloky */
+
+/* Modal */
+#modal-root {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: var(--z-modal-root);
+  pointer-events: none;
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--modal-backdrop);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  pointer-events: auto;
+}
+.modal-backdrop.visible {
+  opacity: 1;
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(0.97);
+  max-width: var(--modal-max-width);
+  width: max-content;
+  background: var(--bg-white);
+  border-radius: var(--border-radius-xl);
+  box-shadow: 0 8px 32px var(--shadow-dark);
+  padding: var(--spacing-modal-top) var(--spacing-modal-horizontal) var(--spacing-modal-bottom) var(--spacing-modal-horizontal);
+  opacity: 0;
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  z-index: var(--z-modal);
+  pointer-events: auto;
+}
+.modal.visible {
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+}
+.modal.highlight {
+  background: var(--highlight-bg);
+  border: 2px solid var(--highlight-border);
+  box-shadow: 0 8px 32px rgba(255,224,102,0.18);
+}
+.modal-title {
+  font-size: var(--font-size-modal-title);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-modal-title-bottom) 0;
+  color: var(--primary-color);
+}
+.modal.highlight .modal-title {
+  color: var(--highlight-accent);
+}
+.modal-description {
+  margin: 0 0 var(--spacing-modal-description-bottom) 0;
+  color: var(--text-muted);
+}
+.modal-actions {
+  text-align: right;
+  margin: 0;
+}
+.modal-link {
+  background: var(--primary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-modal-link-vertical) 18px;
+  font-size: var(--font-size-modal-link);
+  font-weight: var(--font-weight-normal);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.10);
+  transition: background var(--transition-fast);
+  text-decoration: none;
+  display: inline-block;
+}
+.modal-link:hover {
+  background: var(--primary-dark);
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: var(--spacing-modal-close-right);
+  background: none;
+  border: none;
+  font-size: var(--font-size-modal-close);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.modal-close:hover {
+  color: var(--primary-color);
+}
+
+/* Neviditelné aktivní oblasti */
+.active-area {
+  position: absolute;
+  background: var(--transparent);
+  cursor: pointer;
+  z-index: var(--z-hotspot);
+  pointer-events: auto;
+}
+.active-area:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Enhanced focus styles for accessibility */
+.cross-btn:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.popup-link:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Popup modal (malé, decentní) */
+.popup-modal {
+  position: absolute;
+  background: rgba(255,255,255,0.97);
+  color: var(--text-color);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--text-color);
+  box-shadow: 0 5px 10px var(--shadow-medium);
+  padding: var(--spacing-popup-vertical) var(--spacing-popup-horizontal);
+  font-size: var(--font-size-popup-container);
+  width: max-content;
+  max-width: var(--popup-max-width);
+  min-width: 160px;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  z-index: var(--z-popup);
+  pointer-events: none;
+  /* Hide from screen readers when not visible, but allow focus */
+  visibility: hidden;
+  box-sizing: border-box;
+  font-family: var(--font-family-secondary);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-popup-gap);
+  overflow: visible;
+  text-wrap: balance;
+  
+  /* Positioning relative to icon */
+  left: calc(100% + 10px);
+  top: 50%;
+  transform-origin: left center;
+  transform: translateY(-50%) scale(0.97);
+}
+
+/* Invisible bridge to prevent hover gaps */
+.popup-modal::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* Show popup on hover and focus */
+.hotspot-wrapper:hover .popup-modal,
+.cross-btn:focus .popup-modal,
+.hotspot-wrapper:focus-within .popup-modal {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* 
+ * Keyboard Navigation Flow:
+ * 1. Tab to button -> popup appears via :focus
+ * 2. Tab again -> focus moves to link inside popup (popup stays visible via :focus-within)
+ * 3. Tab again -> focus moves to next hotspot button, popup hides
+ */
+
+/* Position popup to the left if it would overflow (for right-side icons) */
+.hotspot-wrapper:last-child .popup-modal {
+  left: calc(-100% - 210px);
+  transform-origin: right center;
+  transform: translateY(-50%) scale(0.97);
+}
+
+/* Bridge for right-positioned popup */
+.hotspot-wrapper:last-child .popup-modal::before {
+  left: auto;
+  right: -15px;
+}
+
+.hotspot-wrapper:last-child:hover .popup-modal,
+.hotspot-wrapper:last-child .cross-btn:focus .popup-modal,
+.hotspot-wrapper:last-child:focus-within .popup-modal {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.popup-modal.highlight {
+  background: var(--highlight-bg);
+  border: 2px solid var(--highlight-border);
+  box-shadow: 0 4px 24px rgba(255,224,102,0.18);
+}
+.popup-modal .popup-title {
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: var(--font-size-popup-title);
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.popup-modal .popup-description {
+  text-align: center;
+  font-size: var(--font-size-popup-text);
+  margin: 0;
+  color: var(--text-color);
+  word-break: break-word;
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.popup-modal .popup-actions {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-modal .popup-link {
+  background: var(--secondary-color);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 3px var(--spacing-popup-link-horizontal);
+  font-size: var(--font-size-popup-link);
+  font-weight: var(--font-weight-normal);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(26,57,123,0.10);
+  transition: background var(--transition-fast);
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family-secondary);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.popup-modal .popup-link:hover {
+  opacity: 0.8;
+}
+.popup-modal .popup-close {
+  display: none;
+}
+
+/* Šipka pod oknem (volitelně, lze přidat ::after) */
+.popup-tooltip::after, .popup-modal::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Skryji původní styly pro .hotspot, .modal, .tooltip atd. */
+.hotspot, .modal, .tooltip, #modal-root { display: none !important; } 
+
+/* Hotspot wrapper - obsahuje icon + popup */
+.hotspot-wrapper {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  z-index: var(--z-modal-root);
+}
+
+.cross-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: filter var(--transition-fast);
+  z-index: var(--z-modal-root);
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+.cross-svg {
+  width: 34px;
+  height: 34px;
+  transition: transform var(--transition-slow) var(--transition-cubic);
+  will-change: transform;
+}
+.hotspot-wrapper:hover .cross-svg,
+.cross-btn:focus .cross-svg,
+.cross-btn:active .cross-svg {
+  transform: rotate(90deg) scale(1.25);
+  filter: drop-shadow(0 2px 8px rgba(26,57,123,0.18));
+}
+/* SVG icon colors are now defined in the external SVG file */
+
+.active-area {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: var(--transparent);
+  pointer-events: none;
+} 
+
+@container (max-width: 900px) {
+  .hotspot-wrapper {
+    display: none !important;
+  }
+}
+
+/* Reduced motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  
+  /* Remove transforms but keep hover states visible */
+  .hotspot-wrapper:hover .cross-svg,
+  .cross-btn:focus .cross-svg,
+  .cross-btn:active .cross-svg {
+    transform: none !important;
+  }
+  
+  /* Simplify popup appearance */
+  .popup-modal {
+    transform: translateY(-50%) !important;
+  }
+  
+  .hotspot-wrapper:hover .popup-modal,
+  .cross-btn:focus .popup-modal,
+  .hotspot-wrapper:focus-within .popup-modal {
+    transform: translateY(-50%) !important;
+  }
+  
+  .hotspot-wrapper:last-child .popup-modal {
+    transform: translateY(-50%) !important;
+  }
+  
+  .hotspot-wrapper:last-child:hover .popup-modal,
+  .hotspot-wrapper:last-child .cross-btn:focus .popup-modal,
+  .hotspot-wrapper:last-child:focus-within .popup-modal {
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cross-btn {
+    border: 2px solid var(--secondary-color);
+    background: var(--bg-white);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--secondary-color);
+  }
+  
+  .popup-modal {
+    border-width: 2px;
+    background: var(--bg-white);
+    box-shadow: 0 0 0 2px var(--text-color);
+  }
+  
+  .cross-svg {
+    filter: contrast(1.5);
+  }
+  
+  .hotspot-wrapper:hover .cross-btn,
+  .cross-btn:focus,
+  .cross-btn:active,
+  .hotspot-wrapper:focus-within .cross-btn {
+    background: var(--secondary-color);
+    box-shadow: 0 0 0 2px var(--secondary-color);
+  }
+  
+  .hotspot-wrapper:hover .cross-svg,
+  .cross-btn:focus .cross-svg,
+  .cross-btn:active .cross-svg,
+  .hotspot-wrapper:focus-within .cross-svg {
+    filter: brightness(0) invert(1) contrast(1.5);
+  }
+} 
