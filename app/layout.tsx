@@ -5,19 +5,22 @@ import { Inter, Poppins, Playfair_Display } from "next/font/google";
 const inter = Inter({ 
   subsets: ["latin"],
   display: 'swap',
-  variable: "--font-inter"
+  variable: "--font-inter",
+  preload: true
 });
 const poppins = Poppins({ 
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
-  display: 'swap'
+  display: 'swap',
+  preload: false // Only preload critical fonts
 });
 const playfairDisplay = Playfair_Display({ 
   subsets: ["latin"],
   style: ["normal", "italic"],
   variable: "--font-playfair-display",
-  display: 'swap'
+  display: 'swap',
+  preload: false
 });
 
 export const metadata: Metadata = {
@@ -87,19 +90,64 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable}`}
     >
       <head>
+        {/* Critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical styles for immediate render */
+            .hero-critical {
+              background: linear-gradient(to bottom right, #f9fafb, #ffffff, #eef2ff);
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              overflow: hidden;
+            }
+            .hero-content {
+              text-align: center;
+              padding: 1.5rem;
+              max-width: 80rem;
+              margin: 0 auto;
+              padding-top: 10rem;
+              position: relative;
+              z-index: 10;
+            }
+            .hero-title {
+              font-size: 3.75rem;
+              font-weight: 700;
+              color: #111827;
+              margin-bottom: 1.5rem;
+              line-height: 1.1;
+            }
+            .hero-subtitle {
+              font-size: 1.5rem;
+              color: #4f46e5;
+              font-weight: 300;
+              margin-bottom: 2rem;
+            }
+            @media (min-width: 768px) {
+              .hero-title { font-size: 6rem; }
+              .hero-subtitle { font-size: 1.875rem; }
+              .hero-content { padding-top: 5rem; }
+            }
+            @media (min-width: 1024px) {
+              .hero-content { padding-top: 0; }
+            }
+          `
+        }} />
+        
         {/* Accessibility and performance meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#6366F1" />
         <meta name="color-scheme" content="light" />
         
-        {/* Preload critical fonts */}
-        <link 
-          rel="preload" 
-          href="/fonts/inter-var.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Preconnect to font providers */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Enhanced security */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
@@ -116,6 +164,10 @@ export default function RootLayout({
         {/* Microsoft specific */}
         <meta name="msapplication-TileColor" content="#6366F1" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        
+        {/* Resource hints for performance */}
+        <link rel="prefetch" href="/components/Projects" />
+        <link rel="prefetch" href="/components/About" />
         
         {/* Structured data for accessibility and SEO */}
         <script
