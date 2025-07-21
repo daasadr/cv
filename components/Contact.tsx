@@ -49,7 +49,7 @@ export default function Contact() {
               Kontaktujte mě
             </h3>
             
-            <div className="space-y-6 mb-10">
+            <div className="space-y-6">
               {contactMethods.map((method, index) => (
                 <a
                   key={index}
@@ -95,6 +95,10 @@ export default function Contact() {
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                   <span>Spolupracující přístup a jasná komunikace</span>
                 </li>
+                {/* <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Angličtina B1</span>
+                </li> */}
               </ul>
             </div>
 
