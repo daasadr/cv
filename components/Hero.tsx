@@ -145,7 +145,7 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative h-full sm:h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-indigo-50 pb-20 md:pb-10"
+      className="relative h-full sm:h-screen min-h-[50rem] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-indigo-50 pb-20 md:pb-10"
     >
       {/* 3D Background */}
       <div 
@@ -156,7 +156,7 @@ export default function Hero() {
       />
       
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-[20rem] sm:pt-[5rem] md:pt-0">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-[10rem] sm:pt-[5rem] md:pt-0">
         <h1 
           className="text-6xl md:text-8xl font-bold text-gray-900 mb-6 leading-tight text-wrap-balance no-orphans"
           data-macaly="hero-title"

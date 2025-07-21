@@ -45,14 +45,14 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center md:justify-between">
           <div className="flex space-x-8">
             {[
-              { label: 'O mně', id: 'about' },
-              { label: 'Dovednosti', id: 'skills' },
-              { label: 'Zkušenosti', id: 'projects' },
-              { label: 'Kontakty', id: 'contact' }
-            ].map((item) => (
+              { label: 'O mně', id: 'about', mobile: true },
+              { label: 'Dovednosti', id: 'skills', mobile: true },
+              { label: 'Zkušenosti', id: 'projects', mobile: true },
+              { label: 'Kontakty', id: 'contact', mobile: false }
+            ].filter((item) => !isMobile || item.mobile).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
