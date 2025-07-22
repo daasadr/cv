@@ -191,10 +191,7 @@ export default function Hero() {
           Dagmar Drbálková
         </h1>
 
-        <div
-          className="text-2xl md:text-3xl text-indigo-600 font-light mb-8 space-y-2 text-wrap-balance no-orphans"
-          role="text"
-        >
+        <div className="text-2xl md:text-3xl text-indigo-600 font-light mb-8 space-y-2 text-wrap-balance no-orphans">
           <div data-macaly="hero-subtitle-1">Full Stack Developer</div>
           <div data-macaly="hero-subtitle-2">& 3D Printing Enthusiast</div>
         </div>

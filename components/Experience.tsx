@@ -93,14 +93,12 @@ export default function Experience() {
 
           <ol
             className="space-y-12"
-            role="list"
             aria-label="Professional positions in reverse chronological order"
           >
             {experiences.map((exp, index) => (
               <li
-                key={index}
+                key={exp.company + exp.period}
                 className="relative flex items-start space-x-8"
-                role="listitem"
               >
                 {/* Timeline dot */}
                 <div className="relative z-10 flex-shrink-0" aria-hidden="true">
@@ -114,7 +112,6 @@ export default function Experience() {
                 <article
                   className="flex-1 bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-lg focus-within:shadow-lg transition-shadow duration-300"
                   aria-labelledby={`experience-${index}-position`}
-                  tabIndex={0}
                 >
                   <header className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                     <div>
@@ -152,14 +149,12 @@ export default function Experience() {
                     </h5>
                     <ul
                       className="space-y-3 mb-6"
-                      role="list"
                       aria-label="Key responsibilities"
                     >
-                      {exp.description.map((item, itemIndex) => (
+                      {exp.description.map((item) => (
                         <li
-                          key={itemIndex}
+                          key={item.slice(0, 30)}
                           className="text-gray-700 flex items-start space-x-3"
-                          role="listitem"
                         >
                           <div
                             className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"

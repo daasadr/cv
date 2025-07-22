@@ -101,7 +101,7 @@ export default function WebVitalsReporter() {
                 : 'poor';
 
           if (process.env.NODE_ENV === 'development') {
-            const emoji =
+            const _emoji =
               rating === 'good'
                 ? '🎮✅'
                 : rating === 'needs-improvement'

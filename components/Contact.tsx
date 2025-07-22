@@ -64,9 +64,9 @@ export default function Contact() {
               role="list"
               aria-label="Způsoby kontaktu"
             >
-              {contactMethods.map((method, index) => (
+              {contactMethods.map((method) => (
                 <a
-                  key={index}
+                  key={method.href}
                   href={method.href}
                   className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 focus:bg-gray-100 transition-colors duration-200 group focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
                   target={method.href.startsWith('http') ? '_blank' : undefined}
@@ -75,8 +75,7 @@ export default function Contact() {
                       ? 'noopener noreferrer'
                       : undefined
                   }
-                  aria-describedby={`contact-${index}-desc`}
-                  role="listitem"
+                  aria-describedby={`contact-${method.label.toLowerCase().replace(/\s+/g, '-')}-desc`}
                 >
                   <div className="text-2xl" aria-hidden="true">
                     {method.icon}
@@ -87,7 +86,10 @@ export default function Contact() {
                     </div>
                     <div className="text-gray-600">{method.value}</div>
                   </div>
-                  <span id={`contact-${index}-desc`} className="sr-only">
+                  <span
+                    id={`contact-${method.label.toLowerCase().replace(/\s+/g, '-')}-desc`}
+                    className="sr-only"
+                  >
                     {method.description}
                     {method.href.startsWith('http') &&
                       ' - otevře se v novém okně'}
@@ -107,17 +109,16 @@ export default function Contact() {
               </h4>
               <ul
                 className="space-y-3 text-gray-700"
-                role="list"
                 aria-label="Mé klíčové vlastnosti"
               >
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"
                   ></div>
                   <span>2 roky zkušeností s full-stack vývojem</span>
                 </li>
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"
@@ -126,28 +127,28 @@ export default function Contact() {
                     Zaměření na odborný růst - ráda a hodně se vzdělávám
                   </span>
                 </li>
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"
                   ></div>
                   <span>Odbornost v moderních webových technologiích</span>
                 </li>
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"
                   ></div>
                   <span>Silné zaměření na výkon a uživatelskou zkušenost</span>
                 </li>
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"
                   ></div>
                   <span>Samostatnost a proaktivita</span>
                 </li>
-                <li className="flex items-start space-x-3" role="listitem">
+                <li className="flex items-start space-x-3">
                   <div
                     className="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"
                     aria-hidden="true"

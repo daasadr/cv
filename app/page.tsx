@@ -59,7 +59,7 @@ export default function Home() {
 
       {/* Critical above-the-fold content - loads immediately */}
       <Navigation />
-      <main id="main-content" role="main">
+      <main id="main-content">
         <Hero />
 
         {/* Lazy loaded sections with Suspense boundaries */}
