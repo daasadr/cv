@@ -1,21 +1,21 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
+import { ThreeJSScene } from '@/lib/threejs-scene';
 
 export default function Hero() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene | null>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const sceneRef = useRef<ThreeJSScene | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const animationIdRef = useRef<number | null>(null);
 
   useEffect(() => {
     // Intersection Observer for performance optimization
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        const visible = entry.isIntersecting;
+        setIsVisible(visible);
+        sceneRef.current?.setVisibility(visible);
       },
       { threshold: 0.1 }
     );
@@ -30,139 +30,35 @@ export default function Hero() {
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Scene setup
-    const scene = new THREE.Scene();
+    // Initialize Three.js scene
+    const scene = new ThreeJSScene({
+      onSceneReady: () => setSceneReady(true),
+    });
     sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-    });
-    rendererRef.current = renderer;
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
-
-    // Create floating geometric shapes
-    const geometries = [
-      new THREE.BoxGeometry(2.5, 2.5, 2.5),
-      new THREE.SphereGeometry(1.5, 32, 32),
-      new THREE.ConeGeometry(1.6, 2.8, 8),
-      new THREE.OctahedronGeometry(1.5),
-    ];
-
-    const materials = [
-      new THREE.MeshNormalMaterial({ wireframe: true }),
-      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.7 }),
-      new THREE.MeshNormalMaterial({ wireframe: true }),
-      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5 }),
-    ];
-
-    const meshes: THREE.Mesh[] = [];
-    const meshMovement: {
-      velocityX: number;
-      velocityY: number;
-      velocityZ: number;
-    }[] = [];
-
-    for (let i = 0; i < 8; i++) {
-      const geometry = geometries[i % geometries.length];
-      const material = materials[i % materials.length];
-      const mesh = new THREE.Mesh(geometry, material);
-
-      mesh.position.x = (Math.random() - 0.5) * 12;
-      mesh.position.y = (Math.random() - 0.5) * 8;
-      mesh.position.z = (Math.random() - 0.5) * 6;
-
-      mesh.rotation.x = Math.random() * Math.PI;
-      mesh.rotation.y = Math.random() * Math.PI;
-
-      // Random slow movement velocities
-      meshMovement.push({
-        velocityX: (Math.random() - 0.5) * 0.01,
-        velocityY: (Math.random() - 0.5) * 0.008,
-        velocityZ: (Math.random() - 0.5) * 0.006,
-      });
-
-      scene.add(mesh);
-      meshes.push(mesh);
-    }
-
-    camera.position.z = 10;
-
-    // Animation loop with visibility optimization
-    let isFirstRender = true;
-    const animate = () => {
-      if (isVisible) {
-        meshes.forEach((mesh, index) => {
-          // Rotation animation
-          mesh.rotation.x += 0.005 + index * 0.001;
-          mesh.rotation.y += 0.005 + index * 0.001;
-
-          // Slow random movement
-          const movement = meshMovement[index];
-          mesh.position.x += movement.velocityX;
-          mesh.position.y += movement.velocityY;
-          mesh.position.z += movement.velocityZ;
-
-          // Boundary checking and velocity reversal to keep shapes visible
-          if (mesh.position.x > 8 || mesh.position.x < -8) {
-            movement.velocityX *= -1;
-          }
-          if (mesh.position.y > 6 || mesh.position.y < -6) {
-            movement.velocityY *= -1;
-          }
-          if (mesh.position.z > 4 || mesh.position.z < -4) {
-            movement.velocityZ *= -1;
-          }
-
-          // Add subtle floating motion
-          mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.001;
-        });
-
-        renderer.render(scene, camera);
-      }
-
-      // Set scene as ready after first render
-      if (isFirstRender) {
-        setTimeout(() => setSceneReady(true), 100);
-        isFirstRender = false;
-      }
-
-      animationIdRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
+    scene.initialize(mountRef.current);
 
     // Handle resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      scene.handleResize();
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (animationIdRef.current) {
-        cancelAnimationFrame(animationIdRef.current);
-      }
       setSceneReady(false);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+
+      // Remove canvas from DOM before disposing
+      const rendererElement = scene.getRendererElement();
+      if (mountRef.current && rendererElement) {
+        mountRef.current.removeChild(rendererElement);
       }
-      renderer.dispose();
+
+      scene.dispose();
+      sceneRef.current = null;
     };
-  }, [isVisible]); // Add isVisible dependency
+  }, []);
 
   return (
     <section
