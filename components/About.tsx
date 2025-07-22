@@ -3,7 +3,7 @@
 import { skills } from "./Skills";
 
 export default function About() {
-  console.log('About component rendered');
+  
   
   return (
     <section id="about" className="py-20 bg-white" aria-labelledby="about-title">

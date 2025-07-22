@@ -48,7 +48,7 @@ const experiences: ExperienceItem[] = [
 ];
 
 export default function Experience() {
-  console.log('Experience component rendered with', experiences.length, 'positions');
+  
   
   return (
     <section id="experience" className="py-20 bg-white" aria-labelledby="experience-title">

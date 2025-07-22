@@ -60,7 +60,7 @@ export default function Projects() {
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  console.log('Projects component rendered with', projects.length, 'projects');
+  
 
   // Handle modal focus management
   useEffect(() => {

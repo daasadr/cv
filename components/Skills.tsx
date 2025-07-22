@@ -40,7 +40,7 @@ const categoryLabels = {
 };
 
 export default function Skills() {
-  console.log('Skills component mounted with', skills.length, 'skills');
+  
   const [isAnimated, setIsAnimated] = useState(false);
 
   // Trigger animation after component mounts

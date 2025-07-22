@@ -74,14 +74,14 @@ export default function ContactForm() {
       }));
     }
     
-    console.log('Pole formuláře aktualizováno:', name, value);
+    
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
-      console.log('Formulář obsahuje chyby:', errors);
+      
       // Focus first error field
       const firstErrorField = Object.keys(errors)[0];
       if (firstErrorField) {
@@ -93,14 +93,14 @@ export default function ContactForm() {
     
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    console.log('Formulář odeslán s daty:', formData);
+    
     
     // Simulace odeslání formuláře
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      console.log('Odeslání formuláře úspěšně dokončeno');
+      
       
       setTimeout(() => setSubmitStatus('idle'), 5000);
     }, 2000);

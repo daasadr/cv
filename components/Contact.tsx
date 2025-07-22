@@ -1,7 +1,7 @@
 // import ContactForm from './ContactForm';
 
 export default function Contact() {
-  console.log('Kontaktní komponenta vykreslena');
+  
 
   const contactMethods = [
     {

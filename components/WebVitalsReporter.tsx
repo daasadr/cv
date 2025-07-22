@@ -90,7 +90,7 @@ export default function WebVitalsReporter() {
           
           if (process.env.NODE_ENV === 'development') {
             const emoji = rating === 'good' ? '🎮✅' : rating === 'needs-improvement' ? '🎮⚠️' : '🎮❌';
-            console.log(`${emoji} Three.js Scene Load Time: ${loadTime.toFixed(2)}ms (${rating})`);
+            
           }
           
           // Send Three.js loading metric to Vercel Analytics
@@ -218,7 +218,7 @@ function sendToVercelAnalytics(metric: WebVital) {
     });
   }
 
-  console.log(`📈 Vercel Analytics: ${metric.name} - ${metric.value.toFixed(2)}${getMetricUnit(metric.name)} (${metric.rating})`);
+  
 }
 
 // Send custom metrics to Vercel Analytics

@@ -8,7 +8,7 @@ export default function Navigation() {
   const [currentSection, setCurrentSection] = useState('');
 
   useEffect(() => {
-    console.log('Navigation component mounted');
+    
     const handleScroll = () => {
       const scrolled = window.scrollY > 50;
       setIsScrolled(scrolled);
@@ -44,7 +44,7 @@ export default function Navigation() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    console.log('Scrolling to section:', id);
+    
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
