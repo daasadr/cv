@@ -87,7 +87,8 @@
   
   /* Improve focus visibility */
   *:focus-visible {
-    outline: 2px solid theme(colors.indigo.500);
+    @apply outline-indigo-500;
+    outline-width: 2px;
     outline-offset: 2px;
   }
 }
