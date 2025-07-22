@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "biome:check": "biome check --write",
+    "biome:format": "biome format --write",
+    "biome:lint": "biome lint",
+    "biome:ci": "biome ci",
+    "format": "biome format --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -65,6 +70,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.27.1",
+    "@biomejs/biome": "^2.1.2",
     "@eslint/eslintrc": "^3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
