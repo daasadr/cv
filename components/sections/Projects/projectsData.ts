@@ -13,7 +13,7 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/daasadr/interaktivni_linka',
     liveUrl: '/examples/interactive_component/interaktivni_linka.html',
-    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    image: '/images/linka.png',
     year: 2025,
   },
   {
@@ -21,6 +21,22 @@ export const projects: Project[] = [
     description: '',
     technologies: ['React', 'TypeScript', 'Node.js'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    year: 2025,
+  },
+
+  {
+    title: 'Tato prezentace',
+    description:
+      'Moderní a rychlá portfolio prezentace vytvořená pomocí Next.js, obsahující interaktivní 3D animace a design zaměřený na přístupnost.',
+    technologies: [
+      'Next.js',
+      'Three.js',
+      'Accessibility',
+      'Performance',
+      'Shadcn',
+    ],
+    githubUrl: 'https://github.com/daasadr/cv',
+    image: '/images/cv.png',
     year: 2025,
   },
   {
@@ -41,15 +57,9 @@ export const projects: Project[] = [
   {
     title: 'Práce s mapami',
     description:
-      'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá Google Maps API a OpenLayers.',
-    technologies: [
-      'React',
-      'Google Maps API',
-      'Github Actions',
-      'OpenLayers',
-      'MUI',
-    ],
-    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+      'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá OpenStreetMap a OpenLayers.',
+    technologies: ['React', 'Github Actions', 'OpenLayers', 'MUI'],
+    image: '/images/mapa.png',
     liveUrl: 'https://daasadr.github.io/vrg-demo3/',
     githubUrl: 'https://github.com/daasadr/vrg-demo3',
     year: 2024,
