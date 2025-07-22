@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useReportWebVitals } from 'next/web-vitals';
 import { useEffect } from 'react';
 
@@ -254,3 +255,15 @@ function sendCustomMetric(name: string, value: number) {
     });
   }
 }
+
+export const WebVitalsReportetLoader = () => {
+  // Lazy load Web Vitals reporter
+  const WebVitalsReporter = dynamic(
+    () => import('@/components/WebVitalsReporter'),
+    {
+      ssr: false,
+    }
+  );
+
+  return <WebVitalsReporter />;
+};
