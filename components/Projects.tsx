@@ -26,7 +26,7 @@ const projects: Project[] = [
       'Figma',
     ],
     githubUrl: 'https://github.com/daasadr/interaktivni_linka',
-    liveUrl: '/interaktivni_linka.html',
+    liveUrl: '/examples/interactive_component/interaktivni_linka.html',
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025,
   },
@@ -332,13 +332,16 @@ export default function Projects() {
       </div>
 
       {/* Project Detail Modal */}
-      {selectedProject && (
+      {/* {selectedProject && (
         <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
           aria-describedby="modal-description"
+          onKeyDown={
+
+          }
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               setSelectedProject(null);
@@ -442,7 +445,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 }

@@ -65,9 +65,9 @@
 
   /* Z-index */
   --z-hotspot: 2;
-  --z-modal-root: 100;
-  --z-modal: 101;
-  --z-popup: 200;
+  --z-modal-root: 1000;
+  --z-modal: 1001;
+  --z-popup: 9999;
 }
 
 body {
@@ -404,7 +404,13 @@ body {
   position: absolute;
   width: 48px;
   height: 48px;
-  z-index: var(--z-modal-root);
+  z-index: var(--z-hotspot);
+}
+
+/* Boost z-index when popup is active to ensure it appears above other hotspots */
+.hotspot-wrapper:hover,
+.hotspot-wrapper:focus-within {
+  z-index: var(--z-popup);
 }
 
 .cross-btn {
@@ -417,7 +423,7 @@ body {
   cursor: pointer;
   outline: none;
   transition: filter var(--transition-fast);
-  z-index: var(--z-modal-root);
+  z-index: var(--z-hotspot);
   pointer-events: auto;
   width: 48px;
   height: 48px;
@@ -445,11 +451,11 @@ body {
   pointer-events: none;
 }
 
-@container (max-width: 900px) {
+/* @container (max-width: 900px) {
   .hotspot-wrapper {
     display: none !important;
   }
-}
+} */
 
 /* Reduced motion preferences for accessibility */
 @media (prefers-reduced-motion: reduce) {
