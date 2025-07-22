@@ -1,6 +1,6 @@
 # Dagmar Drbálková - Portfolio Website
 
-A modern, performant portfolio website built with Next.js, featuring interactive 3D animations, optimized SEO, and accessibility-first design.
+A modern, performant portfolio website built with Next.js, featuring 3D animations, optimized SEO, and accessibility-first design.
 
 ## 📋 Table of Contents
 

@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     title: 'Tato prezentace',
     description:
-      'Moderní a rychlá portfolio prezentace vytvořená pomocí Next.js, obsahující interaktivní 3D animace a design zaměřený na přístupnost.',
+      'Moderní a rychlá portfolio prezentace vytvořená pomocí Next.js, obsahující 3D animace a design zaměřený na přístupnost.',
     technologies: [
       'Next.js',
       'Three.js',
