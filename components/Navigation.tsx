@@ -45,18 +45,6 @@ export default function Navigation() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const _scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      // Set focus to the section for screen readers
-      element.setAttribute('tabindex', '-1');
-      element.focus();
-      // Remove tabindex after focusing
-      setTimeout(() => element.removeAttribute('tabindex'), 1000);
-    }
-  };
-
   const navigationItems = [
     { label: 'O mně', id: 'about', mobile: true },
     { label: 'Dovednosti', id: 'skills', mobile: true },
