@@ -1,4 +1,4 @@
-import { skills } from '../Skills';
+import { skills } from '../Skills/SkillsData';
 
 export default function StatsCards() {
   return (
