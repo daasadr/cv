@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Project } from './types';
 
 interface ProjectCardProps {
@@ -20,9 +21,11 @@ export default function ProjectCard({
       aria-labelledby={`project-${year}-${index}-title`}
     >
       <div className="relative overflow-hidden">
-        <img
+        <Image
           src={project.image}
           alt={`Obrázek projektu ${project.title}`}
+          width={400}
+          height={256}
           className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
           data-macaly={`project-${year}-${index}-image`}
         />
