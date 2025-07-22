@@ -22,7 +22,7 @@ export default function WebVitalsReporter() {
         rating: metric.rating,
         id: metric.id,
         delta: metric.delta,
-        navigationType: metric.navigationType
+        navigationType: metric.navigationType,
       });
     }
 
@@ -37,15 +37,19 @@ export default function WebVitalsReporter() {
     // Monitor loading performance
     const measureLoadingPerformance = () => {
       if (typeof window !== 'undefined' && 'performance' in window) {
-        const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-        
+        const navigation = performance.getEntriesByType(
+          'navigation'
+        )[0] as PerformanceNavigationTiming;
+
         if (navigation) {
           const loadingMetrics = {
-            domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+            domContentLoaded:
+              navigation.domContentLoadedEventEnd -
+              navigation.domContentLoadedEventStart,
             loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
             domInteractive: navigation.domInteractive - navigation.startTime,
             firstPaint: 0,
-            firstContentfulPaint: 0
+            firstContentfulPaint: 0,
           };
 
           // Get paint timings
@@ -65,13 +69,16 @@ export default function WebVitalsReporter() {
               'Load Complete': `${loadingMetrics.loadComplete.toFixed(2)}ms`,
               'DOM Interactive': `${loadingMetrics.domInteractive.toFixed(2)}ms`,
               'First Paint': `${loadingMetrics.firstPaint.toFixed(2)}ms`,
-              'First Contentful Paint': `${loadingMetrics.firstContentfulPaint.toFixed(2)}ms`
+              'First Contentful Paint': `${loadingMetrics.firstContentfulPaint.toFixed(2)}ms`,
             });
           }
 
           // Send custom metrics to Vercel Analytics
           if (process.env.NODE_ENV === 'production') {
-            sendCustomMetric('dom-content-loaded', loadingMetrics.domContentLoaded);
+            sendCustomMetric(
+              'dom-content-loaded',
+              loadingMetrics.domContentLoaded
+            );
             sendCustomMetric('first-paint', loadingMetrics.firstPaint);
           }
         }
@@ -81,18 +88,27 @@ export default function WebVitalsReporter() {
     // Monitor Three.js scene loading
     const monitorThreeJSLoading = () => {
       const startTime = performance.now();
-      
+
       const checkForCanvas = () => {
         const canvas = document.querySelector('canvas');
         if (canvas) {
           const loadTime = performance.now() - startTime;
-          const rating = loadTime < 1000 ? 'good' : loadTime < 2500 ? 'needs-improvement' : 'poor';
-          
+          const rating =
+            loadTime < 1000
+              ? 'good'
+              : loadTime < 2500
+                ? 'needs-improvement'
+                : 'poor';
+
           if (process.env.NODE_ENV === 'development') {
-            const emoji = rating === 'good' ? '🎮✅' : rating === 'needs-improvement' ? '🎮⚠️' : '🎮❌';
-            
+            const emoji =
+              rating === 'good'
+                ? '🎮✅'
+                : rating === 'needs-improvement'
+                  ? '🎮⚠️'
+                  : '🎮❌';
           }
-          
+
           // Send Three.js loading metric to Vercel Analytics
           if (process.env.NODE_ENV === 'production') {
             sendCustomMetric('threejs-load-time', loadTime);
@@ -104,30 +120,36 @@ export default function WebVitalsReporter() {
           }
         }
       };
-      
+
       setTimeout(checkForCanvas, 100);
     };
 
     // Monitor bundle size and resource loading
     const trackResourceLoading = () => {
-      const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
-      const jsResources = resources.filter(resource => 
-        resource.name.includes('.js') && 
-        !resource.name.includes('polyfills') &&
-        resource.name.includes('_next/static')
+      const resources = performance.getEntriesByType(
+        'resource'
+      ) as PerformanceResourceTiming[];
+      const jsResources = resources.filter(
+        (resource) =>
+          resource.name.includes('.js') &&
+          !resource.name.includes('polyfills') &&
+          resource.name.includes('_next/static')
       );
 
       let totalJSSize = 0;
       let totalLoadTime = 0;
       let threeJSSize = 0;
 
-      jsResources.forEach(resource => {
+      jsResources.forEach((resource) => {
         if (resource.transferSize) {
           totalJSSize += resource.transferSize;
           totalLoadTime += resource.responseEnd - resource.startTime;
-          
+
           // Track Three.js bundle size separately
-          if (resource.name.includes('three') || resource.name.includes('Three')) {
+          if (
+            resource.name.includes('three') ||
+            resource.name.includes('Three')
+          ) {
             threeJSSize += resource.transferSize;
           }
         }
@@ -138,7 +160,7 @@ export default function WebVitalsReporter() {
           'Total JS Size': `${(totalJSSize / 1024).toFixed(2)} KB`,
           'Three.js Size': `${(threeJSSize / 1024).toFixed(2)} KB`,
           'Average Load Time': `${(totalLoadTime / jsResources.length).toFixed(2)}ms`,
-          'Resource Count': jsResources.length
+          'Resource Count': jsResources.length,
         });
       }
 
@@ -152,10 +174,9 @@ export default function WebVitalsReporter() {
     // Run measurements
     measureLoadingPerformance();
     monitorThreeJSLoading();
-    
+
     // Delay resource tracking to ensure all resources are loaded
     setTimeout(trackResourceLoading, 3000);
-
   }, []);
 
   return null; // This component doesn't render anything
@@ -180,8 +201,9 @@ function getMetricUnit(metricName: string): string {
 
 // Helper function to get emoji for metrics
 function getMetricEmoji(metricName: string, rating: string): string {
-  const ratingEmoji = rating === 'good' ? '✅' : rating === 'needs-improvement' ? '⚠️' : '❌';
-  
+  const ratingEmoji =
+    rating === 'good' ? '✅' : rating === 'needs-improvement' ? '⚠️' : '❌';
+
   switch (metricName) {
     case 'CLS':
       return `📏${ratingEmoji}`;
@@ -213,12 +235,10 @@ function sendToVercelAnalytics(metric: WebVital) {
         metric_value: metric.value,
         metric_rating: metric.rating,
         metric_id: metric.id,
-        navigation_type: metric.navigationType || 'unknown'
-      }
+        navigation_type: metric.navigationType || 'unknown',
+      },
     });
   }
-
-  
 }
 
 // Send custom metrics to Vercel Analytics
@@ -229,8 +249,8 @@ function sendCustomMetric(name: string, value: number) {
       data: {
         metric_name: name,
         metric_value: value,
-        timestamp: Date.now()
-      }
+        timestamp: Date.now(),
+      },
     });
   }
-} 
+}

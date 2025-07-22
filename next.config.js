@@ -10,7 +10,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  images: { 
+  images: {
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -18,21 +18,21 @@ const nextConfig = {
   },
   devIndicators: false,
   allowedDevOrigins: [
-    "*.macaly.dev",
-    "*.macaly.app",
-    "*.macaly-app.com",
-    "*.macaly-user-data.dev",
+    '*.macaly.dev',
+    '*.macaly.app',
+    '*.macaly-app.com',
+    '*.macaly-user-data.dev',
   ],
-  
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  
+
   // Bundle optimization
   experimental: {
     scrollRestoration: true,
   },
-  
+
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
     // Enable tree shaking
@@ -41,7 +41,7 @@ const nextConfig = {
       // usedExports: true,
       sideEffects: false,
     };
-    
+
     // Optimize Three.js bundle
     if (!dev) {
       config.optimization.splitChunks = {
@@ -63,16 +63,16 @@ const nextConfig = {
         },
       };
     }
-    
+
     // Optimize imports
     config.resolve.alias = {
       ...config.resolve.alias,
       'three/examples/jsm': 'three/examples/jsm',
     };
-    
+
     return config;
   },
-  
+
   // Headers for better caching and security
   async headers() {
     return [
@@ -81,31 +81,31 @@ const nextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            value: 'on',
           },
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
-          }
-        ]
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
       },
       {
         source: '/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
-      }
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
   },
 };

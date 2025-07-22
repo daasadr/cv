@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Project {
   title: string;
@@ -17,41 +17,56 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'Interaktivní komponenta pro výrobce laboratorního vybavení',
-    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
-    technologies: ['Accessibility', 'CSS only interactivity', 'Performance', 'Figma'],
+    description:
+      'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    technologies: [
+      'Accessibility',
+      'CSS only interactivity',
+      'Performance',
+      'Figma',
+    ],
     githubUrl: 'https://github.com/daasadr/interaktivni_linka',
     liveUrl: '/interaktivni_linka.html',
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    year: 2025
+    year: 2025,
   },
   {
     title: 'Aplikace pro lektora střeleckého výcviku',
     description: '',
     technologies: ['React', 'TypeScript', 'Node.js'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    year: 2025
+    year: 2025,
   },
   {
     title: 'No-code generování PWA',
     description: 'Drag & drop sestavení a generování PWA.',
     technologies: ['React Brics', 'Next.js', 'Directus'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    year: 2025
-  }, {
+    year: 2025,
+  },
+  {
     title: 'Dropshipping e-commerce řešení',
-    description: 'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    description:
+      'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
     technologies: ['Next.js', 'Directus'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-    year: 2024
+    year: 2024,
   },
   {
     title: 'Práce s mapami',
-    description: 'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá Google Maps API a OpenLayers.',
-    technologies: ['React', 'Google Maps API', 'Github Actions', 'OpenLayers', 'MUI'],
+    description:
+      'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá Google Maps API a OpenLayers.',
+    technologies: [
+      'React',
+      'Google Maps API',
+      'Github Actions',
+      'OpenLayers',
+      'MUI',
+    ],
     image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
     liveUrl: 'https://daasadr.github.io/vrg-demo3/',
     githubUrl: 'https://github.com/daasadr/vrg-demo3',
-    year: 2024
+    year: 2024,
   },
 ];
 
@@ -60,14 +75,12 @@ export default function Projects() {
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  
-
   // Handle modal focus management
   useEffect(() => {
     if (selectedProject) {
       // Store the currently focused element
       previousFocusRef.current = document.activeElement as HTMLElement;
-      
+
       // Focus the modal
       setTimeout(() => {
         modalRef.current?.focus();
@@ -101,20 +114,27 @@ export default function Projects() {
   }, [selectedProject]);
 
   // Group projects by year in descending order
-  const projectsByYear = projects.reduce((acc, project) => {
-    if (!acc[project.year]) {
-      acc[project.year] = [];
-    }
-    acc[project.year].push(project);
-    return acc;
-  }, {} as Record<number, Project[]>);
+  const projectsByYear = projects.reduce(
+    (acc, project) => {
+      if (!acc[project.year]) {
+        acc[project.year] = [];
+      }
+      acc[project.year].push(project);
+      return acc;
+    },
+    {} as Record<number, Project[]>
+  );
 
   const years = Object.keys(projectsByYear)
     .map(Number)
     .sort((a, b) => b - a); // Descending order
 
   return (
-    <section id="projects" className="py-20 bg-gray-50" aria-labelledby="projects-title">
+    <section
+      id="projects"
+      className="py-20 bg-gray-50"
+      aria-labelledby="projects-title"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-16">
           <h2
@@ -128,14 +148,22 @@ export default function Projects() {
             className="text-xl text-gray-600 max-w-3xl mx-auto"
             data-macaly="projects-description"
           >
-            Seznam projektů, které ukazují mé technické znalosti a kreativní řešení problémů.
+            Seznam projektů, které ukazují mé technické znalosti a kreativní
+            řešení problémů.
           </p>
         </header>
 
         {/* Projects grouped by year */}
         {years.map((year) => (
-          <section key={year} className="mb-16" aria-labelledby={`year-${year}`}>
-            <h3 id={`year-${year}`} className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <section
+            key={year}
+            className="mb-16"
+            aria-labelledby={`year-${year}`}
+          >
+            <h3
+              id={`year-${year}`}
+              className="text-3xl font-bold text-gray-900 mb-8 text-center"
+            >
               {year}
             </h3>
 
@@ -167,7 +195,7 @@ export default function Projects() {
                         {project.title}
                       </h4>
                       {project.featured && (
-                        <span 
+                        <span
                           className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium"
                           aria-label="Doporučený projekt"
                         >
@@ -183,7 +211,11 @@ export default function Projects() {
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6" role="list" aria-label="Použité technologie">
+                    <div
+                      className="flex flex-wrap gap-2 mb-6"
+                      role="list"
+                      aria-label="Použité technologie"
+                    >
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
@@ -195,7 +227,11 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <div className="flex space-x-4" role="group" aria-label="Akce projektu">
+                    <div
+                      className="flex space-x-4"
+                      role="group"
+                      aria-label="Akce projektu"
+                    >
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
@@ -204,12 +240,21 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <svg className="w-4 h-4 hidden sm:inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M8 5v14l11-7z"/>
+                          <svg
+                            className="w-4 h-4 hidden sm:inline"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5v14l11-7z" />
                           </svg>
                           Live Demo
-                          <span id={`live-demo-${year}-${index}-desc`} className="sr-only">
-                            - otevře živou ukázku projektu {project.title} v novém okně
+                          <span
+                            id={`live-demo-${year}-${index}-desc`}
+                            className="sr-only"
+                          >
+                            - otevře živou ukázku projektu {project.title} v
+                            novém okně
                           </span>
                         </a>
                       )}
@@ -221,12 +266,21 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <svg className="w-4 h-4 hidden sm:inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          <svg
+                            className="w-4 h-4 hidden sm:inline"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                           </svg>
                           View Code
-                          <span id={`github-${year}-${index}-desc`} className="sr-only">
-                            - otevře zdrojový kód projektu {project.title} na GitHubu v novém okně
+                          <span
+                            id={`github-${year}-${index}-desc`}
+                            className="sr-only"
+                          >
+                            - otevře zdrojový kód projektu {project.title} na
+                            GitHubu v novém okně
                           </span>
                         </a>
                       )}
@@ -241,8 +295,12 @@ export default function Projects() {
                           type="button"
                         >
                           View Details
-                          <span id={`details-${year}-${index}-desc`} className="sr-only">
-                            - zobrazí detailní informace o projektu {project.title}
+                          <span
+                            id={`details-${year}-${index}-desc`}
+                            className="sr-only"
+                          >
+                            - zobrazí detailní informace o projektu{' '}
+                            {project.title}
                           </span>
                         </button>
                         {project.liveUrl && (
@@ -252,8 +310,13 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <svg className="w-4 h-4 hidden sm:inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                              <path d="M8 5v14l11-7z"/>
+                            <svg
+                              className="w-4 h-4 hidden sm:inline"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M8 5v14l11-7z" />
                             </svg>
                             Live Demo
                           </a>
@@ -270,7 +333,7 @@ export default function Projects() {
 
       {/* Project Detail Modal */}
       {selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50"
           role="dialog"
           aria-modal="true"
@@ -282,14 +345,17 @@ export default function Projects() {
             }
           }}
         >
-          <div 
+          <div
             ref={modalRef}
             className="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto focus:outline-none"
             tabIndex={-1}
           >
             <div className="p-8">
               <div className="flex justify-between items-start mb-6">
-                <h3 id="modal-title" className="text-3xl font-bold text-gray-900">
+                <h3
+                  id="modal-title"
+                  className="text-3xl font-bold text-gray-900"
+                >
                   {selectedProject.title}
                 </h3>
                 <button
@@ -308,11 +374,18 @@ export default function Projects() {
                 className="w-full h-64 object-cover rounded-xl mb-6"
               />
 
-              <p id="modal-description" className="text-gray-700 mb-6 leading-relaxed">
+              <p
+                id="modal-description"
+                className="text-gray-700 mb-6 leading-relaxed"
+              >
                 {selectedProject.longDescription}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-6" role="list" aria-label="Použité technologie">
+              <div
+                className="flex flex-wrap gap-2 mb-6"
+                role="list"
+                aria-label="Použité technologie"
+              >
                 {selectedProject.technologies.map((tech) => (
                   <span
                     key={tech}
@@ -324,7 +397,11 @@ export default function Projects() {
                 ))}
               </div>
 
-              <div className="flex space-x-4" role="group" aria-label="Akce projektu">
+              <div
+                className="flex space-x-4"
+                role="group"
+                aria-label="Akce projektu"
+              >
                 {selectedProject.liveUrl && (
                   <a
                     href={selectedProject.liveUrl}
@@ -332,8 +409,13 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <svg className="w-4 h-4 hidden sm:inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8 5v14l11-7z"/>
+                    <svg
+                      className="w-4 h-4 hidden sm:inline"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 5v14l11-7z" />
                     </svg>
                     Live Demo
                   </a>
@@ -345,8 +427,13 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <svg className="w-4 h-4 hidden sm:inline" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <svg
+                      className="w-4 h-4 hidden sm:inline"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                     View Code
                   </a>

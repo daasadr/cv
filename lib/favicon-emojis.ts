@@ -11,28 +11,28 @@ export const emojiOptions: EmojiOption[] = [
   {
     emoji: '👩‍💻',
     name: 'Woman Technologist',
-    description: 'Perfect for female developers - currently active'
+    description: 'Perfect for female developers - currently active',
   },
   {
     emoji: '💻',
     name: 'Laptop',
-    description: 'Classic developer symbol'
+    description: 'Classic developer symbol',
   },
   {
     emoji: '🚀',
     name: 'Rocket',
-    description: 'Represents growth and innovation'
+    description: 'Represents growth and innovation',
   },
   {
     emoji: '⚡',
     name: 'Lightning Bolt',
-    description: 'Speed and efficiency'
+    description: 'Speed and efficiency',
   },
   {
     emoji: '🦄',
     name: 'Unicorn',
-    description: 'Unicorn'
-  }
+    description: 'Unicorn',
+  },
 ];
 
 // Current active emoji
@@ -46,7 +46,7 @@ export function generateEmojiSVG(emoji: string): string {
 // Generate favicon metadata object
 export function generateFaviconMetadata(emoji: string) {
   const svgUri = generateEmojiSVG(emoji);
-  
+
   return {
     icon: [
       {
@@ -66,4 +66,4 @@ export function generateFaviconMetadata(emoji: string) {
 }
 
 // Get current favicon metadata
-export const currentFaviconMetadata = generateFaviconMetadata(currentEmoji); 
+export const currentFaviconMetadata = generateFaviconMetadata(currentEmoji);

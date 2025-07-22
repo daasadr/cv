@@ -12,15 +12,15 @@
   --highlight-bg: #fffbe6;
   --highlight-border: #ffe066;
   --highlight-accent: #b8860b;
-  --modal-backdrop: rgba(0,0,0,0.18);
-  --shadow-light: rgba(0,0,0,0.07);
-  --shadow-medium: rgba(0,0,0,0.27);
-  --shadow-dark: rgba(0,0,0,0.8);
-  --transparent: rgba(0,0,0,0);
-  
+  --modal-backdrop: rgba(0, 0, 0, 0.18);
+  --shadow-light: rgba(0, 0, 0, 0.07);
+  --shadow-medium: rgba(0, 0, 0, 0.27);
+  --shadow-dark: rgba(0, 0, 0, 0.8);
+  --transparent: rgba(0, 0, 0, 0);
+
   /* Typography */
-  --font-family-primary: 'Segoe UI', Arial, sans-serif;
-  --font-family-secondary: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-family-primary: "Segoe UI", Arial, sans-serif;
+  --font-family-secondary: "Inter", "Segoe UI", Arial, sans-serif;
   --font-size-modal-link: 1rem;
   --font-size-modal-title: 1.5rem;
   --font-size-popup-title: 1rem;
@@ -31,7 +31,7 @@
   --font-size-modal-close: 1.5rem;
   --font-weight-normal: 500;
   --font-weight-bold: 700;
-  
+
   /* Spacing */
   --spacing-container-top: 32px;
   --spacing-modal-horizontal: 32px;
@@ -45,24 +45,24 @@
   --spacing-popup-horizontal: 10px;
   --spacing-popup-gap: 10px;
   --spacing-popup-link-horizontal: 10px;
-  
+
   /* Border radius */
   --border-radius-sm: 5px;
   --border-radius-md: 6px;
   --border-radius-lg: 9px;
   --border-radius-xl: 12px;
-  
+
   /* Transitions */
   --transition-fast: 0.18s;
   --transition-medium: 0.22s;
   --transition-slow: 0.28s;
-  --transition-cubic: cubic-bezier(.4,2,.6,1);
-  
+  --transition-cubic: cubic-bezier(0.4, 2, 0.6, 1);
+
   /* Sizes */
   --modal-max-width: 90vw;
   --popup-max-width: 250px;
   --container-max-width: 1200px;
-  
+
   /* Z-index */
   --z-hotspot: 2;
   --z-modal-root: 100;
@@ -96,7 +96,10 @@ body {
 
 #hotspot-layer {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
 }
 
@@ -105,13 +108,19 @@ body {
 /* Modal */
 #modal-root {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: var(--z-modal-root);
   pointer-events: none;
 }
 .modal-backdrop {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: var(--modal-backdrop);
   opacity: 0;
   transition: opacity var(--transition-medium);
@@ -124,26 +133,29 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%) scale(0.97);
+  transform: translate(-50%, -50%) scale(0.97);
   max-width: var(--modal-max-width);
   width: max-content;
   background: var(--bg-white);
   border-radius: var(--border-radius-xl);
   box-shadow: 0 8px 32px var(--shadow-dark);
-  padding: var(--spacing-modal-top) var(--spacing-modal-horizontal) var(--spacing-modal-bottom) var(--spacing-modal-horizontal);
+  padding: var(--spacing-modal-top) var(--spacing-modal-horizontal)
+    var(--spacing-modal-bottom) var(--spacing-modal-horizontal);
   opacity: 0;
-  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  transition:
+    opacity var(--transition-medium),
+    transform var(--transition-medium);
   z-index: var(--z-modal);
   pointer-events: auto;
 }
 .modal.visible {
   opacity: 1;
-  transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 .modal.highlight {
   background: var(--highlight-bg);
   border: 2px solid var(--highlight-border);
-  box-shadow: 0 8px 32px rgba(255,224,102,0.18);
+  box-shadow: 0 8px 32px rgba(255, 224, 102, 0.18);
 }
 .modal-title {
   font-size: var(--font-size-modal-title);
@@ -171,7 +183,7 @@ body {
   font-size: var(--font-size-modal-link);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(25,118,210,0.10);
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
   transition: background var(--transition-fast);
   text-decoration: none;
   display: inline-block;
@@ -221,7 +233,7 @@ body {
 /* Popup modal (malé, decentní) */
 .popup-modal {
   position: absolute;
-  background: rgba(255,255,255,0.97);
+  background: rgba(255, 255, 255, 0.97);
   color: var(--text-color);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--text-color);
@@ -233,7 +245,9 @@ body {
   min-width: 160px;
   opacity: 0;
   transform: scale(0.97);
-  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  transition:
+    opacity var(--transition-medium),
+    transform var(--transition-medium);
   z-index: var(--z-popup);
   pointer-events: none;
   /* Hide from screen readers when not visible, but allow focus */
@@ -248,7 +262,7 @@ body {
   gap: var(--spacing-popup-gap);
   overflow: visible;
   text-wrap: balance;
-  
+
   /* Positioning relative to icon */
   left: calc(100% + 10px);
   top: 50%;
@@ -258,7 +272,7 @@ body {
 
 /* Invisible bridge to prevent hover gaps */
 .popup-modal::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -15px;
   top: 0;
@@ -309,7 +323,7 @@ body {
 .popup-modal.highlight {
   background: var(--highlight-bg);
   border: 2px solid var(--highlight-border);
-  box-shadow: 0 4px 24px rgba(255,224,102,0.18);
+  box-shadow: 0 4px 24px rgba(255, 224, 102, 0.18);
 }
 .popup-modal .popup-title {
   font-weight: var(--font-weight-bold);
@@ -349,7 +363,7 @@ body {
   font-size: var(--font-size-popup-link);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(26,57,123,0.10);
+  box-shadow: 0 1px 3px rgba(26, 57, 123, 0.1);
   transition: background var(--transition-fast);
   text-decoration: none;
   display: flex;
@@ -371,13 +385,19 @@ body {
 }
 
 /* Šipka pod oknem (volitelně, lze přidat ::after) */
-.popup-tooltip::after, .popup-modal::after {
+.popup-tooltip::after,
+.popup-modal::after {
   display: none !important;
   content: none !important;
 }
 
 /* Skryji původní styly pro .hotspot, .modal, .tooltip atd. */
-.hotspot, .modal, .tooltip, #modal-root { display: none !important; } 
+.hotspot,
+.modal,
+.tooltip,
+#modal-root {
+  display: none !important;
+}
 
 /* Hotspot wrapper - obsahuje icon + popup */
 .hotspot-wrapper {
@@ -413,7 +433,7 @@ body {
 .cross-btn:focus .cross-svg,
 .cross-btn:active .cross-svg {
   transform: rotate(90deg) scale(1.25);
-  filter: drop-shadow(0 2px 8px rgba(26,57,123,0.18));
+  filter: drop-shadow(0 2px 8px rgba(26, 57, 123, 0.18));
 }
 /* SVG icon colors are now defined in the external SVG file */
 
@@ -423,7 +443,7 @@ body {
   box-shadow: none !important;
   background: var(--transparent);
   pointer-events: none;
-} 
+}
 
 @container (max-width: 900px) {
   .hotspot-wrapper {
@@ -434,35 +454,37 @@ body {
 /* Reduced motion preferences for accessibility */
 @media (prefers-reduced-motion: reduce) {
   /* Disable all animations and transitions */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
-  
+
   /* Remove transforms but keep hover states visible */
   .hotspot-wrapper:hover .cross-svg,
   .cross-btn:focus .cross-svg,
   .cross-btn:active .cross-svg {
     transform: none !important;
   }
-  
+
   /* Simplify popup appearance */
   .popup-modal {
     transform: translateY(-50%) !important;
   }
-  
+
   .hotspot-wrapper:hover .popup-modal,
   .cross-btn:focus .popup-modal,
   .hotspot-wrapper:focus-within .popup-modal {
     transform: translateY(-50%) !important;
   }
-  
+
   .hotspot-wrapper:last-child .popup-modal {
     transform: translateY(-50%) !important;
   }
-  
+
   .hotspot-wrapper:last-child:hover .popup-modal,
   .hotspot-wrapper:last-child .cross-btn:focus .popup-modal,
   .hotspot-wrapper:last-child:focus-within .popup-modal {
@@ -478,17 +500,17 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 0 1px var(--secondary-color);
   }
-  
+
   .popup-modal {
     border-width: 2px;
     background: var(--bg-white);
     box-shadow: 0 0 0 2px var(--text-color);
   }
-  
+
   .cross-svg {
     filter: contrast(1.5);
   }
-  
+
   .hotspot-wrapper:hover .cross-btn,
   .cross-btn:focus,
   .cross-btn:active,
@@ -496,11 +518,11 @@ body {
     background: var(--secondary-color);
     box-shadow: 0 0 0 2px var(--secondary-color);
   }
-  
+
   .hotspot-wrapper:hover .cross-svg,
   .cross-btn:focus .cross-svg,
   .cross-btn:active .cross-svg,
   .hotspot-wrapper:focus-within .cross-svg {
     filter: brightness(0) invert(1) contrast(1.5);
   }
-} 
+}

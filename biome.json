@@ -14,7 +14,8 @@
       "!**/dist/**",
       "!**/build/**",
       "!**/*.min.js",
-      "!**/*.bundle.js"
+      "!**/*.bundle.js",
+      "!**/*.css"
     ]
   },
   "formatter": {
@@ -40,6 +41,12 @@
       },
       "correctness": {
         "useExhaustiveDependencies": "warn"
+      },
+      "a11y": {
+        "useSemanticElements": "warn",
+        "noRedundantRoles": "warn",
+        "useAriaPropsSupportedByRole": "warn",
+        "noNoninteractiveTabindex": "warn"
       }
     }
   },
