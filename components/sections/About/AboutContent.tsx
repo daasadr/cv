@@ -20,9 +20,9 @@ export default function AboutContent() {
       <p data-macaly="about-paragraph-2">
         K IT mě přivedli bratři - oba odjakživa programátoři, a&nbsp;já se
         rozhodla k&nbsp;nim přidat. Začala jsem intenzivním IT kurzem
-        z&nbsp;programu IT Network s.r.o. a pokračovala samostudiem za pomocí
-        Coursera a knih z&nbsp;O'Reilly, ale hlavně skrze řadu větších
-        i&nbsp;menších projektů.
+        z&nbsp;programu IT Network s.r.o. a&nbsp;pokračovala samostudiem za
+        pomocí Coursera a&nbsp;knih z&nbsp;O'Reilly, ale hlavně skrze řadu
+        větších i&nbsp;menších projektů.
       </p>
     </div>
   );
