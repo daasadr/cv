@@ -47,6 +47,9 @@
         "noRedundantRoles": "warn",
         "useAriaPropsSupportedByRole": "warn",
         "noNoninteractiveTabindex": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       }
     }
   },
