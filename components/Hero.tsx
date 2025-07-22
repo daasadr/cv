@@ -8,9 +8,27 @@ export default function Hero() {
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const [sceneReady, setSceneReady] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const animationIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    console.log('Hero component mounted, initializing 3D scene');
+    // Intersection Observer for performance optimization
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (mountRef.current) {
+      observer.observe(mountRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    
     
     if (!mountRef.current) return;
 
@@ -78,69 +96,74 @@ export default function Hero() {
 
     camera.position.z = 10;
 
-    // Animation loop
+    // Animation loop with visibility optimization
     let isFirstRender = true;
     const animate = () => {
-      requestAnimationFrame(animate);
-      
-      meshes.forEach((mesh, index) => {
-        // Rotation animation
-        mesh.rotation.x += 0.005 + index * 0.001;
-        mesh.rotation.y += 0.005 + index * 0.001;
+      if (isVisible) {
+        meshes.forEach((mesh, index) => {
+          // Rotation animation
+          mesh.rotation.x += 0.005 + index * 0.001;
+          mesh.rotation.y += 0.005 + index * 0.001;
+          
+          // Slow random movement
+          const movement = meshMovement[index];
+          mesh.position.x += movement.velocityX;
+          mesh.position.y += movement.velocityY;
+          mesh.position.z += movement.velocityZ;
+          
+          // Boundary checking and velocity reversal to keep shapes visible
+          if (mesh.position.x > 8 || mesh.position.x < -8) {
+            movement.velocityX *= -1;
+          }
+          if (mesh.position.y > 6 || mesh.position.y < -6) {
+            movement.velocityY *= -1;
+          }
+          if (mesh.position.z > 4 || mesh.position.z < -4) {
+            movement.velocityZ *= -1;
+          }
+          
+          // Add subtle floating motion
+          mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.001;
+        });
         
-        // Slow random movement
-        const movement = meshMovement[index];
-        mesh.position.x += movement.velocityX;
-        mesh.position.y += movement.velocityY;
-        mesh.position.z += movement.velocityZ;
-        
-        // Boundary checking and velocity reversal to keep shapes visible
-        if (mesh.position.x > 8 || mesh.position.x < -8) {
-          movement.velocityX *= -1;
-        }
-        if (mesh.position.y > 6 || mesh.position.y < -6) {
-          movement.velocityY *= -1;
-        }
-        if (mesh.position.z > 4 || mesh.position.z < -4) {
-          movement.velocityZ *= -1;
-        }
-        
-        // Add subtle floating motion
-        mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.001;
-      });
-      
-      renderer.render(scene, camera);
+        renderer.render(scene, camera);
+      }
       
       // Set scene as ready after first render
       if (isFirstRender) {
         setTimeout(() => setSceneReady(true), 100);
         isFirstRender = false;
       }
+      
+      animationIdRef.current = requestAnimationFrame(animate);
     };
 
     animate();
-    console.log('3D animation started with', meshes.length, 'shapes');
+    
 
     // Handle resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-      console.log('3D scene resized to:', window.innerWidth, 'x', window.innerHeight);
+      
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => {
-      console.log('Cleaning up 3D scene');
+      
       window.removeEventListener('resize', handleResize);
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
       setSceneReady(false);
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
-  }, []);
+  }, [isVisible]); // Add isVisible dependency
 
   return (
     <section 
