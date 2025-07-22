@@ -6,6 +6,6 @@ export interface Project {
   image: string;
   liveUrl?: string;
   githubUrl?: string;
-  featured?: boolean;
+  inProgress?: boolean;
   year: number;
 }

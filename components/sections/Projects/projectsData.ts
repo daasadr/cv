@@ -22,6 +22,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025,
+    inProgress: true,
   },
 
   {
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     technologies: ['React Brics', 'Next.js', 'Directus'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025,
+    inProgress: true,
   },
   {
     title: 'Dropshipping e-commerce řešení',
@@ -53,6 +55,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'Directus'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2024,
+    inProgress: true,
   },
   {
     title: 'Práce s mapami',

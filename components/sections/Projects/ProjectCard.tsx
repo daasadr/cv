@@ -41,12 +41,12 @@ export default function ProjectCard({
           >
             {project.title}
           </h4>
-          {project.featured && (
+          {project.inProgress && (
             <span
-              className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium"
-              aria-label="Doporučený projekt"
+              className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap"
+              aria-label="In Progress"
             >
-              Featured
+              In Progress
             </span>
           )}
         </div>
