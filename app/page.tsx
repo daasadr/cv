@@ -3,11 +3,11 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
+import Hero from '@/components/sections/Hero';
 
 // Lazy load non-critical components
-const About = dynamic(() => import('@/components/About'), {
+const About = dynamic(() => import('@/components/sections/About'), {
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
       <div className="animate-pulse text-gray-400">Loading...</div>
@@ -16,7 +16,7 @@ const About = dynamic(() => import('@/components/About'), {
   ssr: true,
 });
 
-const Skills = dynamic(() => import('@/components/Skills'), {
+const Skills = dynamic(() => import('@/components/sections/Skills'), {
   loading: () => (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="animate-pulse text-gray-400">Loading...</div>
@@ -25,7 +25,7 @@ const Skills = dynamic(() => import('@/components/Skills'), {
   ssr: true,
 });
 
-const Projects = dynamic(() => import('@/components/Projects'), {
+const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => (
     <div className="min-h-screen bg-white flex items-center justify-center">
       <div className="animate-pulse text-gray-400">Loading...</div>
@@ -34,7 +34,7 @@ const Projects = dynamic(() => import('@/components/Projects'), {
   ssr: true,
 });
 
-const Contact = dynamic(() => import('@/components/Contact'), {
+const Contact = dynamic(() => import('@/components/sections/Contact'), {
   loading: () => (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="animate-pulse text-gray-400">Loading...</div>
