@@ -1,14 +1,9 @@
-'use client';
-
-import { useState } from 'react';
 import HeroActions from './HeroActions';
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
 import ScrollIndicator from './ScrollIndicator';
 
 export default function Hero() {
-  const [sceneReady, setSceneReady] = useState(false);
-
   return (
     <section
       id="hero"
@@ -17,7 +12,7 @@ export default function Hero() {
       role="banner"
     >
       {/* 3D Background */}
-      <HeroBackground onSceneReady={setSceneReady} sceneReady={sceneReady} />
+      <HeroBackground />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-[10rem] sm:pt-[5rem] md:pt-0">

@@ -3,18 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ThreeJSScene } from '@/lib/threejs-scene';
 
-interface HeroBackgroundProps {
-  onSceneReady: (ready: boolean) => void;
-  sceneReady: boolean;
-}
-
-export default function HeroBackground({
-  onSceneReady,
-  sceneReady,
-}: HeroBackgroundProps) {
+export default function HeroBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<ThreeJSScene | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
     // Intersection Observer for performance optimization
@@ -39,7 +32,7 @@ export default function HeroBackground({
 
     // Initialize Three.js scene
     const scene = new ThreeJSScene({
-      onSceneReady: () => onSceneReady(true),
+      onSceneReady: () => setSceneReady(true),
     });
     sceneRef.current = scene;
 
@@ -54,7 +47,7 @@ export default function HeroBackground({
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      onSceneReady(false);
+      setSceneReady(false);
 
       // Remove canvas from DOM before disposing
       const rendererElement = scene.getRendererElement();
@@ -65,7 +58,7 @@ export default function HeroBackground({
       scene.dispose();
       sceneRef.current = null;
     };
-  }, [onSceneReady]);
+  }, []);
 
   return (
     <div
