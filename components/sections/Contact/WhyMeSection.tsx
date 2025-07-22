@@ -9,7 +9,7 @@ const qualities = [
 
 export default function WhyMeSection() {
   return (
-    <aside aria-labelledby="why-me-title">
+    <aside aria-labelledby="why-me-title" className="flex items-stretch">
       <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-2xl border border-indigo-100">
         <h4 id="why-me-title" className="text-xl font-bold text-gray-900 mb-4">
           Proč já?
