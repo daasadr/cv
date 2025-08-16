@@ -1,10 +1,15 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
 import { skills } from '../Skills/SkillsData';
 
 export default function StatsCards() {
+  const { t } = useTranslation();
+
   return (
     <aside aria-labelledby="stats-title">
       <h3 id="stats-title" className="sr-only">
-        Statistiky a informace
+        {t('about.stats.title')}
       </h3>
       <div className="space-y-6">
         <div
@@ -14,12 +19,12 @@ export default function StatsCards() {
         >
           <div
             className="text-4xl font-bold text-indigo-600 mb-2"
-            aria-label="2 roky"
+            aria-label={t('about.stats.experienceYears')}
           >
             2
           </div>
           <div id="experience-stat" className="text-gray-700 font-medium">
-            Roky zkušeností
+            {t('about.stats.experience')}
           </div>
         </div>
 
@@ -30,20 +35,20 @@ export default function StatsCards() {
         >
           <div
             className="text-4xl font-bold text-amber-600 mb-2"
-            aria-label="11 projektů"
+            aria-label={t('about.stats.projectsCount')}
           >
             11
           </div>
           <div id="projects-stat" className="text-gray-700 font-medium">
-            Projektů (
+            {t('about.stats.projects')} (
             <a
               href="#projects"
               className="text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm"
               aria-describedby="projects-list-desc"
             >
-              seznam
+              {t('about.stats.list')}
               <span id="projects-list-desc" className="sr-only">
-                - přejde na sekci se seznamem všech projektů
+                - {t('about.stats.projectsListDesc')}
               </span>
             </a>
             )
@@ -57,20 +62,22 @@ export default function StatsCards() {
         >
           <div
             className="text-4xl font-bold text-green-600 mb-2"
-            aria-label={`${skills.length} technologií`}
+            aria-label={t('about.stats.technologiesCount', {
+              count: skills.length,
+            })}
           >
             {skills.length}
           </div>
           <div id="technologies-stat" className="text-gray-700 font-medium">
-            Technologií (
+            {t('about.stats.technologies')} (
             <a
               href="#skills"
               className="text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm"
               aria-describedby="skills-list-desc"
             >
-              seznam
+              {t('about.stats.list')}
               <span id="skills-list-desc" className="sr-only">
-                - přejde na sekci se seznamem všech technologií a dovedností
+                - {t('about.stats.technologiesListDesc')}
               </span>
             </a>
             )

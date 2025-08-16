@@ -1,4 +1,10 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
+
 export default function SkillsHeader() {
+  const { t } = useTranslation();
+
   return (
     <header className="text-center mb-16">
       <h2
@@ -6,14 +12,13 @@ export default function SkillsHeader() {
         className="text-5xl font-bold text-gray-900 mb-6"
         data-macaly="skills-title"
       >
-        Technické znalosti
+        {t('skills.title')}
       </h2>
       <p
         className="text-xl text-gray-600 max-w-3xl mx-auto"
         data-macaly="skills-description"
       >
-        Ucelený set znalostí a dovedností vytvořený zkušenostmi z praxe a
-        kontinuálním vzděláváním v neustále se měnícím technologickém prostředí.
+        {t('skills.description')}
       </p>
     </header>
   );

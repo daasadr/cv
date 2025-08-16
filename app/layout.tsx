@@ -1,4 +1,5 @@
 import './globals.css';
+import { LanguageWrapper } from '@/components/LanguageWrapper';
 import {
   BodyWrapper,
   bodyFontClass,
@@ -6,6 +7,7 @@ import {
   HeadContent,
   metadata,
 } from '@/components/layout';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 // Re-export metadata for Next.js
 export { metadata };
@@ -20,7 +22,11 @@ export default function RootLayout({
       <head>
         <HeadContent />
       </head>
-      <BodyWrapper fontClass={bodyFontClass}>{children}</BodyWrapper>
+      <LanguageProvider>
+        <LanguageWrapper>
+          <BodyWrapper fontClass={bodyFontClass}>{children}</BodyWrapper>
+        </LanguageWrapper>
+      </LanguageProvider>
     </html>
   );
 }

@@ -1,4 +1,10 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
+
 export default function ContactHeader() {
+  const { t } = useTranslation();
+
   return (
     <header className="text-center mb-16">
       <h2
@@ -6,14 +12,13 @@ export default function ContactHeader() {
         className="text-5xl font-bold text-gray-900 mb-6"
         data-macaly="contact-title"
       >
-        Pojďme spolupracovat
+        {t('contact.title')}
       </h2>
       <p
         className="text-xl text-gray-600 max-w-3xl mx-auto"
         data-macaly="contact-description"
       >
-        Ráda se pobavím o nových projektech, kreativních myšlenkách nebo
-        příležitostech být součástí vaší vize
+        {t('contact.description')}
       </p>
     </header>
   );

@@ -1,11 +1,14 @@
 'use client';
 
+import { useTranslation } from '@/hooks/useTranslation';
 import AboutContent from './AboutContent';
 import ActionButtons from './ActionButtons';
 import SoftSkills from './SoftSkills';
 import StatsCards from './StatsCards';
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="about"
@@ -22,7 +25,7 @@ export default function About() {
                 className="text-5xl font-bold text-gray-900 mb-8"
                 data-macaly="about-title"
               >
-                O mně
+                {t('about.title')}
               </h2>
             </header>
 

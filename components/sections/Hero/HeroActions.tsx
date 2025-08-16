@@ -1,5 +1,9 @@
 'use client';
+import { useTranslation } from '@/hooks/useTranslation';
+
 export default function HeroActions() {
+  const { t } = useTranslation();
+
   return (
     <div
       className="flex flex-col sm:flex-row gap-6 justify-center items-center"
@@ -16,9 +20,9 @@ export default function HeroActions() {
         aria-describedby="projects-button-desc"
         type="button"
       >
-        Moje tvorba
+        {t('hero.actions.projects')}
         <span id="projects-button-desc" className="sr-only">
-          - zobrazí sekci s projekty a zkušenostmi
+          - {t('hero.actions.projectsDesc')}
         </span>
       </button>
 
@@ -32,9 +36,9 @@ export default function HeroActions() {
         aria-describedby="contact-button-desc"
         type="button"
       >
-        Kontaktujte mě
+        {t('hero.actions.contact')}
         <span id="contact-button-desc" className="sr-only">
-          - přejde na kontaktní sekci s informacemi a formulářem
+          - {t('hero.actions.contactDesc')}
         </span>
       </button>
     </div>

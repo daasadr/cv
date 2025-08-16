@@ -1,4 +1,10 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
+
 export default function ProjectsHeader() {
+  const { t } = useTranslation();
+
   return (
     <header className="text-center mb-16">
       <h2
@@ -6,14 +12,13 @@ export default function ProjectsHeader() {
         className="text-5xl font-bold text-gray-900 mb-6"
         data-macaly="projects-title"
       >
-        Zkušenosti a tvorba
+        {t('projects.title')}
       </h2>
       <p
         className="text-xl text-gray-600 max-w-3xl mx-auto"
         data-macaly="projects-description"
       >
-        Seznam projektů, které ukazují mé technické znalosti a kreativní řešení
-        problémů.
+        {t('projects.description')}
       </p>
     </header>
   );

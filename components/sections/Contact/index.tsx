@@ -1,3 +1,5 @@
+'use client';
+
 import ContactHeader from './ContactHeader';
 import ContactMethods from './ContactMethods';
 import WhyMeSection from './WhyMeSection';

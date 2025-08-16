@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface ContactFormData {
   name: string;
@@ -17,6 +18,7 @@ interface FormErrors {
 }
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -34,27 +36,27 @@ export default function ContactForm() {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Jméno je povinné';
+      newErrors.name = t('contact.form.errors.nameRequired');
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Jméno musí mít alespoň 2 znaky';
+      newErrors.name = t('contact.form.errors.nameLength');
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email je povinný';
+      newErrors.email = t('contact.form.errors.emailRequired');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Neplatný formát emailu';
+      newErrors.email = t('contact.form.errors.emailInvalid');
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = 'Předmět je povinný';
+      newErrors.subject = t('contact.form.errors.subjectRequired');
     } else if (formData.subject.trim().length < 3) {
-      newErrors.subject = 'Předmět musí mít alespoň 3 znaky';
+      newErrors.subject = t('contact.form.errors.subjectLength');
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Zpráva je povinná';
+      newErrors.message = t('contact.form.errors.messageRequired');
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Zpráva musí mít alespoň 10 znaků';
+      newErrors.message = t('contact.form.errors.messageLength');
     }
 
     setErrors(newErrors);
@@ -111,7 +113,7 @@ export default function ContactForm() {
         id="contact-form-title"
         className="text-3xl font-bold text-gray-900 mb-8"
       >
-        Odeslat zprávu
+        {t('contact.form.title')}
       </h3>
 
       <form
@@ -122,12 +124,11 @@ export default function ContactForm() {
       >
         {/* Instructions for screen readers */}
         <div id="form-instructions" className="sr-only">
-          Kontaktní formulář. Všechna pole jsou povinná. Chyby budou oznámeny po
-          pokusu o odeslání.
+          {t('contact.form.instructions')}
         </div>
 
         <fieldset className="border-none p-0">
-          <legend className="sr-only">Osobní údaje</legend>
+          <legend className="sr-only">{t('contact.form.personalInfo')}</legend>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -135,7 +136,7 @@ export default function ContactForm() {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Celé jméno *
+                {t('contact.form.fullName')}
               </label>
               <input
                 type="text"
@@ -152,7 +153,7 @@ export default function ContactForm() {
                     ? 'border-red-500 focus:border-red-500'
                     : 'border-gray-300 focus:border-transparent'
                 }`}
-                placeholder="Vaše jméno"
+                placeholder={t('contact.form.placeholders.name')}
               />
               {errors.name && (
                 <p
@@ -171,7 +172,7 @@ export default function ContactForm() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Emailová adresa *
+                {t('contact.form.email')}
               </label>
               <input
                 type="email"
@@ -188,10 +189,10 @@ export default function ContactForm() {
                     ? 'border-red-500 focus:border-red-500'
                     : 'border-gray-300 focus:border-transparent'
                 }`}
-                placeholder="vas.email@priklad.cz"
+                placeholder={t('contact.form.placeholders.email')}
               />
               <p id="email-help" className="mt-1 text-xs text-gray-500">
-                Použije se pro odpověď na vaši zprávu
+                {t('contact.form.emailHelp')}
               </p>
               {errors.email && (
                 <p
@@ -208,14 +209,14 @@ export default function ContactForm() {
         </fieldset>
 
         <fieldset className="border-none p-0">
-          <legend className="sr-only">Zpráva</legend>
+          <legend className="sr-only">{t('contact.form.message')}</legend>
 
           <div>
             <label
               htmlFor="subject"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Předmět *
+              {t('contact.form.subject')}
             </label>
             <input
               type="text"
@@ -232,7 +233,7 @@ export default function ContactForm() {
                   ? 'border-red-500 focus:border-red-500'
                   : 'border-gray-300 focus:border-transparent'
               }`}
-              placeholder="Poptávka projektu, spolupráce, atd."
+              placeholder={t('contact.form.placeholders.subject')}
             />
             {errors.subject && (
               <p
@@ -251,7 +252,7 @@ export default function ContactForm() {
               htmlFor="message"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Zpráva *
+              {t('contact.form.messageText')}
             </label>
             <textarea
               id="message"
@@ -270,10 +271,10 @@ export default function ContactForm() {
                   ? 'border-red-500 focus:border-red-500'
                   : 'border-gray-300 focus:border-transparent'
               }`}
-              placeholder="Řekněte mi o vašem projektu nebo jak vám mohu pomoci..."
+              placeholder={t('contact.form.placeholders.message')}
             />
             <p id="message-help" className="mt-1 text-xs text-gray-500">
-              Alespoň 10 znaků. Popište váš projekt nebo požadavky.
+              {t('contact.form.help.message')}
             </p>
             {errors.message && (
               <p
@@ -321,15 +322,15 @@ export default function ContactForm() {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              Odesílám...
+              {t('contact.form.sending')}
             </span>
           ) : (
-            'Odeslat zprávu'
+            t('contact.form.submit')
           )}
           <span id="submit-button-desc" className="sr-only">
             {isSubmitting
-              ? 'Formulář se odesílá, počkejte prosím'
-              : 'Odešle formulář po vyplnění všech povinných polí'}
+              ? t('contact.form.sendingDesc')
+              : t('contact.form.submitDesc')}
           </span>
         </button>
 
@@ -353,12 +354,9 @@ export default function ContactForm() {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="font-semibold">Úspěch!</span>
+              <span className="font-semibold">{t('contact.form.success')}</span>
             </div>
-            <p className="mt-2">
-              Děkuji! Vaše zpráva byla úspěšně odeslána. Odpovím vám co
-              nejdříve.
-            </p>
+            <p className="mt-2">{t('contact.form.successMessage')}</p>
           </div>
         )}
 
@@ -381,12 +379,9 @@ export default function ContactForm() {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="font-semibold">Chyba!</span>
+              <span className="font-semibold">{t('contact.form.error')}</span>
             </div>
-            <p className="mt-2">
-              Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo mě
-              kontaktujte přímo.
-            </p>
+            <p className="mt-2">{t('contact.form.errorMessage')}</p>
           </div>
         )}
       </form>

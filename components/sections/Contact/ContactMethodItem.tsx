@@ -1,3 +1,7 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
+
 interface ContactMethodItemProps {
   label: string;
   value: string;
@@ -13,6 +17,8 @@ export default function ContactMethodItem({
   href,
   description,
 }: ContactMethodItemProps) {
+  const { t } = useTranslation();
+
   return (
     <a
       href={href}
@@ -35,7 +41,7 @@ export default function ContactMethodItem({
         className="sr-only"
       >
         {description}
-        {href.startsWith('http') && ' - otevře se v novém okně'}
+        {href.startsWith('http') && ` - ${t('contact.methods.opensNewWindow')}`}
       </span>
     </a>
   );

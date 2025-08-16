@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSection, setCurrentSection] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,10 +49,10 @@ export default function Navigation() {
   }, []);
 
   const navigationItems = [
-    { label: 'O mně', id: 'about', mobile: true },
-    { label: 'Dovednosti', id: 'skills', mobile: true },
-    { label: 'Zkušenosti', id: 'projects', mobile: true },
-    { label: 'Kontakty', id: 'contact', mobile: false },
+    { label: t('nav.about'), id: 'about', mobile: true },
+    { label: t('nav.skills'), id: 'skills', mobile: true },
+    { label: t('nav.projects'), id: 'projects', mobile: true },
+    { label: t('nav.contact'), id: 'contact', mobile: false },
   ];
 
   return (
@@ -65,7 +68,7 @@ export default function Navigation() {
           e.target.classList.add('sr-only');
         }}
       >
-        Přeskočit na hlavní obsah
+        {t('nav.skipToContent')}
       </a>
 
       <header>
@@ -95,7 +98,7 @@ export default function Navigation() {
                         >
                           {item.label}
                           <span id={`nav-${item.id}-desc`} className="sr-only">
-                            - přejít na sekci {item.label}
+                            - {t('nav.goToSection')} {item.label}
                           </span>
                         </button>
                       </a>
@@ -103,18 +106,21 @@ export default function Navigation() {
                   ))}
               </ul>
 
-              <a href={`#contact`}>
-                <button
-                  type="button"
-                  className="hidden md:block bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
-                  aria-describedby="cta-button-desc"
-                >
-                  Kontaktujte mě
-                  <span id="cta-button-desc" className="sr-only">
-                    - otevře kontaktní formulář
-                  </span>
-                </button>
-              </a>
+              <div className="flex items-center space-x-4">
+                <LanguageSwitcher />
+                <a href={`#contact`}>
+                  <button
+                    type="button"
+                    className="hidden md:block bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                    aria-describedby="cta-button-desc"
+                  >
+                    {t('nav.contactMe')}
+                    <span id="cta-button-desc" className="sr-only">
+                      - otevře kontaktní formulář
+                    </span>
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </nav>

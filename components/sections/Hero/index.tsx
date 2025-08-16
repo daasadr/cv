@@ -1,3 +1,5 @@
+'use client';
+
 import HeroActions from './HeroActions';
 import HeroBackground from './HeroBackground';
 import HeroContent from './HeroContent';
