@@ -64,6 +64,11 @@ export const translations = {
     'skills.subtitle': 'Technologie a nástroje',
     'skills.description':
       'Ucelený set znalostí a dovedností vytvořený zkušenostmi z praxe a kontinuálním vzděláváním v neustále se měnícím technologickém prostředí.',
+    'skills.categories.languages': 'Programovací jazyky',
+    'skills.categories.frontend': 'Frontend technologie',
+    'skills.categories.backend': 'Backend technologie',
+    'skills.categories.tools': 'Nástroje a workflow',
+    'skills.overview': 'Přehled technických dovedností podle kategorií',
 
     // Projects Section
     'projects.title': 'Zkušenosti a tvorba',
@@ -209,6 +214,11 @@ export const translations = {
     'skills.subtitle': 'Technologies and tools',
     'skills.description':
       'A comprehensive set of knowledge and skills created through practical experience and continuous learning in an ever-changing technological environment.',
+    'skills.categories.languages': 'Programming Languages',
+    'skills.categories.frontend': 'Frontend Technologies',
+    'skills.categories.backend': 'Backend Technologies',
+    'skills.categories.tools': 'Tools & Workflow',
+    'skills.overview': 'Overview of technical skills by category',
 
     // Projects Section
     'projects.title': 'Experience & Projects',
@@ -291,6 +301,31 @@ export const translations = {
     'footer.accessibilityInfo':
       'This page is fully accessible and optimized for screen readers. Use the main links at the top of the page for navigation.',
   },
+};
+
+// Helper function to format experience duration
+export const formatExperienceDuration = (
+  months: number,
+  language: Language
+): string => {
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  if (language === 'cs') {
+    if (years > 0) {
+      return remainingMonths > 0
+        ? `${years} rok${years > 1 ? 'y' : ''} a ${remainingMonths} měsíc${remainingMonths > 1 ? 'ů' : ''}`
+        : `${years} rok${years > 1 ? 'y' : ''}`;
+    }
+    return `${months} měsíc${months > 1 ? 'ů' : ''}`;
+  } else {
+    if (years > 0) {
+      return remainingMonths > 0
+        ? `${years} year${years > 1 ? 's' : ''} and ${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`
+        : `${years} year${years > 1 ? 's' : ''}`;
+    }
+    return `${months} month${months > 1 ? 's' : ''}`;
+  }
 };
 
 export type TranslationKey = keyof typeof translations.cs;

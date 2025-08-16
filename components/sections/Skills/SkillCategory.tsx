@@ -1,5 +1,8 @@
+'use client';
+
+import { useTranslation } from '@/hooks/useTranslation';
 import SkillItem from './SkillItem';
-import { categoryColors, categoryLabels, type Skill } from './SkillsData';
+import { categoryColors, type Skill } from './SkillsData';
 
 interface SkillCategoryProps {
   category: string;
@@ -12,7 +15,25 @@ export default function SkillCategory({
   skills,
   isAnimated,
 }: SkillCategoryProps) {
+  const { t } = useTranslation();
   const sortedSkills = skills.sort((a, b) => b.months - a.months);
+
+  const getCategoryLabel = (cat: string) => {
+    switch (cat) {
+      case 'languages':
+        return t('skills.categories.languages');
+      case 'frontend':
+        return t('skills.categories.frontend');
+      case 'backend':
+        return t('skills.categories.backend');
+      case 'tools':
+        return t('skills.categories.tools');
+      default:
+        return cat;
+    }
+  };
+
+  const categoryLabel = getCategoryLabel(category);
 
   return (
     <section className="space-y-4" aria-labelledby={`category-${category}`}>
@@ -23,13 +44,13 @@ export default function SkillCategory({
           color: categoryColors[category as keyof typeof categoryColors],
         }}
       >
-        {categoryLabels[category as keyof typeof categoryLabels]}
+        {categoryLabel}
       </h3>
 
       <div
         className="space-y-4"
         role="list"
-        aria-label={`Seznam dovedností v kategorii ${categoryLabels[category as keyof typeof categoryLabels]}`}
+        aria-label={`Seznam dovedností v kategorii ${categoryLabel}`}
       >
         {sortedSkills.map((skill) => (
           <SkillItem key={skill.name} skill={skill} isAnimated={isAnimated} />

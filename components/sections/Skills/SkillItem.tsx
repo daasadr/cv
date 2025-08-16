@@ -1,9 +1,8 @@
-import {
-  categoryColors,
-  getExperienceDescription,
-  getExperienceLevel,
-  type Skill,
-} from './SkillsData';
+'use client';
+
+import { useLanguage } from '@/contexts/LanguageContext';
+import { formatExperienceDuration } from '@/lib/translations';
+import { categoryColors, getExperienceLevel, type Skill } from './SkillsData';
 
 interface SkillItemProps {
   skill: Skill;
@@ -11,9 +10,11 @@ interface SkillItemProps {
 }
 
 export default function SkillItem({ skill, isAnimated }: SkillItemProps) {
+  const { language } = useLanguage();
+
   const progressPercentage = Math.min((skill.months / 24) * 100, 100);
   const experienceLevel = getExperienceLevel(skill.months);
-  const experienceDesc = getExperienceDescription(skill.months);
+  const experienceDesc = formatExperienceDuration(skill.months, language);
 
   return (
     <div className="space-y-2" role="listitem">

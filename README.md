@@ -32,6 +32,7 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **Modern UI Components** - shadcn/ui component library
 - **Smooth Animations** - Performance-optimized transitions and effects
 - **Dark/Light Theme Support** - System preference detection
+- **Bilingual Support** - Czech and English language switching with elegant UI toggle
 
 ### 🚀 Performance
 - **Critical CSS Inlining** - Above-the-fold optimization
@@ -77,6 +78,11 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **[Biome](https://biomejs.dev/)** - Linting and formatting
 - **[PostCSS](https://postcss.org/)** - CSS processing
 - **[Vercel Analytics](https://vercel.com/analytics)** - Performance monitoring
+
+### Internationalization
+- **Custom Language Context** - React Context for Czech/English switching
+- **Translation System** - Centralized translation keys and hooks
+- **Dynamic Language Toggle** - Elegant UI switcher with accessibility support
 
 ### Fonts
 - **[Inter](https://rsms.me/inter/)** - Primary interface font
@@ -152,11 +158,15 @@ cv/
 │   ├── Projects.tsx
 │   └── Skills.tsx
 ├── hooks/                   # Custom React hooks
-│   └── use-toast.ts
+│   ├── use-toast.ts
+│   └── useTranslation.ts   # Translation hook
+├── contexts/                # React Context providers
+│   └── LanguageContext.tsx # Language switching context
 ├── lib/                     # Utility libraries
 │   ├── favicon-emojis.ts   # Favicon configuration
 │   ├── site-config.ts      # Site-wide configuration
 │   ├── threejs-scene.ts    # Three.js scene management
+│   ├── translations.ts     # Czech/English translations
 │   └── utils.ts            # Utility functions
 ├── public/                  # Static assets
 │   ├── examples/           # Project examples
