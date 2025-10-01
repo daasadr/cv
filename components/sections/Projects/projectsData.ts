@@ -2,6 +2,26 @@ import type { Project } from './types';
 
 export const projects: Project[] = [
   {
+    title: 'Office automations',
+    description:
+      'Moderní webová aplikace pro automatické zpracování PDF dokumentů průběžné evidence odpadů s AI integrací.',
+    technologies: [
+      'Astro',
+      'React',
+      'Docker',
+      'Directus',
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Temporal',
+      '...',
+    ],
+    image: '/images/d-p.png',
+    githubUrl: 'https://github.com/daasadr/cv',
+    year: 2025,
+    inProgress: false,
+  },
+  {
     title: 'Interaktivní komponenta pro výrobce laboratorního vybavení',
     description:
       'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
