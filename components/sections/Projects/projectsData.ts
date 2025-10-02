@@ -19,7 +19,7 @@ export const projects: Project[] = [
     image: '/images/d-p.png',
     githubUrl: 'https://github.com/daasadr/cv',
     year: 2025,
-    inProgress: false,
+    inProgress: true,
   },
   {
     title: 'NextGen Coders',
