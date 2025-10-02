@@ -22,6 +22,27 @@ export const projects: Project[] = [
     inProgress: false,
   },
   {
+    title: 'NextGen Coders',
+    description:
+      'NextGen Coders je platforma pro výuku programování pro žáky základních škol.',
+    longDescription:
+      'Spolupráce s mým synem na vývoji platformy pro výuku programování pro žáky základních škol. Platforma je vytvořena pomocí FastApi a JavaScriptu.',
+    technologies: [
+      'Python',
+      'FastApi',
+      'JavaScript',
+      'css',
+      'Directus',
+      'PostgreSQL',
+      'SQLite',
+    ],
+    image: '/images/nextgen.png',
+    liveUrl: 'https://pythonprojekt-4jmazcukn-xebros-projects.vercel.app',
+    githubUrl: 'https://github.com/Xebro123/Pythonprojekt',
+    year: 2025,
+    inProgress: true,
+  },
+  {
     title: 'Interaktivní komponenta pro výrobce laboratorního vybavení',
     description:
       'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
@@ -73,7 +94,7 @@ export const projects: Project[] = [
     description:
       'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
     technologies: ['Next.js', 'Directus'],
-    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
+    image: 'images/happy.png',
     year: 2024,
     inProgress: true,
   },
