@@ -37,7 +37,7 @@ export const projects: Project[] = [
       'SQLite',
     ],
     image: '/images/nextgen.png',
-    liveUrl: 'https://pythonprojekt-4jmazcukn-xebros-projects.vercel.app',
+    liveUrl: 'https://pythonprojekt-ten.vercel.app/',
     githubUrl: 'https://github.com/Xebro123/Pythonprojekt',
     year: 2025,
     inProgress: true,
