@@ -12,7 +12,7 @@ export default function ActionButtons() {
       aria-label="Akce a odkazy"
     >
       <a
-        href="/CV_Dagmar_Drbalkova.pdf"
+        href="/CV Dagmar Drbalkova 2025.pdf"
         download={`CV Dagmar Drbalkova ${new Date().getFullYear()}.pdf`}
         className="inline-flex items-center gap-3 border-2 border-indigo-600 hover:bg-indigo-600 focus:bg-indigo-600 text-indigo-600 hover:text-white focus:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-1 focus:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
         data-macaly="cv-download-button"
