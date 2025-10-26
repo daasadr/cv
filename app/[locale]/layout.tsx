@@ -19,6 +19,18 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+function getNestedValue(obj: unknown, keys: string[]): string {
+  let value: unknown = obj;
+  for (const key of keys) {
+    if (value !== null && typeof value === 'object' && key in value) {
+      value = Reflect.get(value, key);
+    } else {
+      return '';
+    }
+  }
+  return typeof value === 'string' ? value : '';
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,15 +38,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   await params; // Consume params to avoid unused variable warning
   const messages = await getMessages();
-  const t = (key: string) => {
-    const keys = key.split('.');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let value: any = messages;
-    for (const k of keys) {
-      value = value?.[k];
-    }
-    return value as string;
-  };
+  const t = (key: string): string => getNestedValue(messages, key.split('.'));
   
   return {
     title: `${siteConfig.name} - ${siteConfig.jobTitle}`,
@@ -99,6 +103,10 @@ export async function generateMetadata({
   };
 }
 
+function isValidLocale(locale: string): locale is 'cs' | 'en' {
+  return locale === 'cs' || locale === 'en';
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -109,7 +117,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as 'cs' | 'en')) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
@@ -118,15 +126,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   
   // Helper to get translation from messages
-  const getTranslation = (key: string): string => {
-    const keys = key.split('.');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let value: any = messages;
-    for (const k of keys) {
-      value = value?.[k];
-    }
-    return value as string;
-  };
+  const getTranslation = (key: string): string => getNestedValue(messages, key.split('.'));
 
   return (
     <html lang={locale} className={fontVariables}>
