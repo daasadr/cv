@@ -144,7 +144,7 @@ export const translations = {
     'language.switchToCzech': 'Zpět do češtiny',
 
     // Footer
-    'footer.copyright': '© 2024 Dagmar Drbálková. Všechna práva vyhrazena.',
+    'footer.copyright': '© 2025 Dagmar Drbálková. Všechna práva vyhrazena.',
     'footer.createdWith': 'Vytvořeno pomocí',
     'footer.accessibilityInfo':
       'Tato stránka je plně přístupná a optimalizovaná pro čtečky obrazovky. Pro navigaci použijte hlavní odkazy v horní části stránky.',
@@ -300,7 +300,7 @@ export const translations = {
     'language.switchToCzech': 'Back to Czech',
 
     // Footer
-    'footer.copyright': '© 2024 Dagmar Drbálková. All rights reserved.',
+    'footer.copyright': '© 2025 Dagmar Drbálková. All rights reserved.',
     'footer.createdWith': 'Created with',
     'footer.accessibilityInfo':
       'This page is fully accessible and optimized for screen readers. Use the main links at the top of the page for navigation.',
