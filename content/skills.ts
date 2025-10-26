@@ -35,22 +35,3 @@ export const categoryLabels = {
   languages: 'Programovací jazyky',
 };
 
-export const getExperienceLevel = (months: number): string => {
-  if (months >= 18) return 'Pokročilý';
-  if (months >= 10) return 'Střední';
-  if (months >= 6) return 'Začínající';
-  return 'Základní';
-};
-
-export const getExperienceDescription = (months: number): string => {
-  const years = Math.floor(months / 12);
-  const remainingMonths = months % 12;
-
-  if (years > 0) {
-    return remainingMonths > 0
-      ? `${years} rok${years > 1 ? 'y' : ''} a ${remainingMonths} měsíc${remainingMonths > 1 ? 'ů' : ''}`
-      : `${years} rok${years > 1 ? 'y' : ''}`;
-  }
-  return `${months} měsíc${months > 1 ? 'ů' : ''}`;
-};
-

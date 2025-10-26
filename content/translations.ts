@@ -307,30 +307,5 @@ export const translations = {
   },
 };
 
-// Helper function to format experience duration
-export const formatExperienceDuration = (
-  months: number,
-  language: Language
-): string => {
-  const years = Math.floor(months / 12);
-  const remainingMonths = months % 12;
-
-  if (language === 'cs') {
-    if (years > 0) {
-      return remainingMonths > 0
-        ? `${years} rok${years > 1 ? 'y' : ''} a ${remainingMonths} měsíc${remainingMonths > 1 ? 'ů' : ''}`
-        : `${years} rok${years > 1 ? 'y' : ''}`;
-    }
-    return `${months} měsíc${months > 1 ? 'ů' : ''}`;
-  } else {
-    if (years > 0) {
-      return remainingMonths > 0
-        ? `${years} year${years > 1 ? 's' : ''} and ${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`
-        : `${years} year${years > 1 ? 's' : ''}`;
-    }
-    return `${months} month${months > 1 ? 's' : ''}`;
-  }
-};
-
 export type TranslationKey = keyof typeof translations.cs;
 export type Language = keyof typeof translations;

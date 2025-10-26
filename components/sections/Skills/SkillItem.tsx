@@ -2,8 +2,8 @@
 
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { formatExperienceDuration } from '@/content/translations';
-import { categoryColors, getExperienceLevel, type Skill } from '@/content/skills';
+import { formatExperienceDuration, getExperienceLevel } from '@/content/utils';
+import { categoryColors, type Skill } from '@/content/skills';
 
 interface SkillItemProps {
   skill: Skill;
