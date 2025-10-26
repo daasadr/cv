@@ -65,7 +65,7 @@ export default function ErrorPage({
             {t('actions.tryAgain')}
           </button>
 
-          <a
+          {/* <a
             href="/"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-700 border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium"
           >
@@ -79,7 +79,7 @@ export default function ErrorPage({
           >
             <Mail className="w-5 h-5" />
             {t('actions.contact')}
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
