@@ -1,29 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import ProjectModal from './ProjectModal';
 import ProjectsHeader from './ProjectsHeader';
 import ProjectsList from './ProjectsList';
-import { projects, type Project } from '@/content/projects';
+import { projects } from '@/content/projects';
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
-
-  const handleViewDetails = (project: Project) => {
-    // Store the currently focused element
-    previousFocusRef.current = document.activeElement as HTMLElement;
-    setSelectedProject(project);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProject(null);
-    // Restore focus when modal closes
-    if (previousFocusRef.current) {
-      previousFocusRef.current.focus();
-    }
-  };
-
   return (
     <section
       id="projects"
@@ -32,10 +13,8 @@ export default function Projects() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <ProjectsHeader />
-        <ProjectsList projects={projects} onViewDetails={handleViewDetails} />
+        <ProjectsList projects={projects} />
       </div>
-
-      <ProjectModal project={selectedProject} onClose={handleCloseModal} />
     </section>
   );
 }
