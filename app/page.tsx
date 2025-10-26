@@ -1,8 +1,8 @@
 import Footer from '@/components/Footer';
-import Navigation from '@/components/Navigation';
+import Navigation from '@/components/Navigation/index';
 import Hero from '@/components/sections/Hero';
 import UnderFold from '@/components/UnderFold';
-import WebVitalsReporterLoader from '@/components/WebVitalsReporter';
+import { WebVitalsReporterLoader } from '@/components/WebVitalsReporter';
 
 export default function Home() {
   return (
