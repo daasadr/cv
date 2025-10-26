@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useTranslation } from '@/hooks/useTranslation';
 import { skills } from '@/content/skills';
 
@@ -43,7 +44,10 @@ export default function StatsCards() {
             {t('about.stats.projects')} (
             <a
               href="#projects"
-              className="text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm"
+              className={cn(
+                'text-indigo-600 hover:text-indigo-700 focus:text-indigo-700',
+                'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm'
+              )}
               aria-describedby="projects-list-desc"
             >
               {t('about.stats.list')}
@@ -72,7 +76,10 @@ export default function StatsCards() {
             {t('about.stats.technologies')} (
             <a
               href="#skills"
-              className="text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm"
+              className={cn(
+                'text-indigo-600 hover:text-indigo-700 focus:text-indigo-700',
+                'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 rounded-sm'
+              )}
               aria-describedby="skills-list-desc"
             >
               {t('about.stats.list')}

@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useTranslation } from '@/hooks/useTranslation';
 import { siteConfig } from '@/content/site-config';
 
@@ -11,7 +12,13 @@ export function GitHubButton() {
       href={siteConfig.social.github}
       target="_blank"
       rel="noopener noreferrer"
-      className="hidden md:flex items-center gap-2 bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+      className={cn(
+        'hidden md:flex items-center gap-2',
+        'bg-indigo-600 text-white px-6 py-2 rounded-full',
+        'hover:bg-indigo-700 focus:bg-indigo-700',
+        'transition-colors duration-200 font-medium',
+        'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2'
+      )}
       aria-describedby="github-button-desc"
     >
       <svg

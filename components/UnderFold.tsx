@@ -1,14 +1,15 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { cn } from '@/lib/utils';
 
 // Lazy load non-critical components with individual loading states
 // Note: Each component has its own loading state via the dynamic() config,
 // so we don't need an additional Suspense boundary wrapper
 const About = dynamic(() => import('@/components/sections/About'), {
   loading: () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-gray-400">Loading...</div>
+    <div className={cn('min-h-screen flex items-center justify-center')}>
+      <div className={cn('animate-pulse text-gray-400')}>Loading...</div>
     </div>
   ),
   ssr: true,
@@ -16,8 +17,12 @@ const About = dynamic(() => import('@/components/sections/About'), {
 
 const Skills = dynamic(() => import('@/components/sections/Skills'), {
   loading: () => (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="animate-pulse text-gray-400">Loading...</div>
+    <div
+      className={cn(
+        'min-h-screen bg-gray-50 flex items-center justify-center'
+      )}
+    >
+      <div className={cn('animate-pulse text-gray-400')}>Loading...</div>
     </div>
   ),
   ssr: true,
@@ -25,8 +30,10 @@ const Skills = dynamic(() => import('@/components/sections/Skills'), {
 
 const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => (
-    <div className="min-h-screen bg-white flex items-center justify-center">
-      <div className="animate-pulse text-gray-400">Loading...</div>
+    <div
+      className={cn('min-h-screen bg-white flex items-center justify-center')}
+    >
+      <div className={cn('animate-pulse text-gray-400')}>Loading...</div>
     </div>
   ),
   ssr: true,
@@ -34,8 +41,12 @@ const Projects = dynamic(() => import('@/components/sections/Projects'), {
 
 const Contact = dynamic(() => import('@/components/sections/Contact'), {
   loading: () => (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="animate-pulse text-gray-400">Loading...</div>
+    <div
+      className={cn(
+        'min-h-screen bg-gray-50 flex items-center justify-center'
+      )}
+    >
+      <div className={cn('animate-pulse text-gray-400')}>Loading...</div>
     </div>
   ),
   ssr: true,

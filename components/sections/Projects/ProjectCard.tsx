@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import type { Project } from '@/content/projects';
@@ -18,7 +19,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <article
-      className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+      className={cn(
+        'group bg-white rounded-2xl overflow-hidden shadow-lg',
+        'hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2'
+      )}
       role="listitem"
       aria-labelledby={`project-${year}-${index}-title`}
     >
@@ -28,10 +32,18 @@ export default function ProjectCard({
           alt={`Obrázek projektu ${project.title}`}
           width={400}
           height={256}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+          className={cn(
+            'w-full h-64 object-cover',
+            'group-hover:scale-110 transition-transform duration-300'
+          )}
           data-macaly={`project-${year}-${index}-image`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div
+          className={cn(
+            'absolute inset-0 bg-gradient-to-t from-black/50 to-transparent',
+            'opacity-0 group-hover:opacity-100 transition-opacity duration-300'
+          )}
+        />
       </div>
 
       <div className="p-8">
@@ -45,7 +57,10 @@ export default function ProjectCard({
           </h4>
           {project.inProgress && (
             <span
-              className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap"
+              className={cn(
+                'bg-yellow-100 text-yellow-800 px-2 py-1',
+                'rounded-full text-xs font-medium whitespace-nowrap'
+              )}
               aria-label="In Progress"
             >
               In Progress
@@ -68,7 +83,10 @@ export default function ProjectCard({
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium"
+              className={cn(
+                'bg-indigo-100 text-indigo-800 px-3 py-1',
+                'rounded-full text-sm font-medium'
+              )}
               role="listitem"
             >
               {tech}
@@ -80,7 +98,13 @@ export default function ProjectCard({
           {project.liveUrl && (
             <a
               href={project.liveUrl}
-              className="inline-flex items-center gap-0 sm:gap-2 bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+              className={cn(
+                'inline-flex items-center gap-0 sm:gap-2',
+                'bg-indigo-600 text-white px-6 py-2 rounded-full',
+                'hover:bg-indigo-700 focus:bg-indigo-700',
+                'transition-colors duration-200 font-medium whitespace-nowrap',
+                'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2'
+              )}
               aria-describedby={`live-demo-${year}-${index}-desc`}
               target="_blank"
               rel="noopener noreferrer"
@@ -95,7 +119,14 @@ export default function ProjectCard({
           {project.githubUrl && (
             <a
               href={project.githubUrl}
-              className="inline-flex items-center gap-0 sm:gap-2 border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 focus:border-gray-900 focus:text-gray-900 transition-colors duration-200 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              className={cn(
+                'inline-flex items-center gap-0 sm:gap-2',
+                'border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full',
+                'hover:border-gray-900 hover:text-gray-900',
+                'focus:border-gray-900 focus:text-gray-900',
+                'transition-colors duration-200 font-medium whitespace-nowrap',
+                'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2'
+              )}
               aria-describedby={`github-${year}-${index}-desc`}
               target="_blank"
               rel="noopener noreferrer"
@@ -121,7 +152,11 @@ export default function ProjectCard({
           <div className="flex space-x-4 mt-4">
             <Button
               onClick={() => onViewDetails(project)}
-              className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium whitespace-nowrap"
+              className={cn(
+                'bg-indigo-600 text-white px-6 py-2 rounded-full',
+                'hover:bg-indigo-700 focus:bg-indigo-700',
+                'transition-colors duration-200 font-medium whitespace-nowrap'
+              )}
               aria-describedby={`details-${year}-${index}-desc`}
               type="button"
             >
@@ -133,7 +168,14 @@ export default function ProjectCard({
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
-                className="inline-flex items-center gap-0 sm:gap-2 border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:border-gray-900 hover:text-gray-900 focus:border-gray-900 focus:text-gray-900 transition-colors duration-200 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                className={cn(
+                  'inline-flex items-center gap-0 sm:gap-2',
+                  'border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full',
+                  'hover:border-gray-900 hover:text-gray-900',
+                  'focus:border-gray-900 focus:text-gray-900',
+                  'transition-colors duration-200 font-medium whitespace-nowrap',
+                  'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2'
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
               >

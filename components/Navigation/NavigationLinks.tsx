@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useTranslation } from '@/hooks/useTranslation';
 
 interface NavigationItem {
@@ -34,11 +35,12 @@ export function NavigationLinks({
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className={`${
+              className={cn(
+                'hover:text-indigo-600 focus:text-indigo-600 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 rounded-md px-2 py-1 inline-block',
                 currentSection === item.id
                   ? 'text-indigo-600'
                   : 'text-gray-700'
-              } hover:text-indigo-600 focus:text-indigo-600 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 rounded-md px-2 py-1 inline-block`}
+              )}
               aria-current={currentSection === item.id ? 'page' : undefined}
               aria-describedby={`nav-${item.id}-desc`}
             >

@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { formatExperienceDuration } from '@/content/translations';
 import { categoryColors, getExperienceLevel, type Skill } from '@/content/skills';
@@ -32,12 +33,12 @@ export default function SkillItem({ skill, isAnimated }: SkillItemProps) {
 
       <div className="relative">
         <div
-          className="w-full bg-gray-200 rounded-full h-3"
+          className={cn('w-full bg-gray-200 rounded-full h-3')}
           role="img"
           aria-label={`Úroveň dovednosti pro ${skill.name}`}
         >
           <div
-            className="h-3 rounded-full transition-all duration-1000 ease-out"
+            className={cn('h-3 rounded-full transition-all duration-1000 ease-out')}
             style={{
               width: isAnimated ? `${progressPercentage}%` : '0%',
               backgroundColor: categoryColors[skill.category],

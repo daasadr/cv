@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useTranslation } from '@/hooks/useTranslation';
 import { FileDown } from 'lucide-react';
 
@@ -15,7 +16,17 @@ export default function ActionButtons() {
       <a
         href="/CV Dagmar Drbalkova 2025.pdf"
         download={`CV Dagmar Drbalkova ${new Date().getFullYear()}.pdf`}
-        className="inline-flex items-center gap-3 border-2 border-indigo-600 hover:bg-indigo-600 focus:bg-indigo-600 text-indigo-600 hover:text-white focus:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-1 focus:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+        className={cn(
+          'inline-flex items-center gap-3',
+          'border-2 border-indigo-600',
+          'hover:bg-indigo-600 focus:bg-indigo-600',
+          'text-indigo-600 hover:text-white focus:text-white',
+          'px-8 py-4 rounded-xl font-semibold text-lg',
+          'transition-colors duration-300',
+          'shadow-lg hover:shadow-xl focus:shadow-xl',
+          'transform hover:-translate-y-1 focus:-translate-y-1',
+          'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2'
+        )}
         data-macaly="cv-download-button"
         aria-describedby="cv-download-desc"
       >
@@ -30,7 +41,17 @@ export default function ActionButtons() {
         href="https://github.com/daasadr"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-3 border-2 border-gray-300 hover:border-gray-900 focus:border-gray-900 text-gray-700 hover:text-gray-900 focus:text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl focus:shadow-xl transform hover:-translate-y-1 focus:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+        className={cn(
+          'inline-flex items-center gap-3',
+          'border-2 border-gray-300',
+          'hover:border-gray-900 focus:border-gray-900',
+          'text-gray-700 hover:text-gray-900 focus:text-gray-900',
+          'px-8 py-4 rounded-xl font-semibold text-lg',
+          'transition-colors duration-300',
+          'shadow-lg hover:shadow-xl focus:shadow-xl',
+          'transform hover:-translate-y-1 focus:-translate-y-1',
+          'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2'
+        )}
         data-macaly="github-profile-button"
         aria-describedby="github-profile-desc"
       >
