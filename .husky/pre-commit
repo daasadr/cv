@@ -1,1 +1,29 @@
-npx lint-staged 
+#!/bin/sh
+
+# Prefer project-local binaries
+export PATH="./node_modules/.bin:$PATH"
+
+# Add common Node installation locations to PATH for non-interactive shells
+export PATH="$HOME/.volta/bin:$HOME/.asdf/shims:$HOME/.nodenv/shims:$HOME/.nodenv/bin:/opt/homebrew/bin:/usr/local/bin:/opt/local/bin:$PATH"
+
+# If node is still not found, attempt to use an NVM-installed Node version
+if ! command -v node >/dev/null 2>&1; then
+  if [ -d "$HOME/.nvm" ]; then
+    if [ -f "$HOME/.nvm/alias/default" ]; then
+      default_ver=$(cat "$HOME/.nvm/alias/default")
+      if [ -d "$HOME/.nvm/versions/node/$default_ver/bin" ]; then
+        export PATH="$HOME/.nvm/versions/node/$default_ver/bin:$PATH"
+      fi
+    fi
+    if ! command -v node >/dev/null 2>&1; then
+      for dir in "$HOME/.nvm/versions/node"/*/bin; do
+        [ -d "$dir" ] || continue
+        export PATH="$dir:$PATH"
+        break
+      done
+    fi
+  fi
+fi
+
+# Run lint-staged from local install
+exec lint-staged
