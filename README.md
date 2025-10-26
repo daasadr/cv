@@ -27,6 +27,7 @@ A modern, performant portfolio website built with Next.js, featuring 3D animatio
 Personal portfolio website showcasing full-stack development skills, projects, and experience. The site features a modern design with interactive 3D elements, optimized performance, and comprehensive accessibility features.
 
 **Live Site:** [https://cv-ruby-nu.vercel.app/](https://cv-ruby-nu.vercel.app/)
+**PDF Resume:** `public/CV Dagmar Drbalkova 2025.pdf`
 
 ## ✨ Features
 
@@ -48,11 +49,9 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **Analytics Integration** - Vercel Analytics and Speed Insights
 
 ### 🔍 SEO & Metadata
-- **Structured Data** - JSON-LD schema markup
-- **Open Graph** - Social media optimization
-- **Twitter Cards** - Enhanced social sharing
-- **Meta Tags** - Comprehensive SEO optimization
-- **Sitemap & Robots** - Search engine optimization
+- **Structured Data** - JSON-LD schema markup via `components/layout/HeadContent.tsx`
+- **Open Graph & Meta** - Configured in head with translations
+- **Resource Hints** - DNS prefetch, preconnect in head
 
 ### ♿ Accessibility
 - **WCAG 2.1 Compliance** - AA level accessibility
@@ -76,12 +75,7 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
 - **[shadcn/ui](https://ui.shadcn.com/)** - Component library built on Radix UI
 - **[Radix UI](https://www.radix-ui.com/)** - Unstyled, accessible components
-- **[Framer Motion](https://www.framer.com/motion/)** - Animation library
 - **[Lucide React](https://lucide.dev/)** - Icon library
-
-### Forms & Validation
-- **[React Hook Form](https://react-hook-form.com/)** - Form state management
-- **[Zod](https://zod.dev/)** - Schema validation
 
 ### 3D Graphics
 - **[Three.js](https://threejs.org/)** - 3D graphics library
@@ -98,10 +92,12 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **[Vercel Speed Insights](https://vercel.com/docs/speed-insights)** - Real-time performance tracking
 
 ### Internationalization
-- **Custom Language Context** - React Context for Czech/English switching
-- **Translation System** - Centralized translation keys and hooks
-- **LocalStorage Persistence** - Remembers user's language preference
-- **Dynamic Language Toggle** - Elegant UI switcher with accessibility support
+- **next-intl** - Plugin (`next-intl/plugin`), middleware and routing helpers
+- **Routes** - `app/[locale]/...` with locales: `cs`, `en`
+- **Messages** - `content/messages/*.json` loaded in `i18n/request.ts`
+- **Middleware** - `middleware.ts` with locale matcher
+- **Hook** - `hooks/useTranslation` wraps `next-intl`
+- **Language Switcher** - `components/LanguageSwitcher.tsx`
 
 ### Fonts
 - **[Inter](https://rsms.me/inter/)** - Primary interface font
@@ -161,16 +157,20 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 ```
 cv/
 ├── app/                      # Next.js App Router
+│   ├── [locale]/            # Localized routes (cs, en)
+│   │   ├── layout.tsx       # Per-locale layout
+│   │   ├── page.tsx         # Home page
+│   │   ├── error.tsx        # Route error boundary
+│   │   └── not-found.tsx    # 404 per locale
 │   ├── globals.css          # Global styles
 │   ├── layout.tsx           # Root layout
-│   └── page.tsx             # Home page
+│   └── global-error.tsx     # Global error boundary
 ├── components/              # React components
 │   ├── layout/             # Layout components
 │   │   ├── BodyWrapper.tsx
 │   │   ├── FontConfiguration.tsx
 │   │   ├── Footer.tsx
 │   │   ├── HeadContent.tsx
-│   │   ├── MetadataConfig.tsx
 │   │   └── index.ts
 │   ├── Navigation/         # Navigation components
 │   │   ├── constants.ts
@@ -219,16 +219,16 @@ cv/
 │   │   ├── utils.ts
 │   │   └── WebVitalsLoader.tsx
 │   ├── LanguageSwitcher.tsx
-│   ├── LanguageWrapper.tsx
 │   └── UnderFold.tsx       # Lazy-loaded sections
 ├── content/                 # Content configuration
 │   ├── contact.ts          # Contact information
 │   ├── projects.ts         # Project data
 │   ├── site-config.ts      # Site-wide configuration
 │   ├── skills.ts           # Skills data
-│   └── translations.ts     # Czech/English translations
-├── contexts/                # React Context providers
-│   └── LanguageContext.tsx # Language switching context
+│   └── messages/           # next-intl message bundles
+├── i18n/                    # next-intl configuration
+│   ├── request.ts          # Load messages per request
+│   └── routing.ts          # Locale routing helpers
 ├── hooks/                   # Custom React hooks
 │   ├── useThrottle.ts      # Throttle hook
 │   └── useTranslation.ts   # Translation hook
@@ -268,12 +268,13 @@ The application uses a modular component architecture:
 ### Data Management
 
 - **Centralized Content** - All content stored in `content/` directory for easy updates
-- **Translation System** - Type-safe translations using custom `useTranslation` hook
-- **Language Context** - React Context with localStorage persistence for language preference
+- **Translations** - `next-intl` messages in `content/messages/*.json`
+- **Translation Hook** - `hooks/useTranslation` (thin wrapper over next-intl)
 
 ### Performance Monitoring
 
 Custom performance tracking system with:
+- `components/WebVitalsReporter/` - Web Vitals and performance utilities
 - `useLoadingPerformance` - Tracks page loading metrics
 - `useThreeJSMonitor` - Monitors 3D rendering performance
 - `useResourceTracking` - Tracks resource loading
@@ -319,13 +320,6 @@ Font configuration in `components/layout/FontConfiguration.tsx`:
 - Font display optimization
 - CSS variable setup
 
-### Language Context
-
-Language switching configuration in `contexts/LanguageContext.tsx`:
-- LocalStorage persistence
-- Default language setting (Czech)
-- Language toggle functionality
-
 ## ⚡ Performance
 
 ### Optimization Features
@@ -335,8 +329,7 @@ Language switching configuration in `contexts/LanguageContext.tsx`:
 - **Three.js Monitoring** - Custom hooks for 3D rendering performance
 - **Resource Tracking** - Monitor loading performance and resource usage
 - **Throttled Scroll Handlers** - Optimized scroll event handling with `useThrottle` hook
-- **Bundle Analysis** - Webpack bundle analyzer
-- **Image Optimization** - Next.js automatic optimization
+- **Image Optimization** - Next.js images configured in `next.config.js`
 - **Code Splitting** - Automatic route-based and component-level splitting
 - **Caching Strategy** - Optimized cache headers
 - **Core Web Vitals** - CLS, LCP, FCP, FID, TTFB tracking
@@ -384,8 +377,8 @@ npm run lint
 ### Git Workflow
 
 - **Husky** - Git hooks for quality checks
-- **lint-staged** - Automatic linting of staged files before commit
-- **Pre-commit checks** - Biome runs automatically on commit
+- **lint-staged** - Runs Biome on staged files (`*.{js,jsx,ts,tsx,json}`)
+- **Pre-commit** - `npx lint-staged` via Husky hook
 
 ### Best Practices
 
