@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 
 interface ContactFormData {
@@ -289,11 +290,11 @@ export default function ContactForm() {
           </div>
         </fieldset>
 
-        <button
+        <Button
           type="submit"
           disabled={isSubmitting}
           aria-describedby="submit-button-desc"
-          className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
+          className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 ${
             isSubmitting
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-indigo-600 hover:bg-indigo-700 focus:bg-indigo-700 transform hover:scale-105 focus:scale-105'
@@ -332,7 +333,7 @@ export default function ContactForm() {
               ? t('contact.form.sendingDesc')
               : t('contact.form.submitDesc')}
           </span>
-        </button>
+        </Button>
 
         {/* Status messages */}
         {submitStatus === 'success' && (

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
 import type { Project } from './types';
 
 interface ProjectModalProps {
@@ -70,14 +71,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <h3 id="modal-title" className="text-3xl font-bold text-gray-900">
               {project.title}
             </h3>
-            <button
+            <Button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 focus:text-gray-700 text-2xl focus:outline-none focus:ring-2 focus:ring-gray-400 rounded p-1"
+              variant="ghost"
+              size="icon"
+              className="text-gray-500 hover:text-gray-700 text-2xl"
               aria-label="Zavřít dialog"
               type="button"
             >
               ×
-            </button>
+            </Button>
           </div>
 
           <img

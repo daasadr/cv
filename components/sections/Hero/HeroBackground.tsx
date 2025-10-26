@@ -6,7 +6,7 @@ import { ThreeJSScene } from '@/lib/threejs-scene';
 export default function HeroBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<ThreeJSScene | null>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [_isVisible, setIsVisible] = useState(true);
   const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {

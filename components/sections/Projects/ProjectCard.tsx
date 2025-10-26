@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 import type { Project } from './types';
 
 interface ProjectCardProps {
@@ -124,9 +125,9 @@ export default function ProjectCard({
 
         {project.longDescription && onViewDetails && (
           <div className="flex space-x-4 mt-4">
-            <button
+            <Button
               onClick={() => onViewDetails(project)}
-              className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+              className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 focus:bg-indigo-700 transition-colors duration-200 font-medium whitespace-nowrap"
               aria-describedby={`details-${year}-${index}-desc`}
               type="button"
             >
@@ -134,7 +135,7 @@ export default function ProjectCard({
               <span id={`details-${year}-${index}-desc`} className="sr-only">
                 - zobrazí detailní informace o projektu {project.title}
               </span>
-            </button>
+            </Button>
             {project.liveUrl && (
               <a
                 href={project.liveUrl}

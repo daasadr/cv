@@ -13,6 +13,13 @@ interface WebVital {
   navigationType?: string;
 }
 
+interface VercelAnalyticsWindow extends Window {
+  va?: (
+    event: string,
+    data: { name: string; data: Record<string, unknown> }
+  ) => void;
+}
+
 export default function WebVitalsReporter() {
   useReportWebVitals((metric: WebVital) => {
     // Log to console in development
@@ -227,9 +234,9 @@ function getMetricEmoji(metricName: string, rating: string): string {
 function sendToVercelAnalytics(metric: WebVital) {
   // Vercel Analytics automatically captures Web Vitals when using useReportWebVitals
   // We can also send additional tracking data
-  if (typeof window !== 'undefined' && (window as any).va) {
+  if (typeof window !== 'undefined' && (window as VercelAnalyticsWindow).va) {
     // Use the correct Vercel Analytics API
-    (window as any).va('event', {
+    (window as VercelAnalyticsWindow).va?.('event', {
       name: 'web-vital-detail',
       data: {
         metric_name: metric.name,
@@ -244,8 +251,8 @@ function sendToVercelAnalytics(metric: WebVital) {
 
 // Send custom metrics to Vercel Analytics
 function sendCustomMetric(name: string, value: number) {
-  if (typeof window !== 'undefined' && (window as any).va) {
-    (window as any).va('event', {
+  if (typeof window !== 'undefined' && (window as VercelAnalyticsWindow).va) {
+    (window as VercelAnalyticsWindow).va?.('event', {
       name: 'performance-metric',
       data: {
         metric_name: name,
