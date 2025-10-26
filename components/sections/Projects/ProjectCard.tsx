@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Play } from 'lucide-react';
 import type { Project } from '@/content/projects';
 import { useTranslation } from '@/hooks/useTranslation';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface ProjectCardProps {
   project: Project;
@@ -30,7 +30,7 @@ export default function ProjectCard({
       aria-labelledby={`project-${year}-${index}-title`}
     >
       <div className="relative overflow-hidden">
-        <Image
+        <OptimizedImage
           src={project.image}
           alt={`Obrázek projektu ${title}`}
           width={400}
