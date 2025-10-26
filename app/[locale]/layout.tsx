@@ -2,8 +2,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import type { Metadata } from 'next';
-import { siteConfig } from '@/content/site-config';
 import '../globals.css';
 import {
   BodyWrapper,
@@ -11,14 +9,16 @@ import {
   fontVariables,
   HeadContent,
 } from '@/components/layout';
-
-const EMOJI = '👩‍💻';
-const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
+import { siteConfig } from '@/content/site-config';
+import type { Metadata } from 'next';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+/**
+ * Helper function to get nested values from translation messages object
+ */
 function getNestedValue(obj: unknown, keys: string[]): string {
   let value: unknown = obj;
   for (const key of keys) {
@@ -31,12 +31,25 @@ function getNestedValue(obj: unknown, keys: string[]): string {
   return typeof value === 'string' ? value : '';
 }
 
+/**
+ * Emoji used for favicon across the application
+ */
+const EMOJI = '👩‍💻';
+
+/**
+ * SVG data URL for emoji favicon
+ */
+const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
+
+/**
+ * Generate metadata for the page
+ */
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  await params; // Consume params to avoid unused variable warning
+  await params;
   const messages = await getMessages();
   const t = (key: string): string => getNestedValue(messages, key.split('.'));
   
@@ -124,14 +137,11 @@ export default async function LocaleLayout({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
-  
-  // Helper to get translation from messages
-  const getTranslation = (key: string): string => getNestedValue(messages, key.split('.'));
 
   return (
     <html lang={locale} className={fontVariables}>
       <head>
-        <HeadContent description={getTranslation('siteConfig.description.structured')} />
+        <HeadContent />
       </head>
       <NextIntlClientProvider messages={messages}>
         <BodyWrapper fontClass={bodyFontClass}>{children}</BodyWrapper>

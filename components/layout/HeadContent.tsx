@@ -1,7 +1,23 @@
 import { siteConfig } from '@/content/site-config';
+import { getMessages } from 'next-intl/server';
 
-const EMOJI = '👩‍💻';
-const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
+/**
+ * Helper function to get nested values from translation messages object
+ * @param obj - The messages object
+ * @param keys - Array of keys representing the path to the value
+ * @returns The string value if found, empty string otherwise
+ */
+function getNestedValue(obj: unknown, keys: string[]): string {
+  let value: unknown = obj;
+  for (const key of keys) {
+    if (value !== null && typeof value === 'object' && key in value) {
+      value = Reflect.get(value, key);
+    } else {
+      return '';
+    }
+  }
+  return typeof value === 'string' ? value : '';
+}
 
 const getStructuredData = (description: string) => ({
   '@context': 'https://schema.org',
@@ -19,10 +35,6 @@ const getStructuredData = (description: string) => ({
     addressCountry: siteConfig.address.country,
   },
 });
-
-interface HeadContentProps {
-  description: string;
-}
 
 /**
  * Critical CSS for above-the-fold content.
@@ -89,15 +101,17 @@ const criticalCSS = `
  *
  * @returns JSX elements for HTML head content
  */
-export default function HeadContent({ description }: HeadContentProps) {
+export default async function HeadContent() {
+  const messages = await getMessages();
+  
+  // Helper to get translation from messages
+  const getTranslation = (key: string): string => getNestedValue(messages, key.split('.'));
+  
+  const description = getTranslation('siteConfig.description.structured');
   const structuredData = getStructuredData(description);
   
   return (
     <>
-      {/* Emoji Favicon */}
-      <link rel="icon" href={faviconSvg} />
-      <link rel="apple-touch-icon" href={faviconSvg} />
-
       {/* Critical CSS for above-the-fold content */}
       {/* eslint-disable-next-line react/no-danger */}
       <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
