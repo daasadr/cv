@@ -4,8 +4,7 @@ import { useRef, useState } from 'react';
 import ProjectModal from './ProjectModal';
 import ProjectsHeader from './ProjectsHeader';
 import ProjectsList from './ProjectsList';
-import { projects } from './projectsData';
-import type { Project } from './types';
+import { projects, type Project } from '@/content/projects';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

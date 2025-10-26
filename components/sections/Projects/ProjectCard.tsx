@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import type { Project } from './types';
+import type { Project } from '@/content/projects';
 
 interface ProjectCardProps {
   project: Project;

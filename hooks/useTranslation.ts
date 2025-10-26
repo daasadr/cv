@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { type TranslationKey, translations } from '@/lib/translations';
+import { type TranslationKey, translations } from '@/content/translations';
 
 export function useTranslation() {
   const { language } = useLanguage();

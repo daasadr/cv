@@ -6,6 +6,8 @@ export const translations = {
     'nav.projects': 'Zkušenosti',
     'nav.contact': 'Kontakty',
     'nav.contactMe': 'Kontaktujte mě',
+    'nav.github': 'GitHub',
+    'nav.githubDesc': 'otevře můj GitHub profil v novém okně',
     'nav.skipToContent': 'Přeskočit na hlavní obsah',
     'nav.goToSection': 'přejít na sekci',
 
@@ -155,6 +157,8 @@ export const translations = {
     'nav.projects': 'Experience',
     'nav.contact': 'Contact',
     'nav.contactMe': 'Contact Me',
+    'nav.github': 'GitHub',
+    'nav.githubDesc': 'opens my GitHub profile in a new window',
     'nav.skipToContent': 'Skip to main content',
     'nav.goToSection': 'go to section',
 

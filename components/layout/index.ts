@@ -1,4 +1,4 @@
-export { siteConfig } from '@/lib/site-config';
+export { siteConfig } from '@/content/site-config';
 export { default as BodyWrapper } from './BodyWrapper';
 export {
   bodyFontClass,

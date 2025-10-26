@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import SkillsHeader from './SkillsHeader';
 import SkillsList from './SkillsList';
 
-export { skills } from './SkillsData';
+export { skills } from '@/content/skills';
 
 export default function Skills() {
   const [isAnimated, setIsAnimated] = useState(false);

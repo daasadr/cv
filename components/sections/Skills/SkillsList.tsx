@@ -2,7 +2,7 @@
 
 import { useTranslation } from '@/hooks/useTranslation';
 import SkillCategory from './SkillCategory';
-import { type Skill, skills } from './SkillsData';
+import { type Skill, skills } from '@/content/skills';
 import SkillsLegend from './SkillsLegend';
 
 interface SkillsListProps {

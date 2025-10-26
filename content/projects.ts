@@ -1,4 +1,14 @@
-import type { Project } from './types';
+export interface Project {
+  title: string;
+  description: string;
+  longDescription?: string;
+  technologies: string[];
+  image: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  year: number;
+  inProgress?: boolean;
+}
 
 export const projects: Project[] = [
   {
@@ -109,3 +119,4 @@ export const projects: Project[] = [
     year: 2024,
   },
 ];
+

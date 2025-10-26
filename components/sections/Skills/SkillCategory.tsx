@@ -2,7 +2,7 @@
 
 import { useTranslation } from '@/hooks/useTranslation';
 import SkillItem from './SkillItem';
-import { categoryColors, type Skill } from './SkillsData';
+import { categoryColors, type Skill } from '@/content/skills';
 
 interface SkillCategoryProps {
   category: string;

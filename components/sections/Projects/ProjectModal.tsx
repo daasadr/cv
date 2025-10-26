@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import type { Project } from './types';
+import type { Project } from '@/content/projects';
 
 interface ProjectModalProps {
   project: Project | null;

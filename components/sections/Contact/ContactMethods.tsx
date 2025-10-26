@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/hooks/useTranslation';
+import { contactMethods as contactData } from '@/content/contact';
 import ContactMethodItem from './ContactMethodItem';
 
 interface ContactMethod {
@@ -17,23 +18,23 @@ export default function ContactMethods() {
   const contactMethods: ContactMethod[] = [
     {
       label: t('contact.methods.email'),
-      value: 'Daasa.D@seznam.cz',
-      icon: '📧',
-      href: 'mailto:Daasa.D@seznam.cz',
+      value: contactData.email.value,
+      icon: contactData.email.icon,
+      href: contactData.email.href,
       description: t('contact.methods.emailDesc'),
     },
     {
       label: t('contact.methods.phone'),
-      value: '+420 773 245 222',
-      icon: '📱',
-      href: 'tel:+420 773 245 222',
+      value: contactData.phone.value,
+      icon: contactData.phone.icon,
+      href: contactData.phone.href,
       description: t('contact.methods.phoneDesc'),
     },
     {
       label: t('contact.methods.github'),
-      value: 'github.com/daasadr',
-      icon: '💻',
-      href: 'https://github.com/daasadr',
+      value: contactData.github.value,
+      icon: contactData.github.icon,
+      href: contactData.github.href,
       description: t('contact.methods.githubDesc'),
     },
   ];

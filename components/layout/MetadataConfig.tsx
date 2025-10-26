@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { currentFaviconMetadata } from '@/lib/favicon-emojis';
-import { siteConfig } from '@/lib/site-config';
+import { siteConfig } from '@/content/site-config';
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} - ${siteConfig.jobTitle}`,

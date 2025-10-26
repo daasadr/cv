@@ -53,3 +53,4 @@ export const getExperienceDescription = (months: number): string => {
   }
   return `${months} měsíc${months > 1 ? 'ů' : ''}`;
 };
+

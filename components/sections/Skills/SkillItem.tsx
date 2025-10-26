@@ -1,8 +1,8 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import { formatExperienceDuration } from '@/lib/translations';
-import { categoryColors, getExperienceLevel, type Skill } from './SkillsData';
+import { formatExperienceDuration } from '@/content/translations';
+import { categoryColors, getExperienceLevel, type Skill } from '@/content/skills';
 
 interface SkillItemProps {
   skill: Skill;

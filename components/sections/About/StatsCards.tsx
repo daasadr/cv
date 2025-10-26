@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/hooks/useTranslation';
-import { skills } from '../Skills/SkillsData';
+import { skills } from '@/content/skills';
 
 export default function StatsCards() {
   const { t } = useTranslation();

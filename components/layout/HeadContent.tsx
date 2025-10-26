@@ -1,5 +1,5 @@
 import { currentEmoji, generateEmojiSVG } from '@/lib/favicon-emojis';
-import { siteConfig } from '@/lib/site-config';
+import { siteConfig } from '@/content/site-config';
 
 const structuredData = {
   '@context': 'https://schema.org',
