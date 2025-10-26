@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Play } from 'lucide-react';
 import type { Project } from '@/content/projects';
 
 interface ProjectCardProps {
@@ -84,14 +85,7 @@ export default function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg
-                className="w-4 h-4 hidden sm:inline"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              <Play className="w-4 h-4 hidden sm:inline" aria-hidden="true" />
               Live Demo
               <span id={`live-demo-${year}-${index}-desc`} className="sr-only">
                 - otevře živou ukázku projektu {project.title} v novém okně
@@ -143,14 +137,7 @@ export default function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <svg
-                  className="w-4 h-4 hidden sm:inline"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                <Play className="w-4 h-4 hidden sm:inline" aria-hidden="true" />
                 Live Demo
               </a>
             )}
