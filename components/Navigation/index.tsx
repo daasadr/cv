@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useThrottle } from '@/hooks/useThrottle';
-import LanguageSwitcher from '../LanguageSwitcher';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { SkipNavigation } from './SkipNavigation';
 import { NavigationLinks } from './NavigationLinks';
 import { GitHubButton } from './GitHubButton';
