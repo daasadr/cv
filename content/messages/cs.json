@@ -71,12 +71,48 @@
       "backend": "Backend technologie",
       "tools": "Nástroje a workflow"
     },
-    "overview": "Přehled technických dovedností podle kategorií"
+    "overview": "Přehled technických dovedností podle kategorií",
+    "levels": {
+      "advanced": "Pokročilý",
+      "intermediate": "Střední",
+      "beginner": "Začínající",
+      "basic": "Základní"
+    }
   },
   "projects": {
     "title": "Zkušenosti a tvorba",
     "subtitle": "Moje projekty a práce",
-    "description": "Seznam projektů, které ukazují mé technické znalosti a kreativní řešení problémů."
+    "description": "Seznam projektů, které ukazují mé technické znalosti a kreativní řešení problémů.",
+    "items": {
+      "officeAutomations": {
+        "title": "Office automations",
+        "description": "Moderní webová aplikace pro automatické zpracování PDF dokumentů průběžné evidence odpadů s AI integrací."
+      },
+      "interactiveComponent": {
+        "title": "Interaktivní komponenta pro výrobce laboratorního vybavení",
+        "description": "Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery."
+      },
+      "shootingApp": {
+        "title": "Aplikace pro lektora střeleckého výcviku",
+        "description": ""
+      },
+      "thisPresentation": {
+        "title": "Tato prezentace",
+        "description": "Moderní a rychlá portfolio prezentace vytvořená pomocí Next.js, obsahující 3D animace a design zaměřený na přístupnost."
+      },
+      "nocodePWA": {
+        "title": "No-code generování PWA",
+        "description": "Drag & drop sestavení a generování PWA."
+      },
+      "dropshipping": {
+        "title": "Dropshipping e-commerce řešení",
+        "description": "Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery."
+      },
+      "maps": {
+        "title": "Práce s mapami",
+        "description": "Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá OpenStreetMap a OpenLayers."
+      }
+    }
   },
   "contact": {
     "title": "Pojďme spolupracovat",
@@ -92,6 +128,11 @@
       "phoneDesc": "Zavolejte mi",
       "githubDesc": "Navštivte můj GitHub profil",
       "opensNewWindow": "otevře se v novém okně"
+    },
+    "labels": {
+      "email": "Email",
+      "phone": "Telefon",
+      "github": "GitHub"
     },
     "whyMe": {
       "title": "Proč já?",
@@ -145,6 +186,14 @@
   "language": {
     "switchToEnglish": "Switch to English",
     "switchToCzech": "Zpět do češtiny"
+  },
+  "siteConfig": {
+    "description": {
+      "short": "Full Stack Developer s 2+ lety zkušeností v IT. Specializace na TypeScript, React, Node.js. Portfolio, zkušenosti a kontaktní informace.",
+      "portfolio": "Portfolio Full Stack Developerky s 2+ lety zkušeností. Specializace na TypeScript, React, Node.js a moderní webové technologie.",
+      "structured": "Full Stack Developer s 2+ lety zkušeností v TypeScript, React, Node.js",
+      "twitter": "Portfolio Full Stack Developerky s 2+ lety zkušeností v moderních webových technologiích."
+    }
   },
   "footer": {
     "copyright": "© 2025 Dagmar Drbálková. Všechna práva vyhrazena.",

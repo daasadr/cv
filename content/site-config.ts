@@ -23,16 +23,7 @@ export const siteConfig = {
   },
 
   // Professional Information
-  description: {
-    short:
-      'Full Stack Developer s 2+ lety zkušeností v IT. Specializace na TypeScript, React, Node.js. Portfolio, zkušenosti a kontaktní informace.',
-    portfolio:
-      'Portfolio Full Stack Developerky s 2+ lety zkušeností. Specializace na TypeScript, React, Node.js a moderní webové technologie.',
-    structured:
-      'Full Stack Developer s 2+ lety zkušeností v TypeScript, React, Node.js',
-    twitter:
-      'Portfolio Full Stack Developerky s 2+ lety zkušeností v moderních webových technologiích.',
-  },
+  // Descriptions are now in messages files under siteConfig.description
 
   // Technical Skills
   technologies: [

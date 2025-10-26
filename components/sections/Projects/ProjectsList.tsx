@@ -3,12 +3,10 @@ import type { Project } from '@/content/projects';
 
 interface ProjectsListProps {
   projects: Project[];
-  onViewDetails?: (project: Project) => void;
 }
 
 export default function ProjectsList({
   projects,
-  onViewDetails,
 }: ProjectsListProps) {
   // Group projects by year in descending order
   const projectsByYear = projects.reduce<Record<number, Project[]>>(
@@ -44,7 +42,6 @@ export default function ProjectsList({
                 project={project}
                 year={year}
                 index={index}
-                onViewDetails={onViewDetails}
               />
             ))}
           </div>

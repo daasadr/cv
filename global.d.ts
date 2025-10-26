@@ -1,4 +1,4 @@
-import type cs from './messages/cs.json';
+import type cs from './content/messages/cs.json';
 
 type Messages = typeof cs;
 

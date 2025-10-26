@@ -19,10 +19,26 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  await params; // Consume params to avoid unused variable warning
+  const messages = await getMessages();
+  const t = (key: string) => {
+    const keys = key.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let value: any = messages;
+    for (const k of keys) {
+      value = value?.[k];
+    }
+    return value as string;
+  };
+  
   return {
     title: `${siteConfig.name} - ${siteConfig.jobTitle}`,
-    description: siteConfig.description.short,
+    description: t('siteConfig.description.short'),
     keywords: [...siteConfig.keywords],
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
@@ -42,7 +58,7 @@ export function generateMetadata(): Metadata {
     },
     openGraph: {
       title: `${siteConfig.name} - ${siteConfig.jobTitle}`,
-      description: siteConfig.description.portfolio,
+      description: t('siteConfig.description.portfolio'),
       url: siteConfig.url,
       siteName: siteConfig.siteName,
       locale: siteConfig.locale,
@@ -51,7 +67,7 @@ export function generateMetadata(): Metadata {
     twitter: {
       card: 'summary_large_image',
       title: `${siteConfig.name} - ${siteConfig.jobTitle}`,
-      description: siteConfig.description.twitter,
+      description: t('siteConfig.description.twitter'),
     },
     robots: {
       index: true,
@@ -100,11 +116,22 @@ export default async function LocaleLayout({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+  
+  // Helper to get translation from messages
+  const getTranslation = (key: string): string => {
+    const keys = key.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let value: any = messages;
+    for (const k of keys) {
+      value = value?.[k];
+    }
+    return value as string;
+  };
 
   return (
     <html lang={locale} className={fontVariables}>
       <head>
-        <HeadContent />
+        <HeadContent description={getTranslation('siteConfig.description.structured')} />
       </head>
       <NextIntlClientProvider messages={messages}>
         <BodyWrapper fontClass={bodyFontClass}>{children}</BodyWrapper>

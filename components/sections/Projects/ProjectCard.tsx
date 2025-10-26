@@ -1,22 +1,25 @@
+'use client';
+
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import type { Project } from '@/content/projects';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface ProjectCardProps {
   project: Project;
   year: number;
   index: number;
-  onViewDetails?: (project: Project) => void;
 }
 
 export default function ProjectCard({
   project,
   year,
   index,
-  onViewDetails,
 }: ProjectCardProps) {
+  const { t } = useTranslation();
+  const title = t(`projects.items.${project.id}.title`);
+  const description = t(`projects.items.${project.id}.description`);
   return (
     <article
       className={cn(
@@ -29,7 +32,7 @@ export default function ProjectCard({
       <div className="relative overflow-hidden">
         <Image
           src={project.image}
-          alt={`Obrázek projektu ${project.title}`}
+          alt={`Obrázek projektu ${title}`}
           width={400}
           height={256}
           className={cn(
@@ -53,7 +56,7 @@ export default function ProjectCard({
             className="text-2xl font-bold text-gray-900"
             data-macaly={`project-${year}-${index}-title`}
           >
-            {project.title}
+            {title}
           </h4>
           {project.inProgress && (
             <span
@@ -72,7 +75,7 @@ export default function ProjectCard({
           className="text-gray-600 mb-6 leading-relaxed"
           data-macaly={`project-${year}-${index}-description`}
         >
-          {project.description}
+          {description}
         </p>
 
         <div
@@ -112,7 +115,7 @@ export default function ProjectCard({
               <Play className="w-4 h-4 hidden sm:inline" aria-hidden="true" />
               Live Demo
               <span id={`live-demo-${year}-${index}-desc`} className="sr-only">
-                - otevře živou ukázku projektu {project.title} v novém okně
+                - otevře živou ukázku projektu {title} v novém okně
               </span>
             </a>
           )}
@@ -141,50 +144,12 @@ export default function ProjectCard({
               </svg>
               View Code
               <span id={`github-${year}-${index}-desc`} className="sr-only">
-                - otevře zdrojový kód projektu {project.title} na GitHubu v
+                - otevře zdrojový kód projektu {title} na GitHubu v
                 novém okně
               </span>
             </a>
           )}
         </div>
-
-        {project.longDescription && onViewDetails && (
-          <div className="flex space-x-4 mt-4">
-            <Button
-              onClick={() => onViewDetails(project)}
-              className={cn(
-                'bg-indigo-600 text-white px-6 py-2 rounded-full',
-                'hover:bg-indigo-700 focus:bg-indigo-700',
-                'transition-colors duration-200 font-medium whitespace-nowrap'
-              )}
-              aria-describedby={`details-${year}-${index}-desc`}
-              type="button"
-            >
-              View Details
-              <span id={`details-${year}-${index}-desc`} className="sr-only">
-                - zobrazí detailní informace o projektu {project.title}
-              </span>
-            </Button>
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                className={cn(
-                  'inline-flex items-center gap-0 sm:gap-2',
-                  'border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full',
-                  'hover:border-gray-900 hover:text-gray-900',
-                  'focus:border-gray-900 focus:text-gray-900',
-                  'transition-colors duration-200 font-medium whitespace-nowrap',
-                  'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2'
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Play className="w-4 h-4 hidden sm:inline" aria-hidden="true" />
-                Live Demo
-              </a>
-            )}
-          </div>
-        )}
       </div>
     </article>
   );

@@ -1,11 +1,10 @@
 export interface ContactMethod {
-  label: string;
   value: string;
   icon: string;
   href: string;
-  description: string;
 }
 
+// Labels and descriptions are now in messages files under contact.labels and contact.methods
 export const contactMethods = {
   email: {
     value: 'Daasa.D@seznam.cz',

@@ -71,12 +71,48 @@
       "backend": "Backend Technologies",
       "tools": "Tools & Workflow"
     },
-    "overview": "Overview of technical skills by category"
+    "overview": "Overview of technical skills by category",
+    "levels": {
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner",
+      "basic": "Basic"
+    }
   },
   "projects": {
     "title": "Experience & Projects",
     "subtitle": "My projects and work",
-    "description": "A list of projects that showcase my technical knowledge and creative problem-solving."
+    "description": "A list of projects that showcase my technical knowledge and creative problem-solving.",
+    "items": {
+      "officeAutomations": {
+        "title": "Office Automations",
+        "description": "Modern web application for automatic PDF processing of continuous waste records with AI integration."
+      },
+      "interactiveComponent": {
+        "title": "Interactive Component for Laboratory Equipment Manufacturer",
+        "description": "Dropshipping e-commerce solution with user authentication, product management, shopping cart functionality, payment processing and newsletters."
+      },
+      "shootingApp": {
+        "title": "Application for Shooting Training Instructor",
+        "description": ""
+      },
+      "thisPresentation": {
+        "title": "This Presentation",
+        "description": "Modern and fast portfolio presentation built with Next.js, featuring 3D animations and accessibility-focused design."
+      },
+      "nocodePWA": {
+        "title": "No-code PWA Generation",
+        "description": "Drag & drop PWA builder and generator."
+      },
+      "dropshipping": {
+        "title": "Dropshipping E-commerce Solution",
+        "description": "Dropshipping e-commerce solution with user authentication, product management, shopping cart functionality, payment processing and newsletters."
+      },
+      "maps": {
+        "title": "Working with Maps",
+        "description": "App for displaying and working with maps - measuring distances, etc. Uses OpenStreetMap and OpenLayers."
+      }
+    }
   },
   "contact": {
     "title": "Let's Collaborate",
@@ -92,6 +128,11 @@
       "phoneDesc": "Call me",
       "githubDesc": "Visit my GitHub profile",
       "opensNewWindow": "opens in a new window"
+    },
+    "labels": {
+      "email": "Email",
+      "phone": "Phone",
+      "github": "GitHub"
     },
     "whyMe": {
       "title": "Why Me?",
@@ -145,6 +186,14 @@
   "language": {
     "switchToEnglish": "Switch to English",
     "switchToCzech": "Back to Czech"
+  },
+  "siteConfig": {
+    "description": {
+      "short": "Full Stack Developer with 2+ years of experience in IT. Specialization in TypeScript, React, Node.js. Portfolio, experience and contact information.",
+      "portfolio": "Portfolio of a Full Stack Developer with 2+ years of experience. Specialization in TypeScript, React, Node.js and modern web technologies.",
+      "structured": "Full Stack Developer with 2+ years of experience in TypeScript, React, Node.js",
+      "twitter": "Portfolio of a Full Stack Developer with 2+ years of experience in modern web technologies."
+    }
   },
   "footer": {
     "copyright": "© 2025 Dagmar Drbálková. All rights reserved.",

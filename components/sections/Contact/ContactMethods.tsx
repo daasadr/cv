@@ -17,21 +17,21 @@ export default function ContactMethods() {
 
   const contactMethods: ContactMethod[] = [
     {
-      label: t('contact.methods.email'),
+      label: t('contact.labels.email'),
       value: contactData.email.value,
       icon: contactData.email.icon,
       href: contactData.email.href,
       description: t('contact.methods.emailDesc'),
     },
     {
-      label: t('contact.methods.phone'),
+      label: t('contact.labels.phone'),
       value: contactData.phone.value,
       icon: contactData.phone.icon,
       href: contactData.phone.href,
       description: t('contact.methods.phoneDesc'),
     },
     {
-      label: t('contact.methods.github'),
+      label: t('contact.labels.github'),
       value: contactData.github.value,
       icon: contactData.github.icon,
       href: contactData.github.href,

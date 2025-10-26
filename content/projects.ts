@@ -1,7 +1,5 @@
 export interface Project {
-  title: string;
-  description: string;
-  longDescription?: string;
+  id: string; // Translation key for projects.items.{id}
   technologies: string[];
   image: string;
   liveUrl?: string;
@@ -12,9 +10,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'Office automations',
-    description:
-      'Moderní webová aplikace pro automatické zpracování PDF dokumentů průběžné evidence odpadů s AI integrací.',
+    id: 'officeAutomations',
     technologies: [
       'Astro',
       'React',
@@ -53,9 +49,7 @@ export const projects: Project[] = [
   //   inProgress: true,
   // },
   {
-    title: 'Interaktivní komponenta pro výrobce laboratorního vybavení',
-    description:
-      'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    id: 'interactiveComponent',
     technologies: [
       'Accessibility',
       'CSS only interactivity',
@@ -68,8 +62,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    title: 'Aplikace pro lektora střeleckého výcviku',
-    description: '',
+    id: 'shootingApp',
     technologies: ['React', 'TypeScript', 'Node.js'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025,
@@ -77,9 +70,7 @@ export const projects: Project[] = [
   },
 
   {
-    title: 'Tato prezentace',
-    description:
-      'Moderní a rychlá portfolio prezentace vytvořená pomocí Next.js, obsahující 3D animace a design zaměřený na přístupnost.',
+    id: 'thisPresentation',
     technologies: [
       'Next.js',
       'Three.js',
@@ -92,26 +83,21 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    title: 'No-code generování PWA',
-    description: 'Drag & drop sestavení a generování PWA.',
+    id: 'nocodePWA',
     technologies: ['React Brics', 'Next.js', 'Directus'],
     image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
     year: 2025,
     inProgress: true,
   },
   {
-    title: 'Dropshipping e-commerce řešení',
-    description:
-      'Dropshipping e-commerce řešení s autentizací uživatelů, správou produktů, funkcí nákupního košíku, zpracováním plateb a newslettery.',
+    id: 'dropshipping',
     technologies: ['Next.js', 'Directus'],
     image: 'images/happy.png',
     year: 2024,
     inProgress: true,
   },
   {
-    title: 'Práce s mapami',
-    description:
-      'Appka pro zobrazení mapy a práci s ní - měření vzdáleností ap. Využívá OpenStreetMap a OpenLayers.',
+    id: 'maps',
     technologies: ['React', 'Github Actions', 'OpenLayers', 'MUI'],
     image: '/images/mapa.png',
     liveUrl: 'https://daasadr.github.io/vrg-demo3/',

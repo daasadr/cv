@@ -28,10 +28,5 @@ export const categoryColors = {
   languages: '#EF4444',
 };
 
-export const categoryLabels = {
-  frontend: 'Frontend technologie',
-  backend: 'Backend technologie',
-  tools: 'Nástroje a workflow',
-  languages: 'Programovací jazyky',
-};
+// Category labels are now in messages files under skills.categories
 

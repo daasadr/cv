@@ -3,12 +3,12 @@ import { siteConfig } from '@/content/site-config';
 const EMOJI = '👩‍💻';
 const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
 
-const structuredData = {
+const getStructuredData = (description: string) => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: siteConfig.name,
   jobTitle: siteConfig.jobTitle,
-  description: siteConfig.description.structured,
+  description,
   url: siteConfig.url,
   sameAs: [siteConfig.social.github],
   knowsAbout: [...siteConfig.technologies],
@@ -18,7 +18,11 @@ const structuredData = {
     '@type': 'PostalAddress',
     addressCountry: siteConfig.address.country,
   },
-};
+});
+
+interface HeadContentProps {
+  description: string;
+}
 
 /**
  * Critical CSS for above-the-fold content.
@@ -85,7 +89,9 @@ const criticalCSS = `
  *
  * @returns JSX elements for HTML head content
  */
-export default function HeadContent() {
+export default function HeadContent({ description }: HeadContentProps) {
+  const structuredData = getStructuredData(description);
+  
   return (
     <>
       {/* Emoji Favicon */}

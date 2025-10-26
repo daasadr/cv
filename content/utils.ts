@@ -31,14 +31,14 @@ export const formatExperienceDuration = (
 };
 
 /**
- * Determines the experience level based on months of experience
+ * Determines the experience level key based on months of experience
  * @param months - Total number of months of experience
- * @returns Experience level label in Czech ('Pokročilý', 'Střední', 'Začínající', or 'Základní')
+ * @returns Experience level key for translation ('advanced', 'intermediate', 'beginner', or 'basic')
  */
-export const getExperienceLevel = (months: number): string => {
-  if (months >= 18) return 'Pokročilý';
-  if (months >= 10) return 'Střední';
-  if (months >= 6) return 'Začínající';
-  return 'Základní';
+export const getExperienceLevelKey = (months: number): string => {
+  if (months >= 18) return 'advanced';
+  if (months >= 10) return 'intermediate';
+  if (months >= 6) return 'beginner';
+  return 'basic';
 };
 
