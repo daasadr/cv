@@ -1,112 +1,81 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { AlertTriangle } from 'lucide-react';
+import { useEffect } from 'react';
+import { AlertTriangle, RefreshCcw, Home } from 'lucide-react';
 
-interface GlobalErrorProps {
+export default function GlobalError({
+  error,
+  reset,
+}: {
   error: Error & { digest?: string };
   reset: () => void;
-}
+}) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error('Global error boundary caught:', error);
+  }, [error]);
 
-export default function GlobalError({ error, reset }: GlobalErrorProps) {
   return (
     <html lang="cs">
       <body>
-        <div className="min-h-screen flex items-center justify-center px-4 py-16 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-white to-orange-50 px-4">
           <div className="max-w-2xl w-full text-center">
             {/* Error Icon */}
-            <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-red-100 dark:bg-red-900/20">
-              <AlertTriangle 
-                className="w-10 h-10 text-red-600 dark:text-red-400" 
-                aria-hidden="true" 
-              />
+            <div className="mb-8 flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-red-500 opacity-20 blur-xl rounded-full animate-pulse" />
+                <AlertTriangle className="w-24 h-24 text-red-500 relative" />
+              </div>
             </div>
 
-            {/* Error Title */}
-            <h1 className="text-4xl font-bold mb-3 text-slate-900 dark:text-slate-100">
-              Critical Error
-            </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 mb-6">
-              Something went wrong with the application
-            </p>
+            {/* Error Message */}
+            <div className="space-y-4 mb-12">
+              <h1 className="text-4xl font-bold text-gray-900">
+                Oops! Something went wrong
+              </h1>
+              <p className="text-lg text-gray-600">
+                We apologize for the inconvenience
+              </p>
+              <p className="text-base text-gray-500 max-w-md mx-auto">
+                An unexpected error occurred. The team has been automatically
+                notified and we are working on resolving the issue.
+              </p>
+            </div>
 
-            {/* Error Description */}
-            <p className="text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-8">
-              A critical error occurred that prevented the application from loading properly. 
-              Please try refreshing the page or contact support if the problem persists.
-            </p>
-
-            {/* Technical Details (Development Only) */}
-            {process.env.NODE_ENV === 'development' && (
-              <div className="mb-8 p-6 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-left">
-                <h2 className="text-lg font-semibold mb-4 text-slate-900 dark:text-slate-100">
+            {/* Technical Details (if available) */}
+            {error.digest && (
+              <div className="bg-gray-100 rounded-lg p-4 mb-8 text-left">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">
                   Technical Information
-                </h2>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">
-                      Error Message:
-                    </p>
-                    <code className="block p-3 bg-slate-100 dark:bg-slate-900 rounded text-sm overflow-x-auto text-slate-900 dark:text-slate-100">
-                      {error.message}
-                    </code>
-                  </div>
-                  {error.digest && (
-                    <div>
-                      <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">
-                        Error Digest:
-                      </p>
-                      <code className="block p-3 bg-slate-100 dark:bg-slate-900 rounded text-sm overflow-x-auto text-slate-900 dark:text-slate-100">
-                        {error.digest}
-                      </code>
-                    </div>
-                  )}
-                  {error.stack && (
-                    <div>
-                      <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">
-                        Stack Trace:
-                      </p>
-                      <code className="block p-3 bg-slate-100 dark:bg-slate-900 rounded text-xs overflow-x-auto whitespace-pre text-slate-900 dark:text-slate-100">
-                        {error.stack}
-                      </code>
-                    </div>
-                  )}
-                </div>
+                </h3>
+                <p className="text-xs text-gray-600 font-mono break-all">
+                  Error ID: {error.digest}
+                </p>
               </div>
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <button
+                type="button"
                 onClick={reset}
-                size="lg"
-                className="w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
               >
+                <RefreshCcw className="w-5 h-5" />
                 Try Again
-              </Button>
+              </button>
 
-              <Button
-                onClick={() => {
-                  window.location.href = '/';
-                }}
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto"
+              <a
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-700 border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
+                <Home className="w-5 h-5" />
                 Go to Homepage
-              </Button>
+              </a>
             </div>
-
-            {/* Reference ID */}
-            {error.digest && (
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-8">
-                Reference ID: <code className="font-mono">{error.digest}</code>
-              </p>
-            )}
           </div>
         </div>
       </body>
     </html>
   );
 }
-

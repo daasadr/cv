@@ -1,26 +1,17 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
-import { type TranslationKey, translations } from '@/content/translations';
+import { useTranslations as useNextIntlTranslations, useLocale } from 'next-intl';
 
+/**
+ * Wrapper around next-intl's useTranslations for easier migration
+ * This maintains backward compatibility with the old API
+ */
 export function useTranslation() {
-  const { language } = useLanguage();
+  const t = useNextIntlTranslations();
+  const locale = useLocale();
 
-  const t = (
-    key: TranslationKey,
-    params?: Record<string, string | number>
-  ): string => {
-    let text = translations[language][key] || key;
-
-    // Nahradit parametry v textu
-    if (params) {
-      Object.entries(params).forEach(([param, value]) => {
-        text = text.replace(`{${param}}`, String(value));
-      });
-    }
-
-    return text;
+  return { 
+    t, 
+    language: locale as 'cs' | 'en'
   };
-
-  return { t, language };
 }

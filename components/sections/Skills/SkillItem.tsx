@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLocale } from 'next-intl';
 import { formatExperienceDuration, getExperienceLevel } from '@/content/utils';
 import { categoryColors, type Skill } from '@/content/skills';
 
@@ -11,7 +11,7 @@ interface SkillItemProps {
 }
 
 export default function SkillItem({ skill, isAnimated }: SkillItemProps) {
-  const { language } = useLanguage();
+  const language = useLocale() as 'cs' | 'en';
 
   const progressPercentage = Math.min((skill.months / 24) * 100, 100);
   const experienceLevel = getExperienceLevel(skill.months);

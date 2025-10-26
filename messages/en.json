@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Experience",
+    "contact": "Contact",
+    "contactMe": "Contact Me",
+    "github": "GitHub",
+    "githubDesc": "opens my GitHub profile in a new window",
+    "skipToContent": "Skip to main content",
+    "goToSection": "go to section"
+  },
+  "hero": {
+    "subtitle1": "Full Stack Developer",
+    "subtitle2": "& 3D Printing Enthusiast",
+    "description1": "I'm fascinated by code's ability to create great added value practically from nothing. I focus on Typescript, Node and React stack. On the frontend Next.js, Tailwind, Shadcn. On the backend PostgreSQL, Prisma or Directus.",
+    "description2": "I'm oriented towards professional growth - I like to learn a lot and I educate myself constantly. Besides running projects, I'm now taking a Coursera course with IBM as its guarantor and I have (maybe too many) books from O'Reilly open.",
+    "actions": {
+      "projects": "My Work",
+      "projectsDesc": "shows the projects and experience section",
+      "contact": "Contact Me",
+      "contactDesc": "goes to the contact section with information and form"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me better",
+    "description": "I'm a passionate developer with a love for innovation and problem-solving.",
+    "content": {
+      "paragraph1": "I'm a Frontend-heavy Full Stack Developer focusing on a technology stack based on TypeScript, Node.js and React (",
+      "skillsLink": "more details below",
+      "skillsLinkDesc": "goes to the skills and technologies section",
+      "paragraph2": "I was introduced to IT by my brothers - both programmers from the beginning, and I decided to join them. I started with an intensive IT course from IT Network s.r.o. and continued with self-study using Coursera and O'Reilly books, but mainly through a series of larger and smaller projects."
+    },
+    "actions": {
+      "downloadCV": "Download CV",
+      "downloadCVDesc": "downloads my resume in PDF format",
+      "githubProfile": "GitHub Profile",
+      "githubProfileDesc": "opens my GitHub profile in a new window"
+    },
+    "softSkills": {
+      "title": "Soft Skills & Traits",
+      "communication": "Communication Skills",
+      "selfDriven": "Self-driven",
+      "problemSolving": "Problem Solving",
+      "reliability": "Reliability",
+      "creativity": "Creativity",
+      "perseverance": "Perseverance",
+      "growthMindset": "Growth Mindset"
+    },
+    "stats": {
+      "title": "Statistics and Information",
+      "experience": "Years of Experience",
+      "experienceYears": "2 years",
+      "projects": "Projects",
+      "projectsCount": "11 projects",
+      "technologies": "Technologies",
+      "technologiesCount": "{count} technologies",
+      "list": "list",
+      "projectsListDesc": "goes to the section with a list of all projects",
+      "technologiesListDesc": "goes to the section with a list of all technologies and skills"
+    }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Technologies and tools",
+    "description": "A comprehensive set of knowledge and skills created through practical experience and continuous learning in an ever-changing technological environment.",
+    "categories": {
+      "languages": "Programming Languages",
+      "frontend": "Frontend Technologies",
+      "backend": "Backend Technologies",
+      "tools": "Tools & Workflow"
+    },
+    "overview": "Overview of technical skills by category"
+  },
+  "projects": {
+    "title": "Experience & Projects",
+    "subtitle": "My projects and work",
+    "description": "A list of projects that showcase my technical knowledge and creative problem-solving."
+  },
+  "contact": {
+    "title": "Let's Collaborate",
+    "subtitle": "Get in touch",
+    "description": "I'd love to discuss new projects, creative ideas, or opportunities to be part of your vision",
+    "methods": {
+      "title": "Contact Me",
+      "ways": "Contact methods",
+      "email": "Email",
+      "phone": "Phone",
+      "github": "GitHub",
+      "emailDesc": "Send me an email",
+      "phoneDesc": "Call me",
+      "githubDesc": "Visit my GitHub profile",
+      "opensNewWindow": "opens in a new window"
+    },
+    "whyMe": {
+      "title": "Why Me?",
+      "qualities": "My key qualities",
+      "experience": "2 years of experience with full-stack development",
+      "growth": "Focus on professional growth - I like to and learn a lot",
+      "expertise": "Expertise in modern web technologies",
+      "performance": "Strong focus on performance and user experience",
+      "independence": "Independence and proactivity",
+      "collaboration": "Collaborative approach and clear communication"
+    },
+    "form": {
+      "title": "Send Message",
+      "instructions": "Contact form. All fields are required. Errors will be announced after attempting to submit.",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name *",
+      "email": "Email Address *",
+      "emailHelp": "Will be used to respond to your message",
+      "message": "Message",
+      "subject": "Subject *",
+      "messageText": "Message *",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "submitDesc": "Submits the form after filling all required fields",
+      "sendingDesc": "Form is being submitted, please wait",
+      "success": "Success!",
+      "successMessage": "Thank you! Your message has been sent successfully. I will respond to you as soon as possible.",
+      "error": "Error!",
+      "errorMessage": "Failed to send message. Please try again or contact me directly.",
+      "placeholders": {
+        "name": "Your name",
+        "email": "your.email@example.com",
+        "subject": "Project inquiry, collaboration, etc.",
+        "message": "Tell me about your project or how I can help you..."
+      },
+      "help": {
+        "message": "At least 10 characters. Describe your project or requirements."
+      },
+      "errors": {
+        "nameRequired": "Name is required",
+        "nameLength": "Name must have at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email format",
+        "subjectRequired": "Subject is required",
+        "subjectLength": "Subject must have at least 3 characters",
+        "messageRequired": "Message is required",
+        "messageLength": "Message must have at least 10 characters"
+      }
+    }
+  },
+  "language": {
+    "switchToEnglish": "Switch to English",
+    "switchToCzech": "Back to Czech"
+  },
+  "footer": {
+    "copyright": "© 2025 Dagmar Drbálková. All rights reserved.",
+    "createdWith": "Created with",
+    "accessibilityInfo": "This page is fully accessible and optimized for screen readers. Use the main links at the top of the page for navigation."
+  },
+  "error": {
+    "title": "Oops! Something went wrong",
+    "subtitle": "We apologize for the inconvenience",
+    "description": "An unexpected error occurred while processing your request. The team has been automatically notified and we are working on resolving the issue.",
+    "actions": {
+      "tryAgain": "Try Again",
+      "goHome": "Go to Homepage",
+      "contact": "Contact Support"
+    },
+    "technical": {
+      "title": "Technical Information",
+      "message": "Error Message",
+      "details": "Details"
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "subtitle": "404 - Oops!",
+      "description": "Sorry, but the page you are looking for doesn't exist or has been moved.",
+      "suggestions": {
+        "title": "What you can try:",
+        "home": "Return to homepage",
+        "projects": "Browse my projects",
+        "contact": "Contact me",
+        "check": "Check the URL for typos"
+      }
+    }
+  }
+}

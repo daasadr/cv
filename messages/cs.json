@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "about": "O mně",
+    "skills": "Dovednosti",
+    "projects": "Zkušenosti",
+    "contact": "Kontakty",
+    "contactMe": "Kontaktujte mě",
+    "github": "GitHub",
+    "githubDesc": "otevře můj GitHub profil v novém okně",
+    "skipToContent": "Přeskočit na hlavní obsah",
+    "goToSection": "přejít na sekci"
+  },
+  "hero": {
+    "subtitle1": "Full Stack Developer",
+    "subtitle2": "& 3D Printing Enthusiast",
+    "description1": "Fascinuje mě schopnost kódu vytvořit velkou přidanou hodnotu prakticky z ničeho. Zaměřuju se na Typescript, Node a React stack. Na frontendu Next.js, Tailwind, Shadcn. Na backendu PostgreSQL, Prisma nebo Directus.",
+    "description2": "Jsem orientovaná na profesní růst - ráda a hodně se vzdělávám. Kromě běžících projektů teď jedu kurz na Coursera s IBM coby jeho garantem a mám (možná až moc) rozečtených knížek z O'Railly.",
+    "actions": {
+      "projects": "Moje tvorba",
+      "projectsDesc": "zobrazí sekci s projekty a zkušenostmi",
+      "contact": "Kontaktujte mě",
+      "contactDesc": "přejde na kontaktní sekci s informacemi a formulářem"
+    }
+  },
+  "about": {
+    "title": "O mně",
+    "subtitle": "Poznejte mě blíže",
+    "description": "Jsem vášnivá vývojářka s láskou k inovacím a řešení problémů.",
+    "content": {
+      "paragraph1": "Jsem Frontend-heavy Full Stack Developerka zaměřující se na technologický stack založený na TypeScriptu, Node.js a Reactu (",
+      "skillsLink": "podrobněji níže",
+      "skillsLinkDesc": "přejde na sekci s dovednostmi a technologiemi",
+      "paragraph2": "K IT mě přivedli bratři - oba odjakživa programátoři, a já se rozhodla k nim přidat. Začala jsem intenzivním IT kurzem z programu IT Network s.r.o. a pokračovala samostudiem za pomocí Coursera a knih z O'Reilly, ale hlavně skrze řadu větších i menších projektů."
+    },
+    "actions": {
+      "downloadCV": "Stáhnout CV",
+      "downloadCVDesc": "stáhne můj životopis ve formátu PDF",
+      "githubProfile": "GitHub Profil",
+      "githubProfileDesc": "otevře můj GitHub profil v novém okně"
+    },
+    "softSkills": {
+      "title": "Soft skills a vlastnosti",
+      "communication": "Komunikační dovednosti",
+      "selfDriven": "Self-driven",
+      "problemSolving": "Problem solving",
+      "reliability": "Spolehlivost",
+      "creativity": "Kreativita",
+      "perseverance": "Vytrvalost",
+      "growthMindset": "Growth mindset"
+    },
+    "stats": {
+      "title": "Statistiky a informace",
+      "experience": "Roky zkušeností",
+      "experienceYears": "2 roky",
+      "projects": "Projektů",
+      "projectsCount": "11 projektů",
+      "technologies": "Technologií",
+      "technologiesCount": "{count} technologií",
+      "list": "seznam",
+      "projectsListDesc": "přejde na sekci se seznamem všech projektů",
+      "technologiesListDesc": "přejde na sekci se seznamem všech technologií a dovedností"
+    }
+  },
+  "skills": {
+    "title": "Technické znalosti",
+    "subtitle": "Technologie a nástroje",
+    "description": "Ucelený set znalostí a dovedností vytvořený zkušenostmi z praxe a kontinuálním vzděláváním v neustále se měnícím technologickém prostředí.",
+    "categories": {
+      "languages": "Programovací jazyky",
+      "frontend": "Frontend technologie",
+      "backend": "Backend technologie",
+      "tools": "Nástroje a workflow"
+    },
+    "overview": "Přehled technických dovedností podle kategorií"
+  },
+  "projects": {
+    "title": "Zkušenosti a tvorba",
+    "subtitle": "Moje projekty a práce",
+    "description": "Seznam projektů, které ukazují mé technické znalosti a kreativní řešení problémů."
+  },
+  "contact": {
+    "title": "Pojďme spolupracovat",
+    "subtitle": "Dejte mi vědět",
+    "description": "Ráda se pobavím o nových projektech, kreativních myšlenkách nebo příležitostech být součástí vaší vize",
+    "methods": {
+      "title": "Kontaktujte mě",
+      "ways": "Způsoby kontaktu",
+      "email": "Email",
+      "phone": "Telefon",
+      "github": "GitHub",
+      "emailDesc": "Pošlete mi email",
+      "phoneDesc": "Zavolejte mi",
+      "githubDesc": "Navštivte můj GitHub profil",
+      "opensNewWindow": "otevře se v novém okně"
+    },
+    "whyMe": {
+      "title": "Proč já?",
+      "qualities": "Mé klíčové vlastnosti",
+      "experience": "2 roky zkušeností s full-stack vývojem",
+      "growth": "Zaměření na odborný růst - ráda a hodně se vzdělávám",
+      "expertise": "Odbornost v moderních webových technologiích",
+      "performance": "Silné zaměření na výkon a uživatelskou zkušenost",
+      "independence": "Samostatnost a proaktivita",
+      "collaboration": "Spolupracující přístup a jasná komunikace"
+    },
+    "form": {
+      "title": "Odeslat zprávu",
+      "instructions": "Kontaktní formulář. Všechna pole jsou povinná. Chyby budou oznámeny po pokusu o odeslání.",
+      "personalInfo": "Osobní údaje",
+      "fullName": "Celé jméno *",
+      "email": "Emailová adresa *",
+      "emailHelp": "Použije se pro odpověď na vaši zprávu",
+      "message": "Zpráva",
+      "subject": "Předmět *",
+      "messageText": "Zpráva *",
+      "submit": "Odeslat zprávu",
+      "sending": "Odesílám...",
+      "submitDesc": "Odešle formulář po vyplnění všech povinných polí",
+      "sendingDesc": "Formulář se odesílá, počkejte prosím",
+      "success": "Úspěch!",
+      "successMessage": "Děkuji! Vaše zpráva byla úspěšně odeslána. Odpovím vám co nejdříve.",
+      "error": "Chyba!",
+      "errorMessage": "Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo mě kontaktujte přímo.",
+      "placeholders": {
+        "name": "Vaše jméno",
+        "email": "vas.email@priklad.cz",
+        "subject": "Poptávka projektu, spolupráce, atd.",
+        "message": "Řekněte mi o vašem projektu nebo jak vám mohu pomoci..."
+      },
+      "help": {
+        "message": "Alespoň 10 znaků. Popište váš projekt nebo požadavky."
+      },
+      "errors": {
+        "nameRequired": "Jméno je povinné",
+        "nameLength": "Jméno musí mít alespoň 2 znaky",
+        "emailRequired": "Email je povinný",
+        "emailInvalid": "Neplatný formát emailu",
+        "subjectRequired": "Předmět je povinný",
+        "subjectLength": "Předmět musí mít alespoň 3 znaky",
+        "messageRequired": "Zpráva je povinná",
+        "messageLength": "Zpráva musí mít alespoň 10 znaků"
+      }
+    }
+  },
+  "language": {
+    "switchToEnglish": "Switch to English",
+    "switchToCzech": "Zpět do češtiny"
+  },
+  "footer": {
+    "copyright": "© 2025 Dagmar Drbálková. Všechna práva vyhrazena.",
+    "createdWith": "Vytvořeno pomocí",
+    "accessibilityInfo": "Tato stránka je plně přístupná a optimalizovaná pro čtečky obrazovky. Pro navigaci použijte hlavní odkazy v horní části stránky."
+  },
+  "error": {
+    "title": "Jejda! Něco se pokazilo",
+    "subtitle": "Omlouváme se za komplikace",
+    "description": "Při zpracování vaší žádosti došlo k neočekávané chybě. Tým byl automaticky informován a pracujeme na vyřešení problému.",
+    "actions": {
+      "tryAgain": "Zkusit znovu",
+      "goHome": "Přejít na hlavní stránku",
+      "contact": "Kontaktovat podporu"
+    },
+    "technical": {
+      "title": "Technické informace",
+      "message": "Chybová zpráva",
+      "details": "Podrobnosti"
+    },
+    "notFound": {
+      "title": "Stránka nenalezena",
+      "subtitle": "404 - Jejda!",
+      "description": "Omlouváme se, ale stránka, kterou hledáte, neexistuje nebo byla přesunuta.",
+      "suggestions": {
+        "title": "Co můžete zkusit:",
+        "home": "Vrátit se na domovskou stránku",
+        "projects": "Prohlédnout si moje projekty",
+        "contact": "Kontaktovat mě",
+        "check": "Zkontrolovat adresu URL na překlepy"
+      }
+    }
+  }
+}

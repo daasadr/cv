@@ -8,4 +8,3 @@ export {
   poppins,
 } from './FontConfiguration';
 export { default as HeadContent } from './HeadContent';
-export { metadata } from './MetadataConfig';

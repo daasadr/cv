@@ -1,14 +1,21 @@
 'use client';
 
 import { Languages } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { useTranslation } from '@/hooks/useTranslation';
 
 export default function LanguageSwitcher() {
-  const { language, toggleLanguage } = useLanguage();
-  const { t } = useTranslation();
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations('language');
+
+  const toggleLanguage = () => {
+    const newLocale = locale === 'cs' ? 'en' : 'cs';
+    router.replace(pathname, { locale: newLocale });
+  };
 
   return (
     <Button
@@ -24,19 +31,19 @@ export default function LanguageSwitcher() {
         'text-gray-700 hover:text-gray-900'
       )}
       aria-label={
-        language === 'cs'
-          ? t('language.switchToEnglish')
-          : t('language.switchToCzech')
+        locale === 'cs'
+          ? t('switchToEnglish')
+          : t('switchToCzech')
       }
       title={
-        language === 'cs'
-          ? t('language.switchToEnglish')
-          : t('language.switchToCzech')
+        locale === 'cs'
+          ? t('switchToEnglish')
+          : t('switchToCzech')
       }
     >
       <Languages className="w-4 h-4" />
       <span className="hidden sm:inline">
-        {language === 'cs' ? 'EN' : 'CS'}
+        {locale === 'cs' ? 'EN' : 'CS'}
       </span>
     </Button>
   );

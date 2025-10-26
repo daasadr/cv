@@ -1,4 +1,4 @@
-import type { Language } from './translations';
+import type { Locale } from '@/i18n/types';
 
 /**
  * Formats experience duration in months to a human-readable string
@@ -8,7 +8,7 @@ import type { Language } from './translations';
  */
 export const formatExperienceDuration = (
   months: number,
-  language: Language
+  language: Locale
 ): string => {
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
