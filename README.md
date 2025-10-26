@@ -233,7 +233,6 @@ cv/
 │   ├── useThrottle.ts      # Throttle hook
 │   └── useTranslation.ts   # Translation hook
 ├── lib/                     # Utility libraries
-│   ├── favicon-emojis.ts   # Favicon configuration
 │   ├── threejs-scene.ts    # Three.js scene management
 │   └── utils.ts            # Utility functions
 ├── public/                  # Static assets

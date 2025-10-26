@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
-import { currentFaviconMetadata } from '@/lib/favicon-emojis';
 import { siteConfig } from '@/content/site-config';
+
+const EMOJI = '👩‍💻';
+const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} - ${siteConfig.jobTitle}`,
@@ -45,5 +47,20 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code', // Add your actual verification code
   },
-  icons: currentFaviconMetadata,
+  icons: {
+    icon: [
+      {
+        url: faviconSvg,
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcut: faviconSvg,
+    apple: [
+      {
+        url: faviconSvg,
+        sizes: '180x180',
+        type: 'image/svg+xml',
+      },
+    ],
+  },
 };

@@ -1,5 +1,7 @@
-import { currentEmoji, generateEmojiSVG } from '@/lib/favicon-emojis';
 import { siteConfig } from '@/content/site-config';
+
+const EMOJI = '👩‍💻';
+const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${EMOJI}</text></svg>`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -87,8 +89,8 @@ export default function HeadContent() {
   return (
     <>
       {/* Emoji Favicon */}
-      <link rel="icon" href={generateEmojiSVG(currentEmoji)} />
-      <link rel="apple-touch-icon" href={generateEmojiSVG(currentEmoji)} />
+      <link rel="icon" href={faviconSvg} />
+      <link rel="apple-touch-icon" href={faviconSvg} />
 
       {/* Critical CSS for above-the-fold content */}
       {/* eslint-disable-next-line react/no-danger */}
