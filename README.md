@@ -12,11 +12,15 @@ A modern, performant portfolio website built with Next.js, featuring 3D animatio
   - [Installation](#installation)
   - [Development](#development)
 - [Project Structure](#project-structure)
+- [Architecture](#architecture)
+  - [Component Organization](#component-organization)
+  - [Loading Strategy](#loading-strategy)
+  - [Data Management](#data-management)
+  - [Performance Monitoring](#performance-monitoring)
 - [Configuration](#configuration)
 - [Performance](#performance)
 - [Accessibility](#accessibility)
-- [Contributing](#contributing)
-- [License](#license)
+- [Code Standards](#code-standards)
 
 ## 🌟 About
 
@@ -35,8 +39,10 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 - **Bilingual Support** - Czech and English language switching with elegant UI toggle
 
 ### 🚀 Performance
-- **Critical CSS Inlining** - Above-the-fold optimization
-- **Intersection Observer** - Lazy loading and visibility optimization
+- **Dynamic Imports** - Below-the-fold content lazy loaded with Next.js dynamic()
+- **Critical Path Optimization** - Hero and Navigation load immediately, rest loads dynamically
+- **Web Vitals Tracking** - Custom monitoring with hooks for Three.js, resources, and loading
+- **Throttled Event Handlers** - Optimized scroll and resize handlers
 - **Font Optimization** - Google Fonts with display swap
 - **Resource Hints** - DNS prefetch and preconnect
 - **Analytics Integration** - Vercel Analytics and Speed Insights
@@ -64,11 +70,18 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 ## 🛠 Tech Stack
 
 ### Frontend
-- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
-- **[shadcn/ui](https://ui.shadcn.com/)** - Component library
+- **[shadcn/ui](https://ui.shadcn.com/)** - Component library built on Radix UI
+- **[Radix UI](https://www.radix-ui.com/)** - Unstyled, accessible components
+- **[Framer Motion](https://www.framer.com/motion/)** - Animation library
+- **[Lucide React](https://lucide.dev/)** - Icon library
+
+### Forms & Validation
+- **[React Hook Form](https://react-hook-form.com/)** - Form state management
+- **[Zod](https://zod.dev/)** - Schema validation
 
 ### 3D Graphics
 - **[Three.js](https://threejs.org/)** - 3D graphics library
@@ -76,12 +89,18 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 
 ### Development Tools
 - **[Biome](https://biomejs.dev/)** - Linting and formatting
+- **[Husky](https://typicode.github.io/husky/)** - Git hooks
+- **[lint-staged](https://github.com/okonet/lint-staged)** - Run linters on staged files
+- **[Vitest](https://vitest.dev/)** - Unit testing framework
+- **[Testing Library](https://testing-library.com/)** - React component testing
 - **[PostCSS](https://postcss.org/)** - CSS processing
 - **[Vercel Analytics](https://vercel.com/analytics)** - Performance monitoring
+- **[Vercel Speed Insights](https://vercel.com/docs/speed-insights)** - Real-time performance tracking
 
 ### Internationalization
 - **Custom Language Context** - React Context for Czech/English switching
 - **Translation System** - Centralized translation keys and hooks
+- **LocalStorage Persistence** - Remembers user's language preference
 - **Dynamic Language Toggle** - Elegant UI switcher with accessibility support
 
 ### Fonts
@@ -126,11 +145,15 @@ Personal portfolio website showcasing full-stack development skills, projects, a
 
 3. **Available scripts**
    ```bash
-   npm run dev      # Start development server
-   npm run build    # Build for production
-   npm run start    # Start production server
-   npm run lint     # Run Biome linter
-   npm run format   # Format code with Biome
+   npm run dev            # Start development server
+   npm run build          # Build for production
+   npm run start          # Start production server
+   npm run lint           # Run Next.js linter
+   npm run format         # Format code with Biome
+   npm run biome:check    # Check and fix with Biome
+   npm run biome:format   # Format with Biome
+   npm run biome:lint     # Lint with Biome
+   npm run biome:ci       # Run Biome in CI mode
    ```
 
 ## 📁 Project Structure
@@ -145,50 +168,137 @@ cv/
 │   ├── layout/             # Layout components
 │   │   ├── BodyWrapper.tsx
 │   │   ├── FontConfiguration.tsx
+│   │   ├── Footer.tsx
 │   │   ├── HeadContent.tsx
 │   │   ├── MetadataConfig.tsx
 │   │   └── index.ts
+│   ├── Navigation/         # Navigation components
+│   │   ├── constants.ts
+│   │   ├── GitHubButton.tsx
+│   │   ├── index.tsx
+│   │   ├── NavigationLinks.tsx
+│   │   └── SkipNavigation.tsx
+│   ├── sections/           # Page sections
+│   │   ├── About/
+│   │   │   ├── AboutContent.tsx
+│   │   │   ├── ActionButtons.tsx
+│   │   │   ├── index.tsx
+│   │   │   ├── SoftSkills.tsx
+│   │   │   └── StatsCards.tsx
+│   │   ├── Contact/
+│   │   │   ├── ContactHeader.tsx
+│   │   │   ├── ContactMethodItem.tsx
+│   │   │   ├── ContactMethods.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── WhyMeSection.tsx
+│   │   ├── Hero/
+│   │   │   ├── HeroActions.tsx
+│   │   │   ├── HeroBackground.tsx
+│   │   │   ├── HeroContent.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── ScrollIndicator.tsx
+│   │   ├── Projects/
+│   │   │   ├── index.tsx
+│   │   │   ├── ProjectCard.tsx
+│   │   │   ├── ProjectsHeader.tsx
+│   │   │   └── ProjectsList.tsx
+│   │   └── Skills/
+│   │       ├── index.tsx
+│   │       ├── SkillCategory.tsx
+│   │       ├── SkillItem.tsx
+│   │       ├── SkillsHeader.tsx
+│   │       ├── SkillsLegend.tsx
+│   │       └── SkillsList.tsx
 │   ├── ui/                 # shadcn/ui components
-│   ├── About.tsx
-│   ├── Contact.tsx
-│   ├── ContactForm.tsx
-│   ├── Footer.tsx
-│   ├── Hero.tsx
-│   ├── Navigation.tsx
-│   ├── Projects.tsx
-│   └── Skills.tsx
-├── hooks/                   # Custom React hooks
-│   ├── use-toast.ts
-│   └── useTranslation.ts   # Translation hook
+│   ├── WebVitalsReporter/  # Performance monitoring
+│   │   ├── index.tsx
+│   │   ├── types.ts
+│   │   ├── useLoadingPerformance.ts
+│   │   ├── useResourceTracking.ts
+│   │   ├── useThreeJSMonitor.ts
+│   │   ├── utils.ts
+│   │   └── WebVitalsLoader.tsx
+│   ├── LanguageSwitcher.tsx
+│   ├── LanguageWrapper.tsx
+│   └── UnderFold.tsx       # Lazy-loaded sections
+├── content/                 # Content configuration
+│   ├── contact.ts          # Contact information
+│   ├── projects.ts         # Project data
+│   ├── site-config.ts      # Site-wide configuration
+│   ├── skills.ts           # Skills data
+│   └── translations.ts     # Czech/English translations
 ├── contexts/                # React Context providers
 │   └── LanguageContext.tsx # Language switching context
+├── hooks/                   # Custom React hooks
+│   ├── useThrottle.ts      # Throttle hook
+│   └── useTranslation.ts   # Translation hook
 ├── lib/                     # Utility libraries
 │   ├── favicon-emojis.ts   # Favicon configuration
-│   ├── site-config.ts      # Site-wide configuration
 │   ├── threejs-scene.ts    # Three.js scene management
-│   ├── translations.ts     # Czech/English translations
 │   └── utils.ts            # Utility functions
 ├── public/                  # Static assets
 │   ├── examples/           # Project examples
-│   └── CV_Dagmar_Drbalkova.pdf
+│   ├── images/             # Image assets
+│   └── CV Dagmar Drbalkova 2025.pdf
 ├── biome.json              # Biome configuration
 ├── components.json         # shadcn/ui configuration
 ├── next.config.js          # Next.js configuration
 ├── package.json            # Dependencies and scripts
+├── postcss.config.js       # PostCSS configuration
 ├── tailwind.config.ts      # Tailwind CSS configuration
 └── tsconfig.json           # TypeScript configuration
 ```
+
+## 🏗 Architecture
+
+### Component Organization
+
+The application uses a modular component architecture:
+
+- **Sections** - Major page sections (`Hero`, `About`, `Skills`, `Projects`, `Contact`) are organized in `components/sections/` with sub-components for better maintainability
+- **Layout Components** - Reusable layout elements in `components/layout/`
+- **Navigation** - Self-contained navigation system with multiple sub-components
+- **UI Library** - shadcn/ui components in `components/ui/`
+
+### Loading Strategy
+
+1. **Critical Above-the-Fold** - Navigation and Hero section load immediately
+2. **Dynamic Below-the-Fold** - Other sections lazy load via `UnderFold` component using Next.js `dynamic()`
+3. **Loading States** - Each dynamically loaded section has its own loading placeholder
+
+### Data Management
+
+- **Centralized Content** - All content stored in `content/` directory for easy updates
+- **Translation System** - Type-safe translations using custom `useTranslation` hook
+- **Language Context** - React Context with localStorage persistence for language preference
+
+### Performance Monitoring
+
+Custom performance tracking system with:
+- `useLoadingPerformance` - Tracks page loading metrics
+- `useThreeJSMonitor` - Monitors 3D rendering performance
+- `useResourceTracking` - Tracks resource loading
+- `useThrottle` - Optimizes expensive operations
 
 ## ⚙ Configuration
 
 ### Site Configuration
 
-Edit `lib/site-config.ts` to update:
+Edit `content/site-config.ts` to update:
 - Personal information (name, contact details)
 - Social links
 - Technical skills
 - SEO metadata
 - Theme colors
+
+### Content Management
+
+Content files in the `content/` directory:
+- **`site-config.ts`** - Site-wide configuration and personal information
+- **`translations.ts`** - Czech and English translations for all UI text
+- **`projects.ts`** - Portfolio projects data
+- **`skills.ts`** - Technical skills and proficiency levels
+- **`contact.ts`** - Contact methods and information
 
 ### Three.js Scene
 
@@ -210,15 +320,27 @@ Font configuration in `components/layout/FontConfiguration.tsx`:
 - Font display optimization
 - CSS variable setup
 
+### Language Context
+
+Language switching configuration in `contexts/LanguageContext.tsx`:
+- LocalStorage persistence
+- Default language setting (Czech)
+- Language toggle functionality
+
 ## ⚡ Performance
 
 ### Optimization Features
 
+- **Lazy Loading** - Dynamic imports for below-the-fold sections via `UnderFold` component
+- **Web Vitals Monitoring** - Custom `WebVitalsReporter` for real-time performance tracking
+- **Three.js Monitoring** - Custom hooks for 3D rendering performance
+- **Resource Tracking** - Monitor loading performance and resource usage
+- **Throttled Scroll Handlers** - Optimized scroll event handling with `useThrottle` hook
 - **Bundle Analysis** - Webpack bundle analyzer
 - **Image Optimization** - Next.js automatic optimization
-- **Code Splitting** - Automatic route-based splitting
+- **Code Splitting** - Automatic route-based and component-level splitting
 - **Caching Strategy** - Optimized cache headers
-- **Core Web Vitals** - Performance monitoring
+- **Core Web Vitals** - CLS, LCP, FCP, FID, TTFB tracking
 
 ### Performance Scores
 
@@ -251,13 +373,27 @@ npm run lint
 - Zoom to 200%
 ```
 
-## Code Standards
+## 💻 Code Standards
 
-- **TypeScript** for type safety
-- **Biome** for consistent formatting
-- **Semantic commits** following conventional commits
-- **Component documentation** with JSDoc
-- **Accessibility** compliance required
+### Code Quality
+
+- **TypeScript** for type safety across all components
+- **Biome** for fast linting and consistent formatting
+- **Modular architecture** with clear separation of concerns
+- **Component documentation** with JSDoc comments
+
+### Git Workflow
+
+- **Husky** - Git hooks for quality checks
+- **lint-staged** - Automatic linting of staged files before commit
+- **Pre-commit checks** - Biome runs automatically on commit
+
+### Best Practices
+
+- **Accessibility-first** - WCAG 2.1 AA compliance required
+- **Performance optimization** - Lazy loading, throttling, memoization
+- **Type safety** - Full TypeScript coverage with strict mode
+- **Semantic HTML** - Proper use of semantic elements and ARIA labels
 
 ---
 
