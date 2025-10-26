@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { AlertTriangle, RefreshCcw, Home, Mail } from 'lucide-react';
+import { AlertTriangle, RefreshCcw } from 'lucide-react';
 
 export default function ErrorPage({
   error,
