@@ -12,23 +12,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-
-    // Disable all strict checks
-    "strict": false,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "alwaysStrict": false,
-    "strictPropertyInitialization": false,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "exactOptionalPropertyTypes": false,
-    "checkJs": false,
-
-    // Enable only critical checks that prevent build errors
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
     // Keep Next.js specific settings
     "plugins": [
