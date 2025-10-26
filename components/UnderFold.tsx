@@ -1,9 +1,10 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 
-// Lazy load non-critical components
+// Lazy load non-critical components with individual loading states
+// Note: Each component has its own loading state via the dynamic() config,
+// so we don't need an additional Suspense boundary wrapper
 const About = dynamic(() => import('@/components/sections/About'), {
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">
@@ -42,17 +43,11 @@ const Contact = dynamic(() => import('@/components/sections/Contact'), {
 
 export default function UnderFold() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="animate-pulse text-gray-400">Loading sections...</div>
-        </div>
-      }
-    >
+    <>
       <About />
       <Skills />
       <Projects />
       <Contact />
-    </Suspense>
+    </>
   );
 }
