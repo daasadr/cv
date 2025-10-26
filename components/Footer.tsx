@@ -8,8 +8,6 @@ export default function Footer() {
   return (
     <footer
       className="text-center pt-10 pb-10 border-t border-gray-200"
-      role="contentinfo"
-      aria-label="Informace o webu"
     >
       <div className="max-w-7xl mx-auto px-6">
         <p className="text-gray-600 mb-4">{t('footer.copyright')}</p>
