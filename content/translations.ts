@@ -148,6 +148,27 @@ export const translations = {
     'footer.createdWith': 'Vytvořeno pomocí',
     'footer.accessibilityInfo':
       'Tato stránka je plně přístupná a optimalizovaná pro čtečky obrazovky. Pro navigaci použijte hlavní odkazy v horní části stránky.',
+
+    // Error Pages
+    'error.title': 'Jejda! Něco se pokazilo',
+    'error.subtitle': 'Omlouváme se za komplikace',
+    'error.description':
+      'Při zpracování vaší žádosti došlo k neočekávané chybě. Tým byl automaticky informován a pracujeme na vyřešení problému.',
+    'error.actions.tryAgain': 'Zkusit znovu',
+    'error.actions.goHome': 'Přejít na hlavní stránku',
+    'error.actions.contact': 'Kontaktovat podporu',
+    'error.technical.title': 'Technické informace',
+    'error.technical.message': 'Chybová zpráva',
+    'error.technical.details': 'Podrobnosti',
+    'error.notFound.title': 'Stránka nenalezena',
+    'error.notFound.subtitle': '404 - Jejda!',
+    'error.notFound.description':
+      'Omlouváme se, ale stránka, kterou hledáte, neexistuje nebo byla přesunuta.',
+    'error.notFound.suggestions.title': 'Co můžete zkusit:',
+    'error.notFound.suggestions.home': 'Vrátit se na domovskou stránku',
+    'error.notFound.suggestions.projects': 'Prohlédnout si moje projekty',
+    'error.notFound.suggestions.contact': 'Kontaktovat mě',
+    'error.notFound.suggestions.check': 'Zkontrolovat adresu URL na překlepy',
   },
 
   en: {
@@ -304,6 +325,27 @@ export const translations = {
     'footer.createdWith': 'Created with',
     'footer.accessibilityInfo':
       'This page is fully accessible and optimized for screen readers. Use the main links at the top of the page for navigation.',
+
+    // Error Pages
+    'error.title': 'Oops! Something went wrong',
+    'error.subtitle': 'We apologize for the inconvenience',
+    'error.description':
+      'An unexpected error occurred while processing your request. The team has been automatically notified and we are working on resolving the issue.',
+    'error.actions.tryAgain': 'Try Again',
+    'error.actions.goHome': 'Go to Homepage',
+    'error.actions.contact': 'Contact Support',
+    'error.technical.title': 'Technical Information',
+    'error.technical.message': 'Error Message',
+    'error.technical.details': 'Details',
+    'error.notFound.title': 'Page Not Found',
+    'error.notFound.subtitle': '404 - Oops!',
+    'error.notFound.description':
+      "Sorry, but the page you are looking for doesn't exist or has been moved.",
+    'error.notFound.suggestions.title': 'What you can try:',
+    'error.notFound.suggestions.home': 'Return to homepage',
+    'error.notFound.suggestions.projects': 'Browse my projects',
+    'error.notFound.suggestions.contact': 'Contact me',
+    'error.notFound.suggestions.check': 'Check the URL for typos',
   },
 };
 
