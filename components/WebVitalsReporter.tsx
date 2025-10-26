@@ -13,7 +13,7 @@ interface WebVital {
   navigationType?: string;
 }
 
-interface VercelAnalyticsWindow extends Window {
+interface VercelAnalyticsWindow {
   va?: (
     event: string,
     data: { name: string; data: Record<string, unknown> }
@@ -45,9 +45,12 @@ export default function WebVitalsReporter() {
     // Monitor loading performance
     const measureLoadingPerformance = () => {
       if (typeof window !== 'undefined' && 'performance' in window) {
-        const navigation = performance.getEntriesByType(
-          'navigation'
-        )[0] as PerformanceNavigationTiming;
+        const navigationEntries = performance.getEntriesByType('navigation');
+        const navigation =
+          navigationEntries.length > 0 &&
+          navigationEntries[0] instanceof PerformanceNavigationTiming
+            ? navigationEntries[0]
+            : null;
 
         if (navigation) {
           const loadingMetrics = {
@@ -134,15 +137,21 @@ export default function WebVitalsReporter() {
 
     // Monitor bundle size and resource loading
     const trackResourceLoading = () => {
-      const resources = performance.getEntriesByType(
-        'resource'
-      ) as PerformanceResourceTiming[];
-      const jsResources = resources.filter(
-        (resource) =>
-          resource.name.includes('.js') &&
-          !resource.name.includes('polyfills') &&
-          resource.name.includes('_next/static')
-      );
+      const resources = performance.getEntriesByType('resource');
+      const isResourceTiming = (
+        entry: PerformanceEntry
+      ): entry is PerformanceResourceTiming => {
+        return 'transferSize' in entry;
+      };
+
+      const jsResources = resources
+        .filter(isResourceTiming)
+        .filter(
+          (resource) =>
+            resource.name.includes('.js') &&
+            !resource.name.includes('polyfills') &&
+            resource.name.includes('_next/static')
+        );
 
       let totalJSSize = 0;
       let totalLoadTime = 0;
@@ -230,13 +239,20 @@ function getMetricEmoji(metricName: string, rating: string): string {
   }
 }
 
+// Type guard for Vercel Analytics Window
+function isVercelAnalyticsWindow(
+  win: Window
+): win is Window & VercelAnalyticsWindow {
+  return 'va' in win && typeof win.va === 'function';
+}
+
 // Send metrics to Vercel Analytics
 function sendToVercelAnalytics(metric: WebVital) {
   // Vercel Analytics automatically captures Web Vitals when using useReportWebVitals
   // We can also send additional tracking data
-  if (typeof window !== 'undefined' && (window as VercelAnalyticsWindow).va) {
+  if (typeof window !== 'undefined' && isVercelAnalyticsWindow(window)) {
     // Use the correct Vercel Analytics API
-    (window as VercelAnalyticsWindow).va?.('event', {
+    window.va?.('event', {
       name: 'web-vital-detail',
       data: {
         metric_name: metric.name,
@@ -251,8 +267,8 @@ function sendToVercelAnalytics(metric: WebVital) {
 
 // Send custom metrics to Vercel Analytics
 function sendCustomMetric(name: string, value: number) {
-  if (typeof window !== 'undefined' && (window as VercelAnalyticsWindow).va) {
-    (window as VercelAnalyticsWindow).va?.('event', {
+  if (typeof window !== 'undefined' && isVercelAnalyticsWindow(window)) {
+    window.va?.('event', {
       name: 'performance-metric',
       data: {
         metric_name: name,

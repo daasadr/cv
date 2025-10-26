@@ -74,7 +74,11 @@ export default function ContactForm() {
     }));
 
     // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
+    const isFormErrorKey = (key: string): key is keyof FormErrors => {
+      return ['name', 'email', 'subject', 'message'].includes(key);
+    };
+
+    if (isFormErrorKey(name) && errors[name]) {
       setErrors((prev) => ({
         ...prev,
         [name]: undefined,

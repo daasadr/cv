@@ -6,7 +6,10 @@ import * as RechartsPrimitive from 'recharts';
 import { cn } from '@/lib/utils';
 
 // Format: { THEME_NAME: CSS_SELECTOR }
-const THEMES = { light: '', dark: '.dark' } as const;
+const THEMES: { readonly light: string; readonly dark: string } = {
+  light: '',
+  dark: '.dark',
+};
 
 export type ChartConfig = {
   [k in string]: {
@@ -85,9 +88,11 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 ${prefix} [data-chart=${id}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color;
+    const isValidThemeKey = (t: string): t is keyof typeof THEMES => {
+      return t === 'light' || t === 'dark';
+    };
+    const themeColor = isValidThemeKey(theme) && itemConfig.theme?.[theme];
+    const color = themeColor || itemConfig.color;
     return color ? `  --color-${key}: ${color};` : null;
   })
   .join('\n')}
@@ -141,9 +146,14 @@ const ChartTooltipContent = React.forwardRef<
       const [item] = payload;
       const key = `${labelKey || item.dataKey || item.name || 'value'}`;
       const itemConfig = getPayloadConfigFromPayload(config, item, key);
+      
+      const getLabelFromConfig = (lbl: string): React.ReactNode => {
+        return lbl in config ? config[lbl]?.label || lbl : lbl;
+      };
+      
       const value =
         !labelKey && typeof label === 'string'
-          ? config[label as keyof typeof config]?.label || label
+          ? getLabelFromConfig(label)
           : itemConfig?.label;
 
       if (labelFormatter) {
@@ -217,12 +227,12 @@ const ChartTooltipContent = React.forwardRef<
                               'my-0.5': nestLabel && indicator === 'dashed',
                             }
                           )}
-                          style={
-                            {
-                              '--color-bg': indicatorColor,
-                              '--color-border': indicatorColor,
-                            } as React.CSSProperties
-                          }
+                          style={{
+                            ...(indicatorColor && {
+                              ['--color-bg']: indicatorColor,
+                              ['--color-border']: indicatorColor,
+                            }),
+                          }}
                         />
                       )
                     )}
@@ -326,33 +336,39 @@ function getPayloadConfigFromPayload(
     return undefined;
   }
 
-  const payloadPayload =
-    'payload' in payload &&
-    typeof payload.payload === 'object' &&
-    payload.payload !== null
-      ? payload.payload
-      : undefined;
+  // Type guard to check if value is a Record
+  const isRecord = (val: unknown): val is Record<string, unknown> => {
+    return typeof val === 'object' && val !== null;
+  };
+
+  if (!isRecord(payload)) {
+    return undefined;
+  }
+
+  const getNestedPayload = (
+    obj: Record<string, unknown>
+  ): Record<string, unknown> | undefined => {
+    if ('payload' in obj && isRecord(obj.payload)) {
+      return obj.payload;
+    }
+    return undefined;
+  };
+
+  const payloadPayload = getNestedPayload(payload);
 
   let configLabelKey: string = key;
 
-  if (
-    key in payload &&
-    typeof payload[key as keyof typeof payload] === 'string'
-  ) {
-    configLabelKey = payload[key as keyof typeof payload] as string;
+  if (key in payload && typeof payload[key] === 'string') {
+    configLabelKey = String(payload[key]);
   } else if (
     payloadPayload &&
     key in payloadPayload &&
-    typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
+    typeof payloadPayload[key] === 'string'
   ) {
-    configLabelKey = payloadPayload[
-      key as keyof typeof payloadPayload
-    ] as string;
+    configLabelKey = String(payloadPayload[key]);
   }
 
-  return configLabelKey in config
-    ? config[configLabelKey]
-    : config[key as keyof typeof config];
+  return configLabelKey in config ? config[configLabelKey] : config[key];
 }
 
 export {

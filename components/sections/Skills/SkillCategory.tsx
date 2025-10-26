@@ -33,6 +33,16 @@ export default function SkillCategory({
     }
   };
 
+  const isCategoryKey = (
+    key: string
+  ): key is keyof typeof categoryColors => {
+    return key in categoryColors;
+  };
+
+  const getCategoryColor = (cat: string): string => {
+    return isCategoryKey(cat) ? categoryColors[cat] : '#000000';
+  };
+
   const categoryLabel = getCategoryLabel(category);
 
   return (
@@ -41,7 +51,7 @@ export default function SkillCategory({
         id={`category-${category}`}
         className="text-xl font-bold text-gray-900 capitalize mb-4"
         style={{
-          color: categoryColors[category as keyof typeof categoryColors],
+          color: getCategoryColor(category),
         }}
       >
         {categoryLabel}

@@ -13,13 +13,13 @@ export default function SkillsList({ isAnimated }: SkillsListProps) {
   const { t } = useTranslation();
 
   // Group skills by category
-  const groupedSkills = skills.reduce(
+  const groupedSkills = skills.reduce<Record<string, Skill[]>>(
     (acc, skill) => {
       if (!acc[skill.category]) acc[skill.category] = [];
       acc[skill.category].push(skill);
       return acc;
     },
-    {} as Record<string, Skill[]>
+    {}
   );
 
   return (

@@ -11,7 +11,7 @@ export default function ProjectsList({
   onViewDetails,
 }: ProjectsListProps) {
   // Group projects by year in descending order
-  const projectsByYear = projects.reduce(
+  const projectsByYear = projects.reduce<Record<number, Project[]>>(
     (acc, project) => {
       if (!acc[project.year]) {
         acc[project.year] = [];
@@ -19,7 +19,7 @@ export default function ProjectsList({
       acc[project.year].push(project);
       return acc;
     },
-    {} as Record<number, Project[]>
+    {}
   );
 
   const years = Object.keys(projectsByYear)
