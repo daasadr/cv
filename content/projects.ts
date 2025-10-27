@@ -12,18 +12,20 @@ export const projects: Project[] = [
   {
     id: 'officeAutomations',
     technologies: [
+      'Node.js',
+      'Express',
+      'Traefik',
+      'VPS setup',
       'Astro',
       'React',
       'Docker',
       'Directus',
-      'Node.js',
-      'Express',
-      'PostgreSQL',
+      // 'PostgreSQL',
       // 'Temporal',
       // '...',
     ],
     image: '/images/d-p.png',
-    githubUrl: 'https://github.com/daasadr/cv',
+    githubUrl: 'https://github.com/daasadr/office_automations',
     year: 2025,
     inProgress: true,
   },
@@ -105,4 +107,3 @@ export const projects: Project[] = [
     year: 2024,
   },
 ];
-
