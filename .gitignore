@@ -263,3 +263,7 @@ cypress/screenshots/
 
 # Rollup
 .rollup.cache/
+
+
+// Tento skript najde nepoužívané shadcn/ui komponenty
+analyze-unused-components.js
