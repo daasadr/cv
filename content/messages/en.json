@@ -14,7 +14,7 @@
     "subtitle1": "Full Stack Developer",
     "subtitle2": "& 3D Printing Enthusiast",
     "description1": "I'm fascinated by code's ability to create great added value practically from nothing. I focus on Typescript, Node and React stack. On the frontend Next.js, Tailwind, Shadcn. On the backend PostgreSQL, Prisma or Directus.",
-    "description2": "I'm oriented towards professional growth - I like to learn a lot and I educate myself constantly. Besides running projects, I'm now taking a Coursera course with IBM as its guarantor and I have (maybe too many) books from O'Reilly open.",
+    "description2": "I try to be versatile - besides web applications, I can also build mobile apps, WordPress websites, or manage containerized applications and backends on servers. I'm not an expert at everything, but I can work with different technologies depending on what the project needs.",
     "actions": {
       "projects": "My Work",
       "projectsDesc": "shows the projects and experience section",
