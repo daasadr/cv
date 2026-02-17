@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { useTranslation } from '@/hooks/useTranslation';
 import { FileDown } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
+import { cn } from '@/lib/utils';
 
 export default function ActionButtons() {
   const { t } = useTranslation();
@@ -14,8 +14,8 @@ export default function ActionButtons() {
       aria-label="Akce a odkazy"
     >
       <a
-        href="/CV Dagmar Drbalkova 2025.pdf"
-        download={`CV Dagmar Drbalkova ${new Date().getFullYear()}.pdf`}
+        href="/images/cv.pdf"
+        download={`cv ${new Date().getFullYear()}.pdf`}
         className={cn(
           'inline-flex items-center gap-3',
           'border-2 border-indigo-600',

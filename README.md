@@ -27,7 +27,7 @@ A modern, performant portfolio website built with Next.js, featuring 3D animatio
 Personal portfolio website showcasing full-stack development skills, projects, and experience. The site features a modern design with interactive 3D elements, optimized performance, and comprehensive accessibility features.
 
 **Live Site:** [https://cv-ruby-nu.vercel.app/](https://cv-ruby-nu.vercel.app/)
-**PDF Resume:** `public/CV Dagmar Drbalkova 2025.pdf`
+**PDF Resume:** `public/cv.pdf`
 
 ## ✨ Features
 
@@ -238,7 +238,7 @@ cv/
 ├── public/                  # Static assets
 │   ├── examples/           # Project examples
 │   ├── images/             # Image assets
-│   └── CV Dagmar Drbalkova 2025.pdf
+│   └── cv.pdf
 ├── biome.json              # Biome configuration
 ├── components.json         # shadcn/ui configuration
 ├── next.config.js          # Next.js configuration
