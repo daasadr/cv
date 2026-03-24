@@ -25,7 +25,6 @@ export const projects: Project[] = [
       // '...',
     ],
     image: '/images/d-p.png',
-    githubUrl: 'https://github.com/daasadr/office_automations',
     year: 2025,
     inProgress: true,
   },

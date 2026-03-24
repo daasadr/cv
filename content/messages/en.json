@@ -122,17 +122,17 @@
       "title": "Contact Me",
       "ways": "Contact methods",
       "email": "Email",
-      "phone": "Phone",
       "github": "GitHub",
+      "linkedin": "LinkedIn",
       "emailDesc": "Send me an email",
-      "phoneDesc": "Call me",
       "githubDesc": "Visit my GitHub profile",
+      "linkedinDesc": "Visit my LinkedIn profile",
       "opensNewWindow": "opens in a new window"
     },
     "labels": {
       "email": "Email",
-      "phone": "Phone",
-      "github": "GitHub"
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
     },
     "whyMe": {
       "title": "Why Me?",

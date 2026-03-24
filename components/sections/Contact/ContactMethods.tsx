@@ -1,7 +1,7 @@
 'use client';
 
-import { useTranslation } from '@/hooks/useTranslation';
 import { contactMethods as contactData } from '@/content/contact';
+import { useTranslation } from '@/hooks/useTranslation';
 import ContactMethodItem from './ContactMethodItem';
 
 interface ContactMethod {
@@ -24,18 +24,18 @@ export default function ContactMethods() {
       description: t('contact.methods.emailDesc'),
     },
     {
-      label: t('contact.labels.phone'),
-      value: contactData.phone.value,
-      icon: contactData.phone.icon,
-      href: contactData.phone.href,
-      description: t('contact.methods.phoneDesc'),
-    },
-    {
       label: t('contact.labels.github'),
       value: contactData.github.value,
       icon: contactData.github.icon,
       href: contactData.github.href,
       description: t('contact.methods.githubDesc'),
+    },
+    {
+      label: t('contact.labels.linkedin'),
+      value: contactData.linkedin.value,
+      icon: contactData.linkedin.icon,
+      href: contactData.linkedin.href,
+      description: t('contact.methods.linkedinDesc'),
     },
   ];
 

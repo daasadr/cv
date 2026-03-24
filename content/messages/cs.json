@@ -122,17 +122,17 @@
       "title": "Kontaktujte mě",
       "ways": "Způsoby kontaktu",
       "email": "Email",
-      "phone": "Telefon",
       "github": "GitHub",
+      "linkedin": "LinkedIn",
       "emailDesc": "Pošlete mi email",
-      "phoneDesc": "Zavolejte mi",
       "githubDesc": "Navštivte můj GitHub profil",
+      "linkedinDesc": "Navštivte můj LinkedIn profil",
       "opensNewWindow": "otevře se v novém okně"
     },
     "labels": {
       "email": "Email",
-      "phone": "Telefon",
-      "github": "GitHub"
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
     },
     "whyMe": {
       "title": "Proč já?",

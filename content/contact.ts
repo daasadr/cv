@@ -11,15 +11,14 @@ export const contactMethods = {
     icon: '📧',
     href: 'mailto:Daasa.D@seznam.cz',
   },
-  phone: {
-    value: '+420 773 245 222',
-    icon: '📱',
-    href: 'tel:+420773245222',
-  },
   github: {
     value: 'github.com/daasadr',
     icon: '💻',
     href: 'https://github.com/daasadr',
   },
+  linkedin: {
+    value: 'linkedin.com/in/dagmar-dr-541a3b2b0',
+    icon: '🔗',
+    href: 'https://www.linkedin.com/in/dagmar-dr-541a3b2b0',
+  },
 } as const;
-
