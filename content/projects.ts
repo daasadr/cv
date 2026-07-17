@@ -3,6 +3,9 @@ export interface Project {
   technologies: string[];
   image: string;
   liveUrl?: string;
+  // Vlastní popisek tlačítka odkazu (výchozí "Live Demo").
+  // Použij např. "Prohlédnout" u projektů, kde odkaz vede na celý projekt, ne demo.
+  liveLabel?: string;
   githubUrl?: string;
   year: number;
   inProgress?: boolean;
@@ -14,6 +17,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'React', 'TypeScript', 'PostgreSQL'],
     image: '/images/peopleworth1.png',
     liveUrl: 'https://peopleworth.eu',
+    liveLabel: 'Prohlédnout',
     year: 2026,
   },
   {
@@ -21,6 +25,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'React', 'TypeScript', 'PostgreSQL'],
     image: '/images/portfolioparadise.jpg',
     liveUrl: 'https://portfolioparadise.eu',
+    liveLabel: 'Prohlédnout',
     year: 2026,
   },
   {

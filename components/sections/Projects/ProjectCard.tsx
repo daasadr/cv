@@ -1,10 +1,10 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { Play } from 'lucide-react';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import type { Project } from '@/content/projects';
 import { useTranslation } from '@/hooks/useTranslation';
-import { OptimizedImage } from '@/components/ui/OptimizedImage';
+import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
   project: Project;
@@ -113,9 +113,9 @@ export default function ProjectCard({
               rel="noopener noreferrer"
             >
               <Play className="w-4 h-4 hidden sm:inline" aria-hidden="true" />
-              Live Demo
+              {project.liveLabel ?? 'Live Demo'}
               <span id={`live-demo-${year}-${index}-desc`} className="sr-only">
-                - otevře živou ukázku projektu {title} v novém okně
+                - otevře projekt {title} v novém okně
               </span>
             </a>
           )}
@@ -144,8 +144,7 @@ export default function ProjectCard({
               </svg>
               View Code
               <span id={`github-${year}-${index}-desc`} className="sr-only">
-                - otevře zdrojový kód projektu {title} na GitHubu v
-                novém okně
+                - otevře zdrojový kód projektu {title} na GitHubu v novém okně
               </span>
             </a>
           )}
