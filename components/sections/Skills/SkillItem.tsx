@@ -1,9 +1,13 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { useTranslation } from '@/hooks/useTranslation';
-import { formatExperienceDuration, getExperienceLevelKey } from '@/content/utils';
 import { categoryColors, type Skill } from '@/content/skills';
+import {
+  formatExperienceDuration,
+  getExperienceLevelKey,
+  getMonthsSince,
+} from '@/content/utils';
+import { useTranslation } from '@/hooks/useTranslation';
+import { cn } from '@/lib/utils';
 
 interface SkillItemProps {
   skill: Skill;
@@ -13,10 +17,11 @@ interface SkillItemProps {
 export default function SkillItem({ skill, isAnimated }: SkillItemProps) {
   const { t, language } = useTranslation();
 
-  const progressPercentage = Math.min((skill.months / 24) * 100, 100);
-  const experienceLevelKey = getExperienceLevelKey(skill.months);
+  const months = getMonthsSince(skill.startDate);
+  const progressPercentage = Math.min((months / 24) * 100, 100);
+  const experienceLevelKey = getExperienceLevelKey(months);
   const experienceLevel = t(`skills.levels.${experienceLevelKey}`);
-  const experienceDesc = formatExperienceDuration(skill.months, language);
+  const experienceDesc = formatExperienceDuration(months, language);
 
   return (
     <div className="space-y-2" role="listitem">
@@ -39,7 +44,9 @@ export default function SkillItem({ skill, isAnimated }: SkillItemProps) {
           aria-label={`Úroveň dovednosti pro ${skill.name}`}
         >
           <div
-            className={cn('h-3 rounded-full transition-all duration-1000 ease-out')}
+            className={cn(
+              'h-3 rounded-full transition-all duration-1000 ease-out'
+            )}
             style={{
               width: isAnimated ? `${progressPercentage}%` : '0%',
               backgroundColor: categoryColors[skill.category],

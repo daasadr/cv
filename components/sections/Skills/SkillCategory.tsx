@@ -1,8 +1,9 @@
 'use client';
 
+import { categoryColors, type Skill } from '@/content/skills';
+import { getMonthsSince } from '@/content/utils';
 import { useTranslation } from '@/hooks/useTranslation';
 import SkillItem from './SkillItem';
-import { categoryColors, type Skill } from '@/content/skills';
 
 interface SkillCategoryProps {
   category: string;
@@ -16,7 +17,9 @@ export default function SkillCategory({
   isAnimated,
 }: SkillCategoryProps) {
   const { t } = useTranslation();
-  const sortedSkills = skills.sort((a, b) => b.months - a.months);
+  const sortedSkills = [...skills].sort(
+    (a, b) => getMonthsSince(b.startDate) - getMonthsSince(a.startDate)
+  );
 
   const getCategoryLabel = (cat: string) => {
     switch (cat) {
@@ -33,9 +36,7 @@ export default function SkillCategory({
     }
   };
 
-  const isCategoryKey = (
-    key: string
-  ): key is keyof typeof categoryColors => {
+  const isCategoryKey = (key: string): key is keyof typeof categoryColors => {
     return key in categoryColors;
   };
 

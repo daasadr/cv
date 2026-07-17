@@ -34,7 +34,7 @@
     },
     "actions": {
       "downloadCV": "Download CV",
-      "downloadCVDesc": "downloads my resume in PDF format",
+      "downloadCVDesc": "downloads my resume in DOCX format",
       "githubProfile": "GitHub Profile",
       "githubProfileDesc": "opens my GitHub profile in a new window"
     },
@@ -53,7 +53,7 @@
       "experience": "Years of Experience",
       "experienceYears": "2 years",
       "projects": "Projects",
-      "projectsCount": "11 projects",
+      "projectsCount": "13 projects",
       "technologies": "Technologies",
       "technologiesCount": "{count} technologies",
       "list": "list",
@@ -84,6 +84,14 @@
     "subtitle": "My projects and work",
     "description": "A list of projects that showcase my technical knowledge and creative problem-solving.",
     "items": {
+      "peopleworth": {
+        "title": "PeopleWorth",
+        "description": "An application for keeping and managing personal and business contacts in a practical and creative way."
+      },
+      "portfolioParadise": {
+        "title": "Portfolio Paradise",
+        "description": "An application for maintaining portfolios of individually learning students."
+      },
       "officeAutomations": {
         "title": "Office Automations",
         "description": "Modern web application for automatic PDF processing of continuous waste records with AI integration."

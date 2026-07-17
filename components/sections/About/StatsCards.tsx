@@ -1,11 +1,19 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import { useTranslation } from '@/hooks/useTranslation';
 import { skills } from '@/content/skills';
+import {
+  EXPERIENCE_START_DATE,
+  formatExperienceDuration,
+  getMonthsSince,
+} from '@/content/utils';
+import { useTranslation } from '@/hooks/useTranslation';
+import { cn } from '@/lib/utils';
 
 export default function StatsCards() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+
+  const experienceMonths = getMonthsSince(EXPERIENCE_START_DATE);
+  const experienceYears = Math.floor(experienceMonths / 12);
 
   return (
     <aside aria-labelledby="stats-title">
@@ -20,9 +28,12 @@ export default function StatsCards() {
         >
           <div
             className="text-4xl font-bold text-indigo-600 mb-2"
-            aria-label={t('about.stats.experienceYears')}
+            aria-label={formatExperienceDuration(
+              experienceYears * 12,
+              language
+            )}
           >
-            2
+            {experienceYears}
           </div>
           <div id="experience-stat" className="text-gray-700 font-medium">
             {t('about.stats.experience')}
@@ -38,7 +49,7 @@ export default function StatsCards() {
             className="text-4xl font-bold text-amber-600 mb-2"
             aria-label={t('about.stats.projectsCount')}
           >
-            11
+            13
           </div>
           <div id="projects-stat" className="text-gray-700 font-medium">
             {t('about.stats.projects')} (

@@ -34,7 +34,7 @@
     },
     "actions": {
       "downloadCV": "Stáhnout CV",
-      "downloadCVDesc": "stáhne můj životopis ve formátu PDF",
+      "downloadCVDesc": "stáhne můj životopis ve formátu DOCX",
       "githubProfile": "GitHub Profil",
       "githubProfileDesc": "otevře můj GitHub profil v novém okně"
     },
@@ -53,7 +53,7 @@
       "experience": "Roky zkušeností",
       "experienceYears": "2 roky",
       "projects": "Projektů",
-      "projectsCount": "11 projektů",
+      "projectsCount": "13 projektů",
       "technologies": "Technologií",
       "technologiesCount": "{count} technologií",
       "list": "seznam",
@@ -84,6 +84,14 @@
     "subtitle": "Moje projekty a práce",
     "description": "Seznam projektů, které ukazují mé technické znalosti a kreativní řešení problémů.",
     "items": {
+      "peopleworth": {
+        "title": "PeopleWorth",
+        "description": "Aplikace pro vedení a spravování osobních i obchodních kontaktů praktickým i kreativním způsobem."
+      },
+      "portfolioParadise": {
+        "title": "Portfolio Paradise",
+        "description": "Aplikace pro vedení portfolia individuálně se vzdělávajících žáků."
+      },
       "officeAutomations": {
         "title": "Office automations",
         "description": "Moderní webová aplikace pro automatické zpracování PDF dokumentů průběžné evidence odpadů s AI integrací."

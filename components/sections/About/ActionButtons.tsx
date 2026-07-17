@@ -14,8 +14,8 @@ export default function ActionButtons() {
       aria-label="Akce a odkazy"
     >
       <a
-        href="/cv_searchable.pdf"
-        download={`cv ${new Date().getFullYear()}.pdf`}
+        href="/images/Dagmar_Drbalkova_CV.docx"
+        download={`Dagmar_Drbalkova_CV_${new Date().getFullYear()}.docx`}
         className={cn(
           'inline-flex items-center gap-3',
           'border-2 border-indigo-600',

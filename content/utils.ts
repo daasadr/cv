@@ -1,6 +1,29 @@
 import type { Locale } from '@/i18n/types';
 
 /**
+ * Počet celých měsíců mezi datem zahájení a dneškem.
+ * Díky tomu se doba u dovedností i roky zkušeností počítají dynamicky
+ * a průběžně narůstají podle reálného času.
+ * @param startDate - datum zahájení ve formátu ISO (např. '2024-01-01')
+ * @returns počet uplynulých celých měsíců (min. 0)
+ */
+export const getMonthsSince = (startDate: string): number => {
+  const start = new Date(startDate);
+  const now = new Date();
+  let months =
+    (now.getFullYear() - start.getFullYear()) * 12 +
+    (now.getMonth() - start.getMonth());
+  if (now.getDate() < start.getDate()) months--;
+  return Math.max(0, months);
+};
+
+/**
+ * Datum, od kterého se počítají celkové roky zkušeností v IT.
+ * Nastaveno tak, aby k červenci 2026 odpovídalo 3 rokům, a dále roste.
+ */
+export const EXPERIENCE_START_DATE = '2023-07-01';
+
+/**
  * Formats experience duration in months to a human-readable string
  * @param months - Total number of months
  * @param language - Language for formatting ('cs' or 'en')
@@ -41,4 +64,3 @@ export const getExperienceLevelKey = (months: number): string => {
   if (months >= 6) return 'beginner';
   return 'basic';
 };
-

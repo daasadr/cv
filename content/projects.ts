@@ -10,6 +10,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'peopleworth',
+    technologies: ['Next.js', 'React', 'TypeScript', 'PostgreSQL'],
+    image: '/images/peopleworth1.png',
+    liveUrl: 'https://peopleworth.eu',
+    year: 2026,
+  },
+  {
+    id: 'portfolioParadise',
+    technologies: ['Next.js', 'React', 'TypeScript', 'PostgreSQL'],
+    image: '/images/portfolioparadise.jpg',
+    liveUrl: 'https://portfolioparadise.eu',
+    year: 2026,
+  },
+  {
     id: 'officeAutomations',
     technologies: [
       'Node.js',
